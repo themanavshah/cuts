@@ -1,5 +1,6 @@
 import 'package:cuts/dummy_data/actions_option_data.dart';
 import 'package:cuts/dummy_data/barber_shops_data.dart';
+import 'package:cuts/dummy_data/user_dummy_data.dart';
 import 'package:cuts/providers/state_provider.dart';
 import 'package:cuts/widgets/barber_widget.dart';
 import 'package:cuts/widgets/home_option_widget.dart';
@@ -159,14 +160,15 @@ class HomeScreen extends ConsumerWidget {
               ],
             ),
             Container(
-              height: ((120 * barberslist.length) + (15 * barberslist.length))
-                      .toDouble() +
-                  50,
+              height:
+                  ((120 * nearbyBrabers.length) + (15 * nearbyBrabers.length))
+                          .toDouble() +
+                      50,
               child: ListView.builder(
                 physics: const NeverScrollableScrollPhysics(),
                 //shrinkWrap: true,
                 //scrollDirection: Axis.horizontal,
-                itemCount: barberslist.length,
+                itemCount: nearbyBrabers.length,
                 itemBuilder: (BuildContext context, int index) => Padding(
                     padding: const EdgeInsets.only(bottom: 15),
                     child: BarberWidget(index)),

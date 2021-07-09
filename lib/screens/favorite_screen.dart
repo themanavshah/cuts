@@ -8,7 +8,9 @@ class FavoriteScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ScopedReader watch) {
     //adding it to favorite
-    var favlist = watch(favlistprovider);
+    //context.read(favListProv.notifier).addingFavorite();
+    var favlist = watch(favListProv);
+    print(favlist);
     //var pageindx = watch(pageindex);
     //print(favlist.state[0].name);
     return SingleChildScrollView(
@@ -60,15 +62,14 @@ class FavoriteScreen extends ConsumerWidget {
               ),
               SizedBox(height: 20),
               Container(
-                height:
-                    ((120 * favlist.state.length) + (15 * favlist.state.length))
-                            .toDouble() +
-                        50,
+                height: ((120 * favlist.length) + (15 * favlist.length))
+                        .toDouble() +
+                    50,
                 child: ListView.builder(
                   physics: const NeverScrollableScrollPhysics(),
                   //shrinkWrap: true,
                   //scrollDirection: Axis.horizontal,
-                  itemCount: favlist.state.length,
+                  itemCount: favlist.length,
                   itemBuilder: (BuildContext context, int index) => Padding(
                       padding: const EdgeInsets.only(bottom: 15),
                       child: BarberFavWidget(index)),
