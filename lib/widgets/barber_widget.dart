@@ -32,7 +32,17 @@ class _BarberWidgetState extends State<BarberWidget> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   color: Colors.grey.withOpacity(0.2),
+                  image: DecorationImage(
+                    fit: BoxFit.fill,
+                    image: AssetImage(barberslist[this.widget.index].image),
+                  ),
                 ),
+                // child: ClipRRect(
+                //   borderRadius: BorderRadius.circular(20),
+                //   child: Image(
+                //     image: AssetImage('assets/barbers/barberX.png'),
+                //   ),
+                // ),
               ),
               SizedBox(width: 25),
               Column(

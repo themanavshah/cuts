@@ -23,6 +23,10 @@ class BarberFavWidget extends ConsumerWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   color: Colors.grey.withOpacity(0.2),
+                  image: DecorationImage(
+                    fit: BoxFit.fill,
+                    image: AssetImage(favlist.state[this.index].image),
+                  ),
                 ),
               ),
               SizedBox(width: 25),

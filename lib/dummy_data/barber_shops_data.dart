@@ -3,6 +3,7 @@ class Barber {
   String openingTime;
   var rating;
   String distance;
+  String image;
   bool favorite = false;
 
   Barber({
@@ -11,16 +12,18 @@ class Barber {
     this.rating,
     this.distance,
     this.favorite,
+    this.image,
   });
 }
 
 List<Barber> barberslist = [
   Barber(
-    name: 'BraberX',
+    name: 'BarberX',
     openingTime: '9:00 - 22:00',
     rating: 4.6,
     distance: '1.5',
     favorite: false,
+    image: 'assets/barbers/barberX.png',
   ),
   Barber(
     name: 'Braber cuts ',
@@ -28,6 +31,7 @@ List<Barber> barberslist = [
     rating: 4.3,
     distance: '1.2',
     favorite: false,
+    image: 'assets/barbers/barbercuts.png',
   ),
   Barber(
     name: 'Braber king',
@@ -35,6 +39,7 @@ List<Barber> barberslist = [
     rating: 4.5,
     distance: '2.1',
     favorite: true,
+    image: 'assets/barbers/barberking.png',
   ),
   Barber(
     name: 'Braber kong',
@@ -42,6 +47,7 @@ List<Barber> barberslist = [
     rating: 4.7,
     distance: '2.3',
     favorite: false,
+    image: 'assets/barbers/barberkong.png',
   ),
   Barber(
     name: 'top cutter',
@@ -49,5 +55,6 @@ List<Barber> barberslist = [
     rating: 4.6,
     distance: '1.5',
     favorite: true,
+    image: 'assets/barbers/topcutter.png',
   ),
 ];
