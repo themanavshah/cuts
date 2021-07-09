@@ -5,6 +5,7 @@ class Barber {
   String distance;
   String image;
   bool favorite = false;
+  int id;
 
   Barber({
     this.name,
@@ -13,11 +14,13 @@ class Barber {
     this.distance,
     this.favorite,
     this.image,
+    this.id,
   });
 }
 
 List<Barber> barberslist = [
   Barber(
+    id: 1,
     name: 'BarberX',
     openingTime: '9:00 - 22:00',
     rating: 4.6,
@@ -26,6 +29,7 @@ List<Barber> barberslist = [
     image: 'assets/barbers/barberX.png',
   ),
   Barber(
+    id: 2,
     name: 'Braber cuts ',
     openingTime: '7:00 - 23:00',
     rating: 4.3,
@@ -34,6 +38,7 @@ List<Barber> barberslist = [
     image: 'assets/barbers/barbercuts.png',
   ),
   Barber(
+    id: 3,
     name: 'Braber king',
     openingTime: '8:00 - 21:00',
     rating: 4.5,
@@ -42,6 +47,7 @@ List<Barber> barberslist = [
     image: 'assets/barbers/barberking.png',
   ),
   Barber(
+    id: 4,
     name: 'Braber kong',
     openingTime: '7:00 - 22:00',
     rating: 4.7,
@@ -50,6 +56,7 @@ List<Barber> barberslist = [
     image: 'assets/barbers/barberkong.png',
   ),
   Barber(
+    id: 5,
     name: 'top cutter',
     openingTime: '9:00 - 22:00',
     rating: 4.6,

@@ -10,7 +10,9 @@ class BarberFavWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ScopedReader watch) {
-    var favlist = watch(favlistprovider);
+    var favlist = watch(favListProv);
+    print("BFV: " + favlist.length.toString());
+    print(favlist[index].name);
     return Container(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -25,7 +27,7 @@ class BarberFavWidget extends ConsumerWidget {
                   color: Colors.grey.withOpacity(0.2),
                   image: DecorationImage(
                     fit: BoxFit.fill,
-                    image: AssetImage(favlist.state[this.index].image),
+                    image: AssetImage(favlist[this.index].image),
                   ),
                 ),
               ),
@@ -34,7 +36,7 @@ class BarberFavWidget extends ConsumerWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    favlist.state[this.index].name,
+                    favlist[this.index].name,
                     style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.w500,
@@ -57,7 +59,7 @@ class BarberFavWidget extends ConsumerWidget {
                       ),
                       SizedBox(width: 5),
                       Text(
-                        favlist.state[index].openingTime,
+                        favlist[index].openingTime,
                         style: TextStyle(
                             color: Colors.grey,
                             fontWeight: FontWeight.w300,
@@ -75,7 +77,7 @@ class BarberFavWidget extends ConsumerWidget {
                       ),
                       SizedBox(width: 5),
                       Text(
-                        favlist.state[index].rating.toString(),
+                        favlist[index].rating.toString(),
                         style: TextStyle(
                             color: Colors.yellow,
                             fontWeight: FontWeight.w300,
@@ -89,7 +91,7 @@ class BarberFavWidget extends ConsumerWidget {
                       ),
                       SizedBox(width: 5),
                       Text(
-                        favlist.state[index].distance + 'km away',
+                        favlist[index].distance + 'km away',
                         style: TextStyle(
                             color: Colors.grey,
                             fontWeight: FontWeight.w300,
@@ -107,7 +109,15 @@ class BarberFavWidget extends ConsumerWidget {
               color: Colors.red,
             ),
             onPressed: () {
-              favList.remove(favList[index]);
+              //change this \/
+              //barberslist[i].favorite = false;
+              print(favlist[index].id);
+              print(context.read(favListProv.notifier).displayState());
+              context.read(favListProv.notifier).remove(favlist[index].id);
+              print(context.read(favListProv.notifier).displayState());
+              // context
+              //     .read(favListProv.notifier)
+              //     .addRemove(favList[index], favList[index].id);
             },
           ),
         ],
