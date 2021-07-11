@@ -6,6 +6,8 @@ class Barber {
   String image;
   bool favorite = false;
   int id;
+  String description;
+  List tags;
 
   Barber({
     this.name,
@@ -15,6 +17,8 @@ class Barber {
     this.favorite,
     this.image,
     this.id,
+    this.description,
+    this.tags,
   });
 }
 
@@ -27,6 +31,14 @@ List<Barber> barberslist = [
     distance: '1.5',
     favorite: false,
     image: 'assets/barbers/barberX.png',
+    description:
+        "BarberX is specialsed in cuttings and other stuffs. What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    tags: [
+      "BarberX",
+      "Man's haircut",
+      "Coloring",
+      "Shaving",
+    ],
   ),
   Barber(
     id: 2,
@@ -36,6 +48,14 @@ List<Barber> barberslist = [
     distance: '1.2',
     favorite: false,
     image: 'assets/barbers/barbercuts.png',
+    description:
+        "Barber cuts is specialsed in cuttings and other stuffs. What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    tags: [
+      "Barber cust",
+      "Man's haircut",
+      "Coloring",
+      "Shaving",
+    ],
   ),
   Barber(
     id: 3,
@@ -45,6 +65,13 @@ List<Barber> barberslist = [
     distance: '2.1',
     favorite: true,
     image: 'assets/barbers/barberking.png',
+    description:
+        "Barber king is specialsed in cuttings and other stuffs. What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    tags: [
+      "Barber king",
+      "Man's haircut",
+      "Shaving",
+    ],
   ),
   Barber(
     id: 4,
@@ -54,6 +81,13 @@ List<Barber> barberslist = [
     distance: '2.3',
     favorite: false,
     image: 'assets/barbers/barberkong.png',
+    description:
+        "Barber kong is specialsed in cuttings and other stuffs. What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    tags: [
+      "Barber kong",
+      "Man's haircut",
+      "Beard trim",
+    ],
   ),
   Barber(
     id: 5,
@@ -63,5 +97,12 @@ List<Barber> barberslist = [
     distance: '1.5',
     favorite: true,
     image: 'assets/barbers/topcutter.png',
+    description:
+        "top cutter is specialsed in cuttings and other stuffs. What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    tags: [
+      "top cutter",
+      "Man's haircut",
+      "Shaving",
+    ],
   ),
 ];

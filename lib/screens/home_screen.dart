@@ -2,6 +2,7 @@ import 'package:cuts/dummy_data/actions_option_data.dart';
 import 'package:cuts/dummy_data/barber_shops_data.dart';
 import 'package:cuts/dummy_data/user_dummy_data.dart';
 import 'package:cuts/providers/state_provider.dart';
+import 'package:cuts/screens/barber_detail_screen.dart';
 import 'package:cuts/widgets/barber_widget.dart';
 import 'package:cuts/widgets/home_option_widget.dart';
 import 'package:flutter/material.dart';
@@ -132,12 +133,68 @@ class HomeScreen extends ConsumerWidget {
               ),
             ),
             SizedBox(height: 30),
-            Container(
-              height: 180,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                color: Colors.orange,
-              ),
+            Stack(
+              clipBehavior: Clip.none,
+              children: [
+                Container(
+                  height: 180,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Colors.orange,
+                    image: DecorationImage(
+                      fit: BoxFit.fill,
+                      image: AssetImage('assets/dummies/orange.png'),
+                    ),
+                  ),
+                  child: Center(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 50.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Get free beard oil from barberX',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          SizedBox(height: 10),
+                          Text(
+                            'Claim it till 6th sept',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w300,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                Positioned(
+                    top: -26,
+                    left: MediaQuery.of(context).size.width / 2 - 26 - 30,
+                    child: CircleAvatar(
+                      radius: 26,
+                      backgroundColor: Colors.white,
+                    )),
+                Positioned(
+                    top: -18,
+                    left: MediaQuery.of(context).size.width / 2 - 18 - 30,
+                    child: CircleAvatar(
+                      radius: 18,
+                      backgroundColor: Colors.orange,
+                      child: CircleAvatar(
+                          radius: 12,
+                          backgroundColor: Colors.transparent,
+                          child: Image.asset('assets/dummies/emote.png')),
+                    )),
+              ],
             ),
             SizedBox(height: 50),
             Row(
@@ -171,7 +228,17 @@ class HomeScreen extends ConsumerWidget {
                 itemCount: nearbyBrabers.length,
                 itemBuilder: (BuildContext context, int index) => Padding(
                     padding: const EdgeInsets.only(bottom: 15),
-                    child: BarberWidget(index)),
+                    child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => BarberDetailScreen(
+                                        reqlist: nearbyBrabers,
+                                        index: index,
+                                      )));
+                        },
+                        child: BarberWidget(index))),
               ),
             ),
           ],

@@ -3,12 +3,19 @@ import 'package:cuts/dummy_data/barber_shops_data.dart';
 List<Barber> favBarbers = [
   Barber(
     id: 3,
-    name: 'Braber king',
+    name: 'Barber king',
     openingTime: '8:00 - 21:00',
     rating: 4.5,
     distance: '2.1',
     favorite: true,
     image: 'assets/barbers/barberking.png',
+    description:
+        "Barber king is specialsed in cuttings and other stuffs. What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    tags: [
+      "Barber king",
+      "Man's haircut",
+      "Shaving",
+    ],
   ),
   Barber(
     id: 5,
@@ -18,6 +25,13 @@ List<Barber> favBarbers = [
     distance: '1.5',
     favorite: true,
     image: 'assets/barbers/topcutter.png',
+    description:
+        "top cutter is specialsed in cuttings and other stuffs. What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    tags: [
+      "top cutter",
+      "Man's haircut",
+      "Shaving",
+    ],
   ),
 ];
 
@@ -30,6 +44,14 @@ List<Barber> nearbyBrabers = [
     distance: '1.5',
     favorite: false,
     image: 'assets/barbers/barberX.png',
+    description:
+        "Barber X is specialsed in cuttings and other stuffs. What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    tags: [
+      "BarberX",
+      "Man's haircut",
+      "Coloring",
+      "Shaving",
+    ],
   ),
   Barber(
     id: 2,
@@ -39,6 +61,14 @@ List<Barber> nearbyBrabers = [
     distance: '1.2',
     favorite: false,
     image: 'assets/barbers/barbercuts.png',
+    description:
+        "Braber cuts is specialsed in cuttings and other stuffs. What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    tags: [
+      "Barber cust",
+      "Man's haircut",
+      "Coloring",
+      "Shaving",
+    ],
   ),
   Barber(
     id: 5,
@@ -48,5 +78,12 @@ List<Barber> nearbyBrabers = [
     distance: '1.5',
     favorite: true,
     image: 'assets/barbers/topcutter.png',
+    description:
+        "top cutter is specialsed in cuttings and other stuffs. What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    tags: [
+      "top cutter",
+      "Man's haircut",
+      "Shaving",
+    ],
   ),
 ];
