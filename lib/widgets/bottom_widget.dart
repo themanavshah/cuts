@@ -21,47 +21,51 @@ class BottomWidget extends ConsumerWidget {
           children: [
             IconButton(
                 icon: Icon(
-                  index.state != 0 ? Icons.home_outlined : Icons.home_rounded,
-                  color: index.state == 0
+                  index.state != page.home
+                      ? Icons.home_outlined
+                      : Icons.home_rounded,
+                  color: index.state == page.home
                       ? Colors.black
                       : Colors.black.withOpacity(0.4),
                 ),
                 onPressed: () {
-                  context.read(pageindex).state = 0;
+                  context.read(pageindex).state = page.home;
                 }),
             IconButton(
                 icon: Icon(
-                  index.state == 1
+                  index.state == page.nearby
                       ? Icons.location_on_rounded
                       : Icons.location_on_outlined,
-                  color: index.state == 1
+                  color: index.state == page.nearby
                       ? Colors.black
                       : Colors.black.withOpacity(0.4),
                 ),
                 onPressed: () {
-                  context.read(pageindex).state = 1;
+                  context.read(pageindex).state = page.nearby;
                 }),
             IconButton(
                 icon: Icon(
-                  index.state != 2
+                  index.state != page.chat
                       ? Icons.message_outlined
                       : Icons.message_rounded,
-                  color: index.state == 2
+                  color: index.state == page.chat
                       ? Colors.black
                       : Colors.black.withOpacity(0.4),
                 ),
                 onPressed: () {
-                  context.read(pageindex).state = 2;
+                  context.read(pageindex).state = page.chat;
                 }),
             IconButton(
                 icon: Icon(
-                  index.state == 3 ? Icons.favorite : Icons.favorite_border,
-                  color: index.state == 3
+                  index.state == page.favorite
+                      ? Icons.favorite
+                      : Icons.favorite_border,
+                  color: index.state == page.favorite
                       ? Colors.black
                       : Colors.black.withOpacity(0.4),
                 ),
                 onPressed: () {
-                  context.read(pageindex).state = 3;
+                  context.read(pageindex).state = page.favorite;
                 }),
           ],
         ),

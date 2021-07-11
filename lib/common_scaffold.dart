@@ -15,10 +15,10 @@ class CommonScaffold extends ConsumerWidget {
       backgroundColor: Colors.white,
       body: Stack(
         children: [
-          if (index.state == 0) HomeScreen(),
-          if (index.state == 1) NearbyScreen(),
-          if (index.state == 2) ChatScreen(),
-          if (index.state == 3) FavoriteScreen(),
+          if (index.state == page.home) HomeScreen(),
+          if (index.state == page.nearby) NearbyScreen(),
+          if (index.state == page.chat) ChatScreen(),
+          if (index.state == page.favorite) FavoriteScreen(),
           Positioned(bottom: 0, child: BottomWidget()),
         ],
       ),

@@ -4,6 +4,8 @@ import 'package:cuts/widgets/barber_fav_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'barber_detail_screen.dart';
+
 class FavoriteScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ScopedReader watch) {
@@ -38,7 +40,7 @@ class FavoriteScreen extends ConsumerWidget {
                         size: 18,
                       ),
                       onPressed: () {
-                        context.read(pageindex).state = 0;
+                        context.read(pageindex).state = page.home;
                       },
                     ),
                   ),
@@ -72,7 +74,17 @@ class FavoriteScreen extends ConsumerWidget {
                   itemCount: favlist.length,
                   itemBuilder: (BuildContext context, int index) => Padding(
                       padding: const EdgeInsets.only(bottom: 15),
-                      child: BarberFavWidget(index)),
+                      child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => BarberDetailScreen(
+                                          reqlist: favlist,
+                                          index: index,
+                                        )));
+                          },
+                          child: BarberFavWidget(index))),
                 ),
               ),
               Container(
