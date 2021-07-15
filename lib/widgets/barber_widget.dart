@@ -23,7 +23,7 @@ class BarberWidget extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ScopedReader watch) {
     var favlist = watch(favListProv);
-    print("rebu8ild of barbWidget");
+    print("rebuild of barbWidget");
     return Container(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
