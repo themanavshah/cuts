@@ -1,5 +1,6 @@
 import 'package:cuts/dummy_data/barber_shops_data.dart';
 import 'package:cuts/providers/state_provider.dart';
+import 'package:cuts/screens/chat_detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -127,28 +128,46 @@ class BarberDetailScreen extends ConsumerWidget {
                           )
                         ],
                       ),
-                      IconButton(
-                        icon: Icon(
-                          barberCheck(favlist, reqlist[index])
-                              ? Icons.favorite
-                              : Icons.favorite_border,
-                          color: barberCheck(favlist, reqlist[index])
-                              ? Colors.red
-                              : Colors.grey,
-                        ),
-                        onPressed: () {
-                          print(reqlist[index].name);
-                          print(context
-                              .read(favListProv.notifier)
-                              .displayState());
-                          barberCheck(favlist, reqlist[index])
-                              ? context
+                      Row(
+                        children: [
+                          IconButton(
+                              icon: Icon(
+                                Icons.chat_outlined,
+                                color: Colors.grey,
+                              ),
+                              onPressed: () {
+                                print('chat');
+                                Navigator.push(context,
+                                    MaterialPageRoute(builder: (context) {
+                                  return ChatDetailScreen(
+                                    barber: reqlist[index],
+                                  );
+                                }));
+                              }),
+                          IconButton(
+                            icon: Icon(
+                              barberCheck(favlist, reqlist[index])
+                                  ? Icons.favorite
+                                  : Icons.favorite_border,
+                              color: barberCheck(favlist, reqlist[index])
+                                  ? Colors.red
+                                  : Colors.grey,
+                            ),
+                            onPressed: () {
+                              print(reqlist[index].name);
+                              print(context
                                   .read(favListProv.notifier)
-                                  .remove(reqlist[index].id)
-                              : context
-                                  .read(favListProv.notifier)
-                                  .add(reqlist[index]);
-                        },
+                                  .displayState());
+                              barberCheck(favlist, reqlist[index])
+                                  ? context
+                                      .read(favListProv.notifier)
+                                      .remove(reqlist[index].id)
+                                  : context
+                                      .read(favListProv.notifier)
+                                      .add(reqlist[index]);
+                            },
+                          ),
+                        ],
                       ),
                     ],
                   ),

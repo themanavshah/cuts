@@ -9,6 +9,16 @@ enum page {
   favorite,
 }
 
+class Message {
+  String data;
+  int sentbyid;
+  int senttoid;
+  //DateTime timestamp;
+  Message({this.data, this.sentbyid, this.senttoid});
+}
+
+var msglist = [];
+
 final pageindex = StateProvider<page>((ref) {
   return page.home;
 });
