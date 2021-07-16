@@ -1,6 +1,30 @@
 import 'package:cuts/dummy_data/barber_shops_data.dart';
+import 'package:cuts/providers/state_provider.dart';
 
-List<Barber> favBarbers = [
+class ChatBarber {
+  Barber barber;
+  List<Message> messageList = [];
+  ChatBarber({this.barber});
+
+  void addMessage(Message message) {
+    messageList.add(message);
+  }
+}
+
+class User {
+  int userId;
+  List<Barber> favBarbers;
+  List<Barber> nearbyBarber;
+  List<ChatBarber> chatbarber;
+  User({
+    this.userId,
+    this.favBarbers,
+    this.chatbarber,
+    this.nearbyBarber,
+  });
+}
+
+var currentUser = User(userId: 254542, favBarbers: [
   Barber(
     id: 3,
     name: 'Barber king',
@@ -33,9 +57,7 @@ List<Barber> favBarbers = [
       "Shaving",
     ],
   ),
-];
-
-List<Barber> nearbyBrabers = [
+], nearbyBarber: [
   Barber(
     id: 1,
     name: 'BarberX',
@@ -86,4 +108,4 @@ List<Barber> nearbyBrabers = [
       "Shaving",
     ],
   ),
-];
+], chatbarber: []);

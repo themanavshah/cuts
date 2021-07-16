@@ -6,7 +6,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class BarberWidget extends ConsumerWidget {
   int index;
-  BarberWidget(this.index);
+  var requiredList;
+  BarberWidget(this.index, this.requiredList);
 
 //   @override
 //   _BarberWidgetState createState() => _BarberWidgetState();
@@ -38,7 +39,8 @@ class BarberWidget extends ConsumerWidget {
                   color: Colors.grey.withOpacity(0.2),
                   image: DecorationImage(
                     fit: BoxFit.fill,
-                    image: AssetImage(nearbyBrabers[this.index].image),
+                    image:
+                        AssetImage(currentUser.nearbyBarber[this.index].image),
                   ),
                 ),
                 // child: ClipRRect(
@@ -53,7 +55,7 @@ class BarberWidget extends ConsumerWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    nearbyBrabers[this.index].name,
+                    requiredList[this.index].name,
                     style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.w500,
@@ -76,7 +78,7 @@ class BarberWidget extends ConsumerWidget {
                       ),
                       SizedBox(width: 5),
                       Text(
-                        nearbyBrabers[index].openingTime,
+                        requiredList[index].openingTime,
                         style: TextStyle(
                             color: Colors.grey,
                             fontWeight: FontWeight.w300,
@@ -94,7 +96,7 @@ class BarberWidget extends ConsumerWidget {
                       ),
                       SizedBox(width: 5),
                       Text(
-                        nearbyBrabers[index].rating.toString(),
+                        requiredList[index].rating.toString(),
                         style: TextStyle(
                             color: Colors.yellow,
                             fontWeight: FontWeight.w300,
@@ -108,7 +110,7 @@ class BarberWidget extends ConsumerWidget {
                       ),
                       SizedBox(width: 5),
                       Text(
-                        nearbyBrabers[index].distance + 'km away',
+                        requiredList[index].distance + 'km away',
                         style: TextStyle(
                             color: Colors.grey,
                             fontWeight: FontWeight.w300,
@@ -122,16 +124,16 @@ class BarberWidget extends ConsumerWidget {
           ),
           IconButton(
             icon: Icon(
-              barberCheck(favlist, nearbyBrabers[index])
+              barberCheck(favlist, requiredList[index])
                   ? Icons.favorite
                   : Icons.favorite_border,
-              color: barberCheck(favlist, nearbyBrabers[index])
+              color: barberCheck(favlist, requiredList[index])
                   ? Colors.red
                   : Colors.grey,
             ),
             onPressed: () {
               //print("1 " + favBarbers.toString());
-              print(nearbyBrabers[index].name);
+              print(requiredList[index].name);
               print(context.read(favListProv.notifier).displayState());
               // print(index);
               // context
@@ -143,13 +145,11 @@ class BarberWidget extends ConsumerWidget {
               //     ? favBarbers
               //         .removeWhere((barb) => barb.id == nearbyBrabers[index].id)
               //     : favBarbers.add(nearbyBrabers[index]);
-              barberCheck(favlist, nearbyBrabers[index])
+              barberCheck(favlist, requiredList[index])
                   ? context
                       .read(favListProv.notifier)
-                      .remove(nearbyBrabers[index].id)
-                  : context
-                      .read(favListProv.notifier)
-                      .add(nearbyBrabers[index]);
+                      .remove(requiredList[index].id)
+                  : context.read(favListProv.notifier).add(requiredList[index]);
               // // barberslist[index].favorite =
               //     !barberslist[index].favorite;
               //print("2 " + favBarbers.toString());

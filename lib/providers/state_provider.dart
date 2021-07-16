@@ -80,5 +80,5 @@ class BarberFavsList extends StateNotifier<List<Barber>> {
 }
 
 final favListProv = StateNotifierProvider<BarberFavsList, List<Barber>>((ref) {
-  return BarberFavsList(favBarbers);
+  return BarberFavsList(currentUser.favBarbers);
 });
