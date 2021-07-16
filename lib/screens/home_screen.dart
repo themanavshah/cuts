@@ -217,15 +217,15 @@ class HomeScreen extends ConsumerWidget {
               ],
             ),
             Container(
-              height:
-                  ((120 * nearbyBrabers.length) + (15 * nearbyBrabers.length))
-                          .toDouble() +
-                      50,
+              height: ((120 * currentUser.nearbyBarber.length) +
+                          (15 * currentUser.nearbyBarber.length))
+                      .toDouble() +
+                  50,
               child: ListView.builder(
                 physics: const NeverScrollableScrollPhysics(),
                 //shrinkWrap: true,
                 //scrollDirection: Axis.horizontal,
-                itemCount: nearbyBrabers.length,
+                itemCount: currentUser.nearbyBarber.length,
                 itemBuilder: (BuildContext context, int index) => Padding(
                     padding: const EdgeInsets.only(bottom: 15),
                     child: GestureDetector(
@@ -234,11 +234,11 @@ class HomeScreen extends ConsumerWidget {
                               context,
                               MaterialPageRoute(
                                   builder: (context) => BarberDetailScreen(
-                                        reqlist: nearbyBrabers,
+                                        reqlist: currentUser.nearbyBarber,
                                         index: index,
                                       )));
                         },
-                        child: BarberWidget(index))),
+                        child: BarberWidget(index, currentUser.nearbyBarber))),
               ),
             ),
           ],

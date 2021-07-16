@@ -1,6 +1,5 @@
-import 'package:cuts/dummy_data/barber_shops_data.dart';
 import 'package:cuts/providers/state_provider.dart';
-import 'package:cuts/widgets/barber_fav_widget.dart';
+import 'package:cuts/widgets/barber_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -9,12 +8,8 @@ import 'barber_detail_screen.dart';
 class FavoriteScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ScopedReader watch) {
-    //adding it to favorite
-    //context.read(favListProv.notifier).addingFavorite();
     var favlist = watch(favListProv);
     print(favlist);
-    //var pageindx = watch(pageindex);
-    //print(favlist.state[0].name);
     return SingleChildScrollView(
       child: Container(
         child: Padding(
@@ -84,13 +79,13 @@ class FavoriteScreen extends ConsumerWidget {
                                           index: index,
                                         )));
                           },
-                          child: BarberFavWidget(index))),
+                          child: BarberWidget(index, favlist))),
                 ),
               ),
               Container(
                 height: MediaQuery.of(context).size.height,
                 //color: Colors.grey.withOpacity(0.2),
-              )
+              ),
             ],
           ),
         ),
