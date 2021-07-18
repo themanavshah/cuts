@@ -11,16 +11,33 @@ class ChatBarber {
   }
 }
 
+class NotificationModel {
+  String title;
+  String mainName;
+  String description;
+  bool seen;
+  String time;
+  NotificationModel({
+    this.title,
+    this.mainName,
+    this.description,
+    this.seen,
+    this.time,
+  });
+}
+
 class User {
   int userId;
   List<Barber> favBarbers;
   List<Barber> nearbyBarber;
   List<ChatBarber> chatbarber;
+  List<NotificationModel> notification;
   User({
     this.userId,
     this.favBarbers,
     this.chatbarber,
     this.nearbyBarber,
+    this.notification,
   });
 }
 
@@ -108,4 +125,35 @@ var currentUser = User(userId: 254542, favBarbers: [
       "Shaving",
     ],
   ),
-], chatbarber: []);
+  Barber(
+    id: 4,
+    name: 'Braber kong',
+    openingTime: '7:00 - 22:00',
+    rating: 4.7,
+    distance: '2.3',
+    favorite: false,
+    image: 'assets/barbers/barberkong.png',
+    description:
+        "Barber kong is specialsed in cuttings and other stuffs. What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    tags: [
+      "Barber kong",
+      "Man's haircut",
+      "Beard trim",
+    ],
+  ),
+], chatbarber: [], notification: [
+  NotificationModel(
+    title: "verification",
+    mainName: "email verification successful",
+    description: "Your email is confirmed at johnshnow@gmail.com",
+    seen: false,
+    time: "17:15",
+  ),
+  NotificationModel(
+    title: "barber appoinment",
+    mainName: "your appointment is fixed",
+    description: "There will be a sit available for you at 10:00 says barberX.",
+    seen: false,
+    time: "20:15",
+  ),
+]);

@@ -7,6 +7,8 @@ enum page {
   nearby,
   chat,
   favorite,
+  show_all,
+  notification,
 }
 
 class Message {
