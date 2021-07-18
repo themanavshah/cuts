@@ -21,10 +21,14 @@ class BottomWidget extends ConsumerWidget {
           children: [
             IconButton(
                 icon: Icon(
-                  index.state != page.home
-                      ? Icons.home_outlined
-                      : Icons.home_rounded,
-                  color: index.state == page.home
+                  index.state == page.home ||
+                          index.state == page.show_all ||
+                          index.state == page.notification
+                      ? Icons.home_rounded
+                      : Icons.home_outlined,
+                  color: index.state == page.home ||
+                          index.state == page.show_all ||
+                          index.state == page.notification
                       ? Colors.black
                       : Colors.black.withOpacity(0.4),
                 ),

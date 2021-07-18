@@ -12,6 +12,15 @@ class HomeScreen extends ConsumerWidget {
   // int index;
   // HomeScreen({this.index});
 
+  var _searchController = TextEditingController();
+
+  bool notificationChecker(List<NotificationModel> lis) {
+    for (var i = 0; i < lis.length; i++) {
+      if (!lis[i].seen) return true;
+    }
+    return false;
+  }
+
   @override
   Widget build(BuildContext context, ScopedReader watch) {
     //final index = watch(pageindex);
@@ -59,23 +68,31 @@ class HomeScreen extends ConsumerWidget {
                         ]),
                   ],
                 ),
-                CircleAvatar(
-                  radius: 25,
-                  backgroundColor: Colors.grey.withOpacity(0.2),
-                  child: Stack(
-                    children: [
-                      Icon(
-                        Icons.notifications_none_rounded,
-                        color: Colors.black,
-                      ),
-                      Positioned(
-                        right: 0,
-                        child: CircleAvatar(
-                          radius: 3,
-                          backgroundColor: Colors.red,
+                GestureDetector(
+                  onTap: () {
+                    context.read(pageindex).state = page.notification;
+                  },
+                  child: CircleAvatar(
+                    radius: 25,
+                    backgroundColor: Colors.grey.withOpacity(0.2),
+                    child: Stack(
+                      children: [
+                        Icon(
+                          Icons.notifications_none_rounded,
+                          color: Colors.black,
                         ),
-                      )
-                    ],
+                        Positioned(
+                          right: 0,
+                          child: CircleAvatar(
+                            radius: 3,
+                            backgroundColor:
+                                notificationChecker(currentUser.notification)
+                                    ? Colors.red
+                                    : Colors.transparent,
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ],
@@ -92,13 +109,15 @@ class HomeScreen extends ConsumerWidget {
                 padding:
                     const EdgeInsets.symmetric(vertical: 5.0, horizontal: 20.0),
                 child: TextFormField(
+                  cursorColor: Colors.orange,
+                  controller: _searchController,
                   decoration: new InputDecoration(
                     border: InputBorder.none,
-                    // focusedBorder: InputBorder.none,
-                    // enabledBorder: InputBorder.none,
-                    // errorBorder: InputBorder.none,
-                    // disabledBorder: InputBorder.none,
-                    labelText: "Search barber",
+                    focusedBorder: InputBorder.none,
+                    enabledBorder: InputBorder.none,
+                    errorBorder: InputBorder.none,
+                    disabledBorder: InputBorder.none,
+                    hintText: "Search barber",
                     fillColor: Colors.grey.withOpacity(0.2),
                     // border: new OutlineInputBorder(
                     //   borderRadius: new BorderRadius.circular(25.0),
@@ -207,12 +226,17 @@ class HomeScreen extends ConsumerWidget {
                       fontWeight: FontWeight.w500,
                       fontSize: 25),
                 ),
-                Text(
-                  'show all',
-                  style: TextStyle(
-                      color: Colors.orange,
-                      fontWeight: FontWeight.w400,
-                      fontSize: 16),
+                GestureDetector(
+                  onTap: () {
+                    context.read(pageindex).state = page.show_all;
+                  },
+                  child: Text(
+                    'show all',
+                    style: TextStyle(
+                        color: Colors.orange,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 16),
+                  ),
                 ),
               ],
             ),
@@ -225,7 +249,9 @@ class HomeScreen extends ConsumerWidget {
                 physics: const NeverScrollableScrollPhysics(),
                 //shrinkWrap: true,
                 //scrollDirection: Axis.horizontal,
-                itemCount: currentUser.nearbyBarber.length,
+                itemCount: !(currentUser.nearbyBarber.length > 3)
+                    ? currentUser.nearbyBarber.length
+                    : 3,
                 itemBuilder: (BuildContext context, int index) => Padding(
                     padding: const EdgeInsets.only(bottom: 15),
                     child: GestureDetector(
