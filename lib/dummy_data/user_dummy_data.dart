@@ -54,8 +54,8 @@ var currentUser = User(userId: 254542, favBarbers: [
         "Barber king is specialsed in cuttings and other stuffs. What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
     tags: [
       "Barber king",
-      "Man's haircut",
-      "Shaving",
+      "Coloring",
+      "Beard",
     ],
   ),
   Barber(
@@ -70,8 +70,9 @@ var currentUser = User(userId: 254542, favBarbers: [
         "top cutter is specialsed in cuttings and other stuffs. What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
     tags: [
       "top cutter",
-      "Man's haircut",
-      "Shaving",
+      "Coloring",
+      "Hair",
+      "Weird",
     ],
   ),
 ], nearbyBarber: [
@@ -87,9 +88,9 @@ var currentUser = User(userId: 254542, favBarbers: [
         "Barber X is specialsed in cuttings and other stuffs. What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
     tags: [
       "BarberX",
-      "Man's haircut",
+      "Hair",
       "Coloring",
-      "Shaving",
+      "Beard",
     ],
   ),
   Barber(
@@ -104,9 +105,9 @@ var currentUser = User(userId: 254542, favBarbers: [
         "Braber cuts is specialsed in cuttings and other stuffs. What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
     tags: [
       "Barber cust",
-      "Man's haircut",
+      "Hair",
       "Coloring",
-      "Shaving",
+      "Beard",
     ],
   ),
   Barber(
@@ -121,8 +122,9 @@ var currentUser = User(userId: 254542, favBarbers: [
         "top cutter is specialsed in cuttings and other stuffs. What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
     tags: [
       "top cutter",
-      "Man's haircut",
-      "Shaving",
+      "Coloring",
+      "Hair",
+      "Weird",
     ],
   ),
   Barber(
@@ -137,8 +139,8 @@ var currentUser = User(userId: 254542, favBarbers: [
         "Barber kong is specialsed in cuttings and other stuffs. What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
     tags: [
       "Barber kong",
-      "Man's haircut",
-      "Beard trim",
+      "Weird",
+      "Beard",
     ],
   ),
 ], chatbarber: [], notification: [

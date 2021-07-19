@@ -32,15 +32,14 @@ class BarberWidget extends ConsumerWidget {
           Row(
             children: [
               Container(
-                height: 120,
+                height: 110,
                 width: 80,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   color: Colors.grey.withOpacity(0.2),
                   image: DecorationImage(
                     fit: BoxFit.fill,
-                    image:
-                        AssetImage(currentUser.nearbyBarber[this.index].image),
+                    image: AssetImage(requiredList[this.index].image),
                   ),
                 ),
                 // child: ClipRRect(

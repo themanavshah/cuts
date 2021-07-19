@@ -35,9 +35,9 @@ List<Barber> barberslist = [
         "BarberX is specialsed in cuttings and other stuffs. What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
     tags: [
       "BarberX",
-      "Man's haircut",
+      "Hair",
       "Coloring",
-      "Shaving",
+      "Beard",
     ],
   ),
   Barber(
@@ -52,9 +52,9 @@ List<Barber> barberslist = [
         "Barber cuts is specialsed in cuttings and other stuffs. What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
     tags: [
       "Barber cust",
-      "Man's haircut",
+      "Hair",
       "Coloring",
-      "Shaving",
+      "Weird",
     ],
   ),
   Barber(
@@ -69,8 +69,8 @@ List<Barber> barberslist = [
         "Barber king is specialsed in cuttings and other stuffs. What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
     tags: [
       "Barber king",
-      "Man's haircut",
-      "Shaving",
+      "Coloring",
+      "Beard",
     ],
   ),
   Barber(
@@ -85,8 +85,8 @@ List<Barber> barberslist = [
         "Barber kong is specialsed in cuttings and other stuffs. What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
     tags: [
       "Barber kong",
-      "Man's haircut",
-      "Beard trim",
+      "Weird",
+      "Beard",
     ],
   ),
   Barber(
@@ -101,8 +101,9 @@ List<Barber> barberslist = [
         "top cutter is specialsed in cuttings and other stuffs. What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
     tags: [
       "top cutter",
-      "Man's haircut",
-      "Shaving",
+      "Coloring",
+      "Hair",
+      "Weird",
     ],
   ),
 ];

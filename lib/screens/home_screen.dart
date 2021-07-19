@@ -2,6 +2,7 @@ import 'package:cuts/dummy_data/actions_option_data.dart';
 import 'package:cuts/dummy_data/barber_shops_data.dart';
 import 'package:cuts/dummy_data/user_dummy_data.dart';
 import 'package:cuts/providers/state_provider.dart';
+import 'package:cuts/screens/actions_screen.dart';
 import 'package:cuts/screens/barber_detail_screen.dart';
 import 'package:cuts/widgets/barber_widget.dart';
 import 'package:cuts/widgets/home_option_widget.dart';
@@ -127,7 +128,7 @@ class HomeScreen extends ConsumerWidget {
                   ),
                   validator: (val) {
                     if (val.length == 0) {
-                      return "Email cannot be empty";
+                      return;
                     } else {
                       return null;
                     }
@@ -148,7 +149,17 @@ class HomeScreen extends ConsumerWidget {
                 itemCount: actionList.length,
                 itemBuilder: (BuildContext context, int index) => Padding(
                     padding: const EdgeInsets.only(right: 20),
-                    child: Center(child: HomeOptionWidget(index))),
+                    child: Center(
+                        child: GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => ActionScreen(
+                                            element: actionList[index].name,
+                                          )));
+                            },
+                            child: HomeOptionWidget(index)))),
               ),
             ),
             SizedBox(height: 30),
