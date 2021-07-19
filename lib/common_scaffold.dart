@@ -3,6 +3,7 @@ import 'package:cuts/screens/actions_screen.dart';
 import 'package:cuts/screens/chat_screen.dart';
 import 'package:cuts/screens/favorite_screen.dart';
 import 'package:cuts/screens/home_screen.dart';
+import 'package:cuts/screens/menu_screen.dart';
 import 'package:cuts/screens/nearby_screen.dart';
 import 'package:cuts/screens/notification_screen.dart';
 import 'package:cuts/screens/show_all_screen.dart';
@@ -18,6 +19,7 @@ class CommonScaffold extends ConsumerWidget {
       backgroundColor: Colors.white,
       body: Stack(
         children: [
+          if (index.state == page.menu) MenuScreen(),
           if (index.state == page.notification) NotificationScreen(),
           if (index.state == page.show_all) ShowAllScreen(),
           if (index.state == page.home) HomeScreen(),

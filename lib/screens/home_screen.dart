@@ -42,32 +42,37 @@ class HomeScreen extends ConsumerWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Row(
-                  children: [
-                    CircleAvatar(
-                      radius: 25,
-                      backgroundImage: AssetImage('assets/dummies/mancuts.jpg'),
-                    ),
-                    SizedBox(width: 20),
-                    Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'welcome',
-                            style: TextStyle(
-                                color: Colors.black.withOpacity(0.5),
-                                //fontWeight: FontWeight.bold,
-                                fontSize: 12),
-                          ),
-                          Text(
-                            'john snow',
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.w500,
-                                fontSize: 18),
-                          ),
-                        ]),
-                  ],
+                GestureDetector(
+                  onTap: () {
+                    context.read(pageindex).state = page.menu;
+                  },
+                  child: Row(
+                    children: [
+                      CircleAvatar(
+                        radius: 25,
+                        backgroundImage: AssetImage(currentUser.image),
+                      ),
+                      SizedBox(width: 20),
+                      Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'welcome',
+                              style: TextStyle(
+                                  color: Colors.black.withOpacity(0.5),
+                                  //fontWeight: FontWeight.bold,
+                                  fontSize: 12),
+                            ),
+                            Text(
+                              currentUser.name,
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 18),
+                            ),
+                          ]),
+                    ],
+                  ),
                 ),
                 GestureDetector(
                   onTap: () {
