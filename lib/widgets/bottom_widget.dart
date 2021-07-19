@@ -23,12 +23,14 @@ class BottomWidget extends ConsumerWidget {
                 icon: Icon(
                   index.state == page.home ||
                           index.state == page.show_all ||
-                          index.state == page.notification
+                          index.state == page.notification ||
+                          index.state == page.menu
                       ? Icons.home_rounded
                       : Icons.home_outlined,
                   color: index.state == page.home ||
                           index.state == page.show_all ||
-                          index.state == page.notification
+                          index.state == page.notification ||
+                          index.state == page.menu
                       ? Colors.black
                       : Colors.black.withOpacity(0.4),
                 ),

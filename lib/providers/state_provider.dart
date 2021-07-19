@@ -9,6 +9,7 @@ enum page {
   favorite,
   show_all,
   notification,
+  menu,
 }
 
 class Message {

@@ -1,25 +1,30 @@
 class Action {
   String name;
   String path;
+  int id;
 
-  Action(this.name, this.path);
+  Action({this.name, this.path, this.id});
 }
 
 List<Action> actionList = [
   Action(
-    'Hair',
-    'assets/actions/longhair.png',
+    name: 'Hair',
+    path: 'assets/actions/longhair.png',
+    id: 343434,
   ),
   Action(
-    'Moustache',
-    'assets/actions/90sman.png',
+    name: 'Beard',
+    path: 'assets/actions/90sman.png',
+    id: 297433,
   ),
   Action(
-    'Coloring',
-    'assets/actions/blonde.png',
+    name: 'Coloring',
+    path: 'assets/actions/blonde.png',
+    id: 013754,
   ),
   Action(
-    'Weirds',
-    'assets/actions/tapeligirl.png',
+    name: 'Weird',
+    path: 'assets/actions/tapeligirl.png',
+    id: 243042,
   ),
 ];

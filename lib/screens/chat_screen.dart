@@ -58,33 +58,46 @@ class ChatScreen extends StatelessWidget {
               ],
             ),
             SizedBox(height: 30),
-            Container(
-              height: ((120 * currentUser.chatbarber.length) +
-                          (15 * currentUser.chatbarber.length))
-                      .toDouble() +
-                  50,
-              child: ListView.builder(
-                physics: const NeverScrollableScrollPhysics(),
-                //shrinkWrap: true,
-                //scrollDirection: Axis.horizontal,
-                itemCount: currentUser.chatbarber.length,
-                itemBuilder: (BuildContext context, int index) => Padding(
-                    padding: const EdgeInsets.only(bottom: 15),
-                    child: GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => ChatDetailScreen(
-                                        barber: currentUser
-                                            .chatbarber[index].barber,
-                                      )));
-                        },
-                        child: InboxChatBarber(
-                          barber: currentUser.chatbarber[index].barber,
-                        ))),
-              ),
-            ),
+            currentUser.chatbarber.length == 0
+                ? Container(
+                    child: Center(
+                      child: Text(
+                        "No chats",
+                        style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.orange,
+                        ),
+                      ),
+                    ),
+                  )
+                : Container(
+                    height: ((120 * currentUser.chatbarber.length) +
+                                (15 * currentUser.chatbarber.length))
+                            .toDouble() +
+                        50,
+                    child: ListView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
+                      //shrinkWrap: true,
+                      //scrollDirection: Axis.horizontal,
+                      itemCount: currentUser.chatbarber.length,
+                      itemBuilder: (BuildContext context, int index) => Padding(
+                          padding: const EdgeInsets.only(bottom: 15),
+                          child: GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => ChatDetailScreen(
+                                              barber: currentUser
+                                                  .chatbarber[index].barber,
+                                            )));
+                              },
+                              child: InboxChatBarber(
+                                barber: currentUser.chatbarber[index].barber,
+                              ))),
+                    ),
+                  ),
             // Container(
             //   height: MediaQuery.of(context).size.height,
             //   //color: Colors.grey.withOpacity(0.2),

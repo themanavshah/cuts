@@ -2,6 +2,7 @@ import 'package:cuts/dummy_data/actions_option_data.dart';
 import 'package:cuts/dummy_data/barber_shops_data.dart';
 import 'package:cuts/dummy_data/user_dummy_data.dart';
 import 'package:cuts/providers/state_provider.dart';
+import 'package:cuts/screens/actions_screen.dart';
 import 'package:cuts/screens/barber_detail_screen.dart';
 import 'package:cuts/widgets/barber_widget.dart';
 import 'package:cuts/widgets/home_option_widget.dart';
@@ -41,32 +42,37 @@ class HomeScreen extends ConsumerWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Row(
-                  children: [
-                    CircleAvatar(
-                      radius: 25,
-                      backgroundImage: AssetImage('assets/dummies/mancuts.jpg'),
-                    ),
-                    SizedBox(width: 20),
-                    Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'welcome',
-                            style: TextStyle(
-                                color: Colors.black.withOpacity(0.5),
-                                //fontWeight: FontWeight.bold,
-                                fontSize: 12),
-                          ),
-                          Text(
-                            'john snow',
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.w500,
-                                fontSize: 18),
-                          ),
-                        ]),
-                  ],
+                GestureDetector(
+                  onTap: () {
+                    context.read(pageindex).state = page.menu;
+                  },
+                  child: Row(
+                    children: [
+                      CircleAvatar(
+                        radius: 25,
+                        backgroundImage: AssetImage(currentUser.image),
+                      ),
+                      SizedBox(width: 20),
+                      Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'welcome',
+                              style: TextStyle(
+                                  color: Colors.black.withOpacity(0.5),
+                                  //fontWeight: FontWeight.bold,
+                                  fontSize: 12),
+                            ),
+                            Text(
+                              currentUser.name,
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 18),
+                            ),
+                          ]),
+                    ],
+                  ),
                 ),
                 GestureDetector(
                   onTap: () {
@@ -127,7 +133,7 @@ class HomeScreen extends ConsumerWidget {
                   ),
                   validator: (val) {
                     if (val.length == 0) {
-                      return "Email cannot be empty";
+                      return;
                     } else {
                       return null;
                     }
@@ -148,7 +154,17 @@ class HomeScreen extends ConsumerWidget {
                 itemCount: actionList.length,
                 itemBuilder: (BuildContext context, int index) => Padding(
                     padding: const EdgeInsets.only(right: 20),
-                    child: Center(child: HomeOptionWidget(index))),
+                    child: Center(
+                        child: GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => ActionScreen(
+                                            element: actionList[index].name,
+                                          )));
+                            },
+                            child: HomeOptionWidget(index)))),
               ),
             ),
             SizedBox(height: 30),
