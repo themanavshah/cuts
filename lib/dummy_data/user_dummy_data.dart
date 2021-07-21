@@ -65,6 +65,58 @@ var currentUser = User(
           "Coloring",
           "Beard",
         ],
+        slots: [
+          Slot(
+            hour: 8,
+            min: 00,
+            isOccupied: false,
+          ),
+          Slot(
+            hour: 9,
+            min: 00,
+            isOccupied: false,
+          ),
+          Slot(
+            hour: 10,
+            min: 00,
+            isOccupied: false,
+          ),
+          Slot(
+            hour: 11,
+            min: 00,
+            isOccupied: false,
+          ),
+          Slot(
+            hour: 12,
+            min: 00,
+            isOccupied: false,
+          ),
+          Slot(
+            hour: 13,
+            min: 00,
+            isOccupied: false,
+          ),
+          Slot(
+            hour: 14,
+            min: 00,
+            isOccupied: false,
+          ),
+          Slot(
+            hour: 16,
+            min: 00,
+            isOccupied: false,
+          ),
+          Slot(
+            hour: 18,
+            min: 00,
+            isOccupied: false,
+          ),
+          Slot(
+            hour: 19,
+            min: 00,
+            isOccupied: false,
+          ),
+        ],
       ),
       Barber(
         id: 5,
@@ -81,6 +133,58 @@ var currentUser = User(
           "Coloring",
           "Hair",
           "Weird",
+        ],
+        slots: [
+          Slot(
+            hour: 8,
+            min: 00,
+            isOccupied: false,
+          ),
+          Slot(
+            hour: 9,
+            min: 00,
+            isOccupied: false,
+          ),
+          Slot(
+            hour: 10,
+            min: 00,
+            isOccupied: false,
+          ),
+          Slot(
+            hour: 11,
+            min: 00,
+            isOccupied: false,
+          ),
+          Slot(
+            hour: 12,
+            min: 00,
+            isOccupied: false,
+          ),
+          Slot(
+            hour: 13,
+            min: 00,
+            isOccupied: false,
+          ),
+          Slot(
+            hour: 14,
+            min: 00,
+            isOccupied: false,
+          ),
+          Slot(
+            hour: 16,
+            min: 00,
+            isOccupied: false,
+          ),
+          Slot(
+            hour: 18,
+            min: 00,
+            isOccupied: false,
+          ),
+          Slot(
+            hour: 19,
+            min: 00,
+            isOccupied: false,
+          ),
         ],
       ),
     ],
@@ -101,6 +205,58 @@ var currentUser = User(
           "Coloring",
           "Beard",
         ],
+        slots: [
+          Slot(
+            hour: 8,
+            min: 00,
+            isOccupied: false,
+          ),
+          Slot(
+            hour: 9,
+            min: 00,
+            isOccupied: false,
+          ),
+          Slot(
+            hour: 10,
+            min: 00,
+            isOccupied: false,
+          ),
+          Slot(
+            hour: 11,
+            min: 00,
+            isOccupied: false,
+          ),
+          Slot(
+            hour: 12,
+            min: 00,
+            isOccupied: false,
+          ),
+          Slot(
+            hour: 13,
+            min: 00,
+            isOccupied: false,
+          ),
+          Slot(
+            hour: 14,
+            min: 00,
+            isOccupied: false,
+          ),
+          Slot(
+            hour: 16,
+            min: 00,
+            isOccupied: false,
+          ),
+          Slot(
+            hour: 18,
+            min: 00,
+            isOccupied: false,
+          ),
+          Slot(
+            hour: 19,
+            min: 00,
+            isOccupied: false,
+          ),
+        ],
       ),
       Barber(
         id: 2,
@@ -117,6 +273,58 @@ var currentUser = User(
           "Hair",
           "Coloring",
           "Beard",
+        ],
+        slots: [
+          Slot(
+            hour: 8,
+            min: 00,
+            isOccupied: false,
+          ),
+          Slot(
+            hour: 9,
+            min: 00,
+            isOccupied: false,
+          ),
+          Slot(
+            hour: 10,
+            min: 00,
+            isOccupied: false,
+          ),
+          Slot(
+            hour: 11,
+            min: 00,
+            isOccupied: false,
+          ),
+          Slot(
+            hour: 12,
+            min: 00,
+            isOccupied: false,
+          ),
+          Slot(
+            hour: 13,
+            min: 00,
+            isOccupied: false,
+          ),
+          Slot(
+            hour: 14,
+            min: 00,
+            isOccupied: false,
+          ),
+          Slot(
+            hour: 16,
+            min: 00,
+            isOccupied: false,
+          ),
+          Slot(
+            hour: 18,
+            min: 00,
+            isOccupied: false,
+          ),
+          Slot(
+            hour: 19,
+            min: 00,
+            isOccupied: false,
+          ),
         ],
       ),
       Barber(
@@ -135,6 +343,58 @@ var currentUser = User(
           "Hair",
           "Weird",
         ],
+        slots: [
+          Slot(
+            hour: 8,
+            min: 00,
+            isOccupied: false,
+          ),
+          Slot(
+            hour: 9,
+            min: 00,
+            isOccupied: false,
+          ),
+          Slot(
+            hour: 10,
+            min: 00,
+            isOccupied: false,
+          ),
+          Slot(
+            hour: 11,
+            min: 00,
+            isOccupied: false,
+          ),
+          Slot(
+            hour: 12,
+            min: 00,
+            isOccupied: false,
+          ),
+          Slot(
+            hour: 13,
+            min: 00,
+            isOccupied: false,
+          ),
+          Slot(
+            hour: 14,
+            min: 00,
+            isOccupied: false,
+          ),
+          Slot(
+            hour: 16,
+            min: 00,
+            isOccupied: false,
+          ),
+          Slot(
+            hour: 18,
+            min: 00,
+            isOccupied: false,
+          ),
+          Slot(
+            hour: 19,
+            min: 00,
+            isOccupied: false,
+          ),
+        ],
       ),
       Barber(
         id: 4,
@@ -150,6 +410,58 @@ var currentUser = User(
           "Barber kong",
           "Weird",
           "Beard",
+        ],
+        slots: [
+          Slot(
+            hour: 8,
+            min: 00,
+            isOccupied: false,
+          ),
+          Slot(
+            hour: 9,
+            min: 00,
+            isOccupied: false,
+          ),
+          Slot(
+            hour: 10,
+            min: 00,
+            isOccupied: false,
+          ),
+          Slot(
+            hour: 11,
+            min: 00,
+            isOccupied: false,
+          ),
+          Slot(
+            hour: 12,
+            min: 00,
+            isOccupied: false,
+          ),
+          Slot(
+            hour: 13,
+            min: 00,
+            isOccupied: false,
+          ),
+          Slot(
+            hour: 14,
+            min: 00,
+            isOccupied: false,
+          ),
+          Slot(
+            hour: 16,
+            min: 00,
+            isOccupied: false,
+          ),
+          Slot(
+            hour: 18,
+            min: 00,
+            isOccupied: false,
+          ),
+          Slot(
+            hour: 19,
+            min: 00,
+            isOccupied: false,
+          ),
         ],
       ),
     ],

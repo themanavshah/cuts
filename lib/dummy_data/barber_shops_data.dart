@@ -1,3 +1,10 @@
+class Slot {
+  int hour;
+  int min;
+  bool isOccupied;
+  Slot({this.hour, this.min, this.isOccupied});
+}
+
 class Barber {
   String name;
   String openingTime;
@@ -8,6 +15,7 @@ class Barber {
   int id;
   String description;
   List tags;
+  List<Slot> slots;
 
   Barber({
     this.name,
@@ -19,6 +27,7 @@ class Barber {
     this.id,
     this.description,
     this.tags,
+    this.slots,
   });
 }
 
@@ -39,6 +48,58 @@ List<Barber> barberslist = [
       "Coloring",
       "Beard",
     ],
+    slots: [
+      Slot(
+        hour: 8,
+        min: 00,
+        isOccupied: false,
+      ),
+      Slot(
+        hour: 9,
+        min: 00,
+        isOccupied: false,
+      ),
+      Slot(
+        hour: 10,
+        min: 00,
+        isOccupied: false,
+      ),
+      Slot(
+        hour: 11,
+        min: 00,
+        isOccupied: false,
+      ),
+      Slot(
+        hour: 12,
+        min: 00,
+        isOccupied: false,
+      ),
+      Slot(
+        hour: 13,
+        min: 00,
+        isOccupied: false,
+      ),
+      Slot(
+        hour: 14,
+        min: 00,
+        isOccupied: false,
+      ),
+      Slot(
+        hour: 16,
+        min: 00,
+        isOccupied: false,
+      ),
+      Slot(
+        hour: 18,
+        min: 00,
+        isOccupied: false,
+      ),
+      Slot(
+        hour: 19,
+        min: 00,
+        isOccupied: false,
+      ),
+    ],
   ),
   Barber(
     id: 2,
@@ -56,6 +117,58 @@ List<Barber> barberslist = [
       "Coloring",
       "Weird",
     ],
+    slots: [
+      Slot(
+        hour: 8,
+        min: 00,
+        isOccupied: false,
+      ),
+      Slot(
+        hour: 9,
+        min: 00,
+        isOccupied: false,
+      ),
+      Slot(
+        hour: 10,
+        min: 00,
+        isOccupied: false,
+      ),
+      Slot(
+        hour: 11,
+        min: 00,
+        isOccupied: false,
+      ),
+      Slot(
+        hour: 12,
+        min: 00,
+        isOccupied: false,
+      ),
+      Slot(
+        hour: 13,
+        min: 00,
+        isOccupied: false,
+      ),
+      Slot(
+        hour: 14,
+        min: 00,
+        isOccupied: false,
+      ),
+      Slot(
+        hour: 16,
+        min: 00,
+        isOccupied: false,
+      ),
+      Slot(
+        hour: 18,
+        min: 00,
+        isOccupied: false,
+      ),
+      Slot(
+        hour: 19,
+        min: 00,
+        isOccupied: false,
+      ),
+    ],
   ),
   Barber(
     id: 3,
@@ -71,6 +184,58 @@ List<Barber> barberslist = [
       "Barber king",
       "Coloring",
       "Beard",
+    ],
+    slots: [
+      Slot(
+        hour: 8,
+        min: 00,
+        isOccupied: false,
+      ),
+      Slot(
+        hour: 9,
+        min: 00,
+        isOccupied: false,
+      ),
+      Slot(
+        hour: 10,
+        min: 00,
+        isOccupied: false,
+      ),
+      Slot(
+        hour: 11,
+        min: 00,
+        isOccupied: false,
+      ),
+      Slot(
+        hour: 12,
+        min: 00,
+        isOccupied: false,
+      ),
+      Slot(
+        hour: 13,
+        min: 00,
+        isOccupied: false,
+      ),
+      Slot(
+        hour: 14,
+        min: 00,
+        isOccupied: false,
+      ),
+      Slot(
+        hour: 16,
+        min: 00,
+        isOccupied: false,
+      ),
+      Slot(
+        hour: 18,
+        min: 00,
+        isOccupied: false,
+      ),
+      Slot(
+        hour: 19,
+        min: 00,
+        isOccupied: false,
+      ),
     ],
   ),
   Barber(
@@ -88,6 +253,58 @@ List<Barber> barberslist = [
       "Weird",
       "Beard",
     ],
+    slots: [
+      Slot(
+        hour: 8,
+        min: 00,
+        isOccupied: false,
+      ),
+      Slot(
+        hour: 9,
+        min: 00,
+        isOccupied: false,
+      ),
+      Slot(
+        hour: 10,
+        min: 00,
+        isOccupied: false,
+      ),
+      Slot(
+        hour: 11,
+        min: 00,
+        isOccupied: false,
+      ),
+      Slot(
+        hour: 12,
+        min: 00,
+        isOccupied: false,
+      ),
+      Slot(
+        hour: 13,
+        min: 00,
+        isOccupied: false,
+      ),
+      Slot(
+        hour: 14,
+        min: 00,
+        isOccupied: false,
+      ),
+      Slot(
+        hour: 16,
+        min: 00,
+        isOccupied: false,
+      ),
+      Slot(
+        hour: 18,
+        min: 00,
+        isOccupied: false,
+      ),
+      Slot(
+        hour: 19,
+        min: 00,
+        isOccupied: false,
+      ),
+    ],
   ),
   Barber(
     id: 5,
@@ -104,6 +321,58 @@ List<Barber> barberslist = [
       "Coloring",
       "Hair",
       "Weird",
+    ],
+    slots: [
+      Slot(
+        hour: 8,
+        min: 00,
+        isOccupied: false,
+      ),
+      Slot(
+        hour: 9,
+        min: 00,
+        isOccupied: false,
+      ),
+      Slot(
+        hour: 10,
+        min: 00,
+        isOccupied: false,
+      ),
+      Slot(
+        hour: 11,
+        min: 00,
+        isOccupied: false,
+      ),
+      Slot(
+        hour: 12,
+        min: 00,
+        isOccupied: false,
+      ),
+      Slot(
+        hour: 13,
+        min: 00,
+        isOccupied: false,
+      ),
+      Slot(
+        hour: 14,
+        min: 00,
+        isOccupied: false,
+      ),
+      Slot(
+        hour: 16,
+        min: 00,
+        isOccupied: false,
+      ),
+      Slot(
+        hour: 18,
+        min: 00,
+        isOccupied: false,
+      ),
+      Slot(
+        hour: 19,
+        min: 00,
+        isOccupied: false,
+      ),
     ],
   ),
 ];

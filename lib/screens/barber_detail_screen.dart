@@ -1,6 +1,8 @@
 import 'package:cuts/dummy_data/barber_shops_data.dart';
 import 'package:cuts/providers/state_provider.dart';
+import 'package:cuts/screens/booking_screen.dart';
 import 'package:cuts/screens/chat_detail_screen.dart';
+import 'package:cuts/widgets/days_in_month.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -227,20 +229,42 @@ class BarberDetailScreen extends ConsumerWidget {
                     onTap: () {
                       print('payment screens and logic will be added');
                     },
-                    child: Container(
-                      height: 70,
-                      width: MediaQuery.of(context).size.width,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Colors.orange,
-                      ),
-                      child: Center(
-                        child: Text(
-                          'Book now',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w500,
-                            fontSize: 20,
+                    child: GestureDetector(
+                      onTap: () {
+                        var now = new DateTime.now().toString();
+                        var dateParse = DateTime.parse(now);
+                        var daylis =
+                            listdaysinmonth(dateParse.year, dateParse.month);
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => BookingScreen(
+                                      days: daylis,
+                                      month: dateParse.month,
+                                      year: dateParse.year,
+                                      currentDay: dateParse.day,
+                                      barber: reqlist[index],
+                                    )));
+                        //print("day:" + dateParse.weekday.toString());
+                        //var formatter = new DateFormat('MM');
+                        //String month = formatter.format(now);
+                        //print(dateParse.month);
+                      },
+                      child: Container(
+                        height: 70,
+                        width: MediaQuery.of(context).size.width,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: Colors.orange,
+                        ),
+                        child: Center(
+                          child: Text(
+                            'Book now',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w500,
+                              fontSize: 20,
+                            ),
                           ),
                         ),
                       ),
