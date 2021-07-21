@@ -86,105 +86,108 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
       //...usertemp.first.messageList,
     ];
     return Scaffold(
+      //resizeToAvoidBottomInset: false,
       backgroundColor: Colors.grey[200],
       body: Stack(
         children: [
-          Column(
-            children: [
-              Container(
-                width: MediaQuery.of(context).size.width,
-                //height: MediaQuery.of(context).size.height,
-                color: Colors.white,
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                    left: 15.0,
-                    right: 30,
-                    bottom: 25,
-                    top: 50,
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          IconButton(
+          SingleChildScrollView(
+            child: Column(
+              children: [
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  //height: MediaQuery.of(context).size.height,
+                  color: Colors.white,
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                      left: 15.0,
+                      right: 30,
+                      bottom: 25,
+                      top: 50,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            IconButton(
+                              icon: Icon(
+                                Icons.arrow_back_ios_rounded,
+                                color: Colors.black,
+                                size: 25,
+                              ),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                            ),
+                            SizedBox(width: 10),
+                            CircleAvatar(
+                              radius: 28,
+                              backgroundImage: AssetImage(widget.barber.image),
+                            ),
+                            SizedBox(width: 18),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  widget.barber.name,
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 20,
+                                  ),
+                                ),
+                                SizedBox(height: 3),
+                                Text(
+                                  widget.barber.name,
+                                  style: TextStyle(
+                                    color: Colors.grey,
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 14,
+                                  ),
+                                )
+                              ],
+                            ),
+                          ],
+                        ),
+                        CircleAvatar(
+                          radius: 25,
+                          backgroundColor: Colors.orange[50],
+                          child: IconButton(
                             icon: Icon(
-                              Icons.arrow_back_ios_rounded,
-                              color: Colors.black,
-                              size: 25,
+                              Icons.call,
+                              color: Colors.orange,
+                              size: 18,
                             ),
                             onPressed: () {
-                              Navigator.of(context).pop();
+                              print("call");
                             },
                           ),
-                          SizedBox(width: 10),
-                          CircleAvatar(
-                            radius: 28,
-                            backgroundImage: AssetImage(widget.barber.image),
-                          ),
-                          SizedBox(width: 18),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                widget.barber.name,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 20,
-                                ),
-                              ),
-                              SizedBox(height: 3),
-                              Text(
-                                widget.barber.name,
-                                style: TextStyle(
-                                  color: Colors.grey,
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 14,
-                                ),
-                              )
-                            ],
-                          ),
-                        ],
-                      ),
-                      CircleAvatar(
-                        radius: 25,
-                        backgroundColor: Colors.orange[50],
-                        child: IconButton(
-                          icon: Icon(
-                            Icons.call,
-                            color: Colors.orange,
-                            size: 18,
-                          ),
-                          onPressed: () {
-                            print("call");
-                          },
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(18.0),
-                child: Container(
-                  height: MediaQuery.of(context).size.height - 220,
-                  child: ListView.builder(
-                    //reverse: true,
-                    shrinkWrap: true,
-                    itemBuilder: (BuildContext context, int index) {
-                      return ChatBubble(
-                        message: msgs[index].data,
-                        barber: widget.barber,
-                        sentBy: msgs[index].sentbyid,
-                      );
-                    },
-                    itemCount: msgs.length,
+                Padding(
+                  padding: const EdgeInsets.all(18.0),
+                  child: Container(
+                    height: MediaQuery.of(context).size.height - 220,
+                    child: ListView.builder(
+                      //reverse: true,
+                      shrinkWrap: true,
+                      itemBuilder: (BuildContext context, int index) {
+                        return ChatBubble(
+                          message: msgs[index].data,
+                          barber: widget.barber,
+                          sentBy: msgs[index].sentbyid,
+                        );
+                      },
+                      itemCount: msgs.length,
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
           Positioned(
             bottom: 0,
@@ -192,7 +195,7 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
               padding: const EdgeInsets.only(
                 right: 20.0,
                 left: 20,
-                bottom: 30,
+                bottom: 10,
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -275,20 +278,20 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
               ),
             ),
           ),
-          Positioned(
-            top: 0,
-            child: Container(
-              height: 200,
-              decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                      begin: Alignment.bottomCenter,
-                      end: Alignment.topCenter,
-                      colors: [
-                    Colors.white.withOpacity(0.8),
-                    Colors.transparent
-                  ])),
-            ),
-          ),
+          // Positioned(
+          //   top: 0,
+          //   child: Container(
+          //     height: 200,
+          //     decoration: BoxDecoration(
+          //         gradient: LinearGradient(
+          //             begin: Alignment.bottomCenter,
+          //             end: Alignment.topCenter,
+          //             colors: [
+          //           Colors.white.withOpacity(0.8),
+          //           Colors.transparent
+          //         ])),
+          //   ),
+          // ),
         ],
       ),
     );

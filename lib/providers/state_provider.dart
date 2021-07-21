@@ -20,10 +20,25 @@ class Message {
   Message({this.data, this.sentbyid, this.senttoid});
 }
 
+var now = new DateTime.now().toString();
+var dateParse = DateTime.parse(now);
+
 var msglist = [];
 
 final pageindex = StateProvider<page>((ref) {
   return page.home;
+});
+
+final selectedDateProvider = StateProvider<int>((ref) {
+  return dateParse.day;
+});
+
+final selectedHourProvider = StateProvider<int>((ref) {
+  return null;
+});
+
+final selectedMinProvider = StateProvider<int>((ref) {
+  return null;
 });
 
 var favList = [];

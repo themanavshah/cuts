@@ -30,7 +30,7 @@ class HomeScreen extends ConsumerWidget {
         //backgroundColor: Colors.white,
         child: Padding(
       padding: const EdgeInsets.only(
-        bottom: 90,
+        bottom: 10,
         left: 30,
         right: 30,
         top: 15,
