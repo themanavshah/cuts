@@ -11,6 +11,29 @@ class ChatBarber {
   }
 }
 
+enum CardType {
+  MASTERCARD,
+  VISA,
+  AMEX,
+}
+
+class Card {
+  int cardNumber;
+  int cvv;
+  int expMonth;
+  int expYear;
+  String holderName;
+  CardType cardType;
+  Card({
+    this.cardNumber,
+    this.cardType,
+    this.cvv,
+    this.expMonth,
+    this.expYear,
+    this.holderName,
+  });
+}
+
 class NotificationModel {
   String title;
   String mainName;
@@ -34,6 +57,7 @@ class User {
   List<Barber> nearbyBarber;
   List<ChatBarber> chatbarber;
   List<NotificationModel> notification;
+  Card card;
   User({
     this.userId,
     this.name,
@@ -42,12 +66,20 @@ class User {
     this.chatbarber,
     this.nearbyBarber,
     this.notification,
+    this.card,
   });
 }
 
 var currentUser = User(
     userId: 254542,
     name: "John Snow",
+    card: Card(
+        cardNumber: 1234567890123456,
+        cardType: CardType.VISA,
+        cvv: 123,
+        expMonth: 12,
+        expYear: 26,
+        holderName: "John J. Snow"),
     image: "assets/dummies/mancuts.jpg",
     favBarbers: [
       Barber(

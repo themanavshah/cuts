@@ -57,31 +57,43 @@ class FavoriteScreen extends ConsumerWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 20),
-              Container(
-                height: ((120 * favlist.length) + (15 * favlist.length))
-                        .toDouble() +
-                    50,
-                child: ListView.builder(
-                  physics: const NeverScrollableScrollPhysics(),
-                  //shrinkWrap: true,
-                  //scrollDirection: Axis.horizontal,
-                  itemCount: favlist.length,
-                  itemBuilder: (BuildContext context, int index) => Padding(
-                      padding: const EdgeInsets.only(bottom: 15),
-                      child: GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => BarberDetailScreen(
-                                          reqlist: favlist,
-                                          index: index,
-                                        )));
-                          },
-                          child: BarberWidget(index, favlist))),
-                ),
-              ),
+              SizedBox(height: 30),
+              favlist.length == 0
+                  ? Padding(
+                      padding: const EdgeInsets.only(top: 120),
+                      child: Container(
+                        child: Center(
+                            child: Container(
+                                child: Image.asset(
+                                    "assets/dummies/no_favorite.png"))),
+                      ),
+                    )
+                  : Container(
+                      height: ((120 * favlist.length) + (15 * favlist.length))
+                              .toDouble() +
+                          50,
+                      child: ListView.builder(
+                        physics: const NeverScrollableScrollPhysics(),
+                        //shrinkWrap: true,
+                        //scrollDirection: Axis.horizontal,
+                        itemCount: favlist.length,
+                        itemBuilder: (BuildContext context, int index) =>
+                            Padding(
+                                padding: const EdgeInsets.only(bottom: 15),
+                                child: GestureDetector(
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  BarberDetailScreen(
+                                                    reqlist: favlist,
+                                                    index: index,
+                                                  )));
+                                    },
+                                    child: BarberWidget(index, favlist))),
+                      ),
+                    ),
               Container(
                 height: MediaQuery.of(context).size.height,
                 //color: Colors.grey.withOpacity(0.2),

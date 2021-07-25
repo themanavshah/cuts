@@ -59,16 +59,13 @@ class ChatScreen extends StatelessWidget {
             ),
             SizedBox(height: 30),
             currentUser.chatbarber.length == 0
-                ? Container(
-                    child: Center(
-                      child: Text(
-                        "No chats",
-                        style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.orange,
-                        ),
-                      ),
+                ? Padding(
+                    padding: const EdgeInsets.only(top: 120),
+                    child: Container(
+                      child: Center(
+                          child: Container(
+                              child:
+                                  Image.asset("assets/dummies/noc_chat.png"))),
                     ),
                   )
                 : Container(
