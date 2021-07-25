@@ -41,6 +41,10 @@ final selectedMinProvider = StateProvider<int>((ref) {
   return null;
 });
 
+final checkoutAmountProvider = StateProvider<int>((ref) {
+  return 0;
+});
+
 var favList = [];
 
 bool barberCheck(var favlis, Barber element) {

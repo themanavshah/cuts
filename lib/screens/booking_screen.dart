@@ -1,5 +1,7 @@
 import 'package:cuts/dummy_data/barber_shops_data.dart';
 import 'package:cuts/providers/state_provider.dart';
+import 'package:cuts/screens/payment_screen.dart';
+import 'package:cuts/screens/products_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
@@ -51,7 +53,7 @@ class BookingScreen extends ConsumerWidget {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.only(
-          bottom: 20,
+          bottom: 40,
           left: 30,
           right: 30,
           top: 15,
@@ -292,6 +294,12 @@ class BookingScreen extends ConsumerWidget {
               GestureDetector(
                 onTap: () {
                   print("stripe integration && furthure paymnet screen");
+                  if (!(selectedHour.state == null)) {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ProductScreen()));
+                  }
                 },
                 child: Container(
                   height: 70,
