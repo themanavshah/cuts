@@ -4,9 +4,20 @@ import 'package:cuts/widgets/notification_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class NotificationScreen extends ConsumerWidget {
+class NotificationScreen extends StatefulWidget {
   @override
-  Widget build(BuildContext context, ScopedReader watch) {
+  _NotificationScreenState createState() => _NotificationScreenState();
+}
+
+class _NotificationScreenState extends State<NotificationScreen> {
+  void markAsSeen() {
+    for (var i = 0; i < currentUser.notification.length; i++) {
+      currentUser.notification[i].seen = true;
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Container(
       //integrating it with google maps api and adding barber's location on it.
       child: Center(
@@ -41,21 +52,47 @@ class NotificationScreen extends ConsumerWidget {
                     'Notifications',
                     style: TextStyle(
                         color: Colors.black,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 25),
+                        fontWeight: FontWeight.w500,
+                        fontSize: 22),
                   ),
                   CircleAvatar(
                     radius: 22,
-                    backgroundColor: Colors.grey.withOpacity(0.2),
+                    backgroundColor: Colors.transparent,
                     child: Icon(
                       Icons.more_vert,
-                      color: Colors.black,
+                      color: Colors.transparent,
                       size: 18,
                     ),
                   ),
                 ],
               ),
-              SizedBox(height: 30),
+              SizedBox(height: 50),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Your activity',
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 22),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        markAsSeen();
+                      });
+                    },
+                    child: Text(
+                      'Mark as seen',
+                      style: TextStyle(
+                          color: Colors.grey,
+                          fontWeight: FontWeight.w400,
+                          fontSize: 14),
+                    ),
+                  ),
+                ],
+              ),
               Container(
                 height: ((120 * currentUser.notification.length) +
                             (15 * currentUser.notification.length))

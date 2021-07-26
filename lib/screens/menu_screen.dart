@@ -1,6 +1,7 @@
 import 'package:cuts/dummy_data/menu_data.dart';
 import 'package:cuts/dummy_data/user_dummy_data.dart';
 import 'package:cuts/providers/state_provider.dart';
+import 'package:cuts/screens/edit_profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -55,44 +56,52 @@ class MenuScreen extends ConsumerWidget {
                 ),
                 child: Column(
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            CircleAvatar(
-                              radius: 30,
-                              backgroundImage: AssetImage(currentUser.image),
-                            ),
-                            SizedBox(width: 16),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  currentUser.name,
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w600,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => EditProfileScreen()));
+                      },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              CircleAvatar(
+                                radius: 30,
+                                backgroundImage: AssetImage(currentUser.image),
+                              ),
+                              SizedBox(width: 16),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    currentUser.name,
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w600,
+                                    ),
                                   ),
-                                ),
-                                SizedBox(height: 9),
-                                Text(
-                                  "Edit profile",
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w400,
+                                  SizedBox(height: 9),
+                                  Text(
+                                    "+91 ${currentUser.phoneNumber}",
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w400,
+                                    ),
                                   ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                        Icon(Icons.arrow_forward_ios_rounded),
-                      ],
+                                ],
+                              ),
+                            ],
+                          ),
+                          // Icon(Icons.arrow_forward_ios_rounded),
+                        ],
+                      ),
                     ),
                     SizedBox(height: 10),
                     Container(
-                      height: ((50 * menuList.length) + (15 * menuList.length))
+                      height: ((80 * menuList.length) + (15 * menuList.length))
                           .toDouble(),
                       child: ListView.builder(
                         //physics: const NeverScrollableScrollPhysics(),
@@ -120,20 +129,27 @@ class MenuScreen extends ConsumerWidget {
                                       padding: const EdgeInsets.symmetric(
                                           horizontal: 12.0),
                                       child: Container(
-                                        height: 50,
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
+                                        height: 80,
+                                        child: Column(
                                           children: [
-                                            Text(
-                                              menuList[index].name,
-                                              style: TextStyle(
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.w500,
-                                              ),
+                                            Row(
+                                              children: [
+                                                Container(
+                                                  // color: Colors.orange[50],
+                                                  child: menuList[index].icon,
+                                                ),
+                                                SizedBox(width: 30),
+                                                Text(
+                                                  menuList[index].name,
+                                                  style: TextStyle(
+                                                    fontSize: 16,
+                                                    fontWeight: FontWeight.w500,
+                                                  ),
+                                                ),
+                                              ],
                                             ),
-                                            Icon(Icons
-                                                .arrow_forward_ios_rounded),
+                                            SizedBox(height: 30),
+                                            Divider(),
                                           ],
                                         ),
                                       ),

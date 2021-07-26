@@ -1,10 +1,13 @@
 import 'package:cuts/common_scaffold.dart';
+import 'package:cuts/dummy_data/barber_shops_data.dart';
 import 'package:cuts/providers/state_provider.dart';
+import 'package:cuts/screens/rating_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class ConfirmModalSheet extends ConsumerWidget {
-  const ConfirmModalSheet({Key key}) : super(key: key);
+  Barber barber;
+  ConfirmModalSheet({Key key, this.barber}) : super(key: key);
 
   @override
   Widget build(BuildContext context, ScopedReader watch) {
@@ -70,7 +73,7 @@ class ConfirmModalSheet extends ConsumerWidget {
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => CommonScaffold(),
+                      builder: (context) => RatingScreen(barber: barber),
                     ),
                   );
                 },
@@ -81,7 +84,7 @@ class ConfirmModalSheet extends ConsumerWidget {
                     padding: const EdgeInsets.all(15.0),
                     child: Center(
                       child: Text(
-                        "Back to home",
+                        "Next",
                         style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.w600,

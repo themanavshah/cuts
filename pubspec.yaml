@@ -30,6 +30,7 @@ dependencies:
 
 #  stripe_payment: ^1.1.4 
   dio: ^4.0.0
+  google_maps_flutter: ^2.0.6
   #stripe_sdk: ^4.0.2
   #stripe: ^4.4.1
 
