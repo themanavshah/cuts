@@ -1,3 +1,4 @@
+import 'package:cuts/dummy_data/barber_shops_data.dart';
 import 'package:cuts/dummy_data/user_dummy_data.dart';
 import 'package:cuts/widgets/confirm_modal_sheet.dart';
 import 'package:cuts/widgets/online_transfer_dialogBox.dart';
@@ -11,7 +12,8 @@ enum selectedThing {
 }
 
 class PaymentScreen extends StatefulWidget {
-  PaymentScreen({Key key}) : super(key: key);
+  Barber barber;
+  PaymentScreen({Key key, this.barber}) : super(key: key);
 
   @override
   _PaymentScreenState createState() => _PaymentScreenState();
@@ -379,7 +381,9 @@ class _PaymentScreenState extends State<PaymentScreen> {
                         backgroundColor: Colors.transparent,
                         context: context,
                         builder: (context) {
-                          return ConfirmModalSheet();
+                          return ConfirmModalSheet(
+                            barber: widget.barber,
+                          );
                         },
                       );
                     } else {

@@ -1,3 +1,5 @@
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+
 class Slot {
   int hour;
   int min;
@@ -8,7 +10,7 @@ class Slot {
 class Barber {
   String name;
   String openingTime;
-  var rating;
+  double rating;
   String distance;
   String image;
   bool favorite = false;
@@ -16,6 +18,7 @@ class Barber {
   String description;
   List tags;
   List<Slot> slots;
+  LatLng location;
 
   Barber({
     this.name,
@@ -28,6 +31,7 @@ class Barber {
     this.description,
     this.tags,
     this.slots,
+    this.location,
   });
 }
 
@@ -40,6 +44,7 @@ List<Barber> barberslist = [
     distance: '1.5',
     favorite: false,
     image: 'assets/barbers/barberX.png',
+    location: const LatLng(23.004285, 72.610163),
     description:
         "BarberX is specialsed in cuttings and other stuffs. What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
     tags: [
@@ -109,6 +114,7 @@ List<Barber> barberslist = [
     distance: '1.2',
     favorite: false,
     image: 'assets/barbers/barbercuts.png',
+    location: const LatLng(22.987396, 72.600517),
     description:
         "Barber cuts is specialsed in cuttings and other stuffs. What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
     tags: [
@@ -178,6 +184,7 @@ List<Barber> barberslist = [
     distance: '2.1',
     favorite: true,
     image: 'assets/barbers/barberking.png',
+    location: const LatLng(22.999665, 72.625233),
     description:
         "Barber king is specialsed in cuttings and other stuffs. What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
     tags: [
@@ -246,6 +253,7 @@ List<Barber> barberslist = [
     distance: '2.3',
     favorite: false,
     image: 'assets/barbers/barberkong.png',
+    location: const LatLng(22.994880, 72.608653),
     description:
         "Barber kong is specialsed in cuttings and other stuffs. What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
     tags: [
@@ -314,6 +322,7 @@ List<Barber> barberslist = [
     distance: '1.5',
     favorite: true,
     image: 'assets/barbers/topcutter.png',
+    location: const LatLng(22.995407, 72.623146),
     description:
         "top cutter is specialsed in cuttings and other stuffs. What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
     tags: [

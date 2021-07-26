@@ -48,10 +48,10 @@ class FavoriteScreen extends ConsumerWidget {
                   ),
                   CircleAvatar(
                     radius: 22,
-                    backgroundColor: Colors.grey.withOpacity(0.2),
+                    backgroundColor: Colors.transparent,
                     child: Icon(
                       Icons.more_vert,
-                      color: Colors.black,
+                      color: Colors.transparent,
                       size: 18,
                     ),
                   ),

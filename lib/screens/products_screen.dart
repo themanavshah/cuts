@@ -1,3 +1,4 @@
+import 'package:cuts/dummy_data/barber_shops_data.dart';
 import 'package:cuts/dummy_data/products_data.dart';
 import 'package:cuts/dummy_data/user_dummy_data.dart';
 import 'package:cuts/providers/state_provider.dart';
@@ -7,7 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class ProductScreen extends ConsumerWidget {
-  ProductScreen({Key key}) : super(key: key);
+  Barber barber;
+  ProductScreen({Key key, this.barber}) : super(key: key);
 
   void setToFalse(List<Product> pl) {
     for (var i = 0; i < pl.length; i++) {
@@ -142,7 +144,8 @@ class ProductScreen extends ConsumerWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => PaymentScreen()));
+                              builder: (context) =>
+                                  PaymentScreen(barber: barber)));
                     } else {
                       print("value = 0");
                     }

@@ -298,7 +298,8 @@ class BookingScreen extends ConsumerWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => ProductScreen()));
+                            builder: (context) =>
+                                ProductScreen(barber: barber)));
                   }
                 },
                 child: Container(
