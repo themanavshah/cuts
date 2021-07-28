@@ -8,7 +8,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class ShowAllScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ScopedReader watch) {
-    print(MediaQuery.of(context).size.height);
+    print("height: " + MediaQuery.of(context).size.height.toString());
     return Container(
       child: Padding(
         padding: const EdgeInsets.only(
