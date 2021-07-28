@@ -104,11 +104,10 @@ class _ActionScreenState extends State<ActionScreen> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) => BarberDetailScreen(
-                                            reqlist: reqAlgoBarb,
-                                            index: index,
+                                            barber: reqAlgoBarb[index],
                                           )));
                             },
-                            child: BarberWidget(index, reqAlgoBarb))),
+                            child: BarberWidget(reqAlgoBarb[index]))),
                   ),
                 ),
               ],

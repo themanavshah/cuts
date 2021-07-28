@@ -276,11 +276,10 @@ class HomeScreen extends ConsumerWidget {
                               context,
                               MaterialPageRoute(
                                   builder: (context) => BarberDetailScreen(
-                                        reqlist: currentUser.nearbyBarber,
-                                        index: index,
+                                        barber: currentUser.nearbyBarber[index],
                                       )));
                         },
-                        child: BarberWidget(index, currentUser.nearbyBarber))),
+                        child: BarberWidget(currentUser.nearbyBarber[index]))),
               ),
             ),
           ],
