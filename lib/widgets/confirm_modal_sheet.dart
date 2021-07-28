@@ -37,8 +37,12 @@ class ConfirmModalSheet extends ConsumerWidget {
         ),
       ),
       child: Padding(
-        padding:
-            const EdgeInsets.only(left: 15.0, right: 15.0, bottom: 30, top: 30),
+        padding: const EdgeInsets.only(
+          left: 15.0,
+          right: 15.0,
+          bottom: 30,
+          top: 30,
+        ),
         child: Center(
           child: Column(
             children: [

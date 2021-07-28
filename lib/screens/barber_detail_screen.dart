@@ -7,10 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class BarberDetailScreen extends ConsumerWidget {
-  List reqlist;
-  int index;
-
-  BarberDetailScreen({this.reqlist, this.index});
+  Barber barber;
+  BarberDetailScreen({this.barber});
 
   bool barberCheck(var favlis, Barber element) {
     for (var i = 0; i < favlis.length; i++) {
@@ -35,7 +33,7 @@ class BarberDetailScreen extends ConsumerWidget {
                     color: Colors.grey.withOpacity(0.2),
                     image: DecorationImage(
                       fit: BoxFit.fill,
-                      image: AssetImage(reqlist[this.index].image),
+                      image: AssetImage(barber.image),
                     ),
                   ),
                 ),
@@ -83,7 +81,7 @@ class BarberDetailScreen extends ConsumerWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            reqlist[index].name,
+                            barber.name,
                             style: TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.bold,
@@ -110,7 +108,7 @@ class BarberDetailScreen extends ConsumerWidget {
                                     scrollDirection: Axis.horizontal,
                                     physics:
                                         const NeverScrollableScrollPhysics(),
-                                    itemCount: reqlist[index].rating.floor(),
+                                    itemCount: barber.rating.floor(),
                                     itemBuilder:
                                         (BuildContext context, int index) =>
                                             Icon(
@@ -120,7 +118,7 @@ class BarberDetailScreen extends ConsumerWidget {
                                             )),
                               ),
                               Text(
-                                reqlist[index].rating.toString(),
+                                barber.rating.toString(),
                                 style: TextStyle(
                                     color: Colors.yellow,
                                     fontWeight: FontWeight.w300,
@@ -142,31 +140,31 @@ class BarberDetailScreen extends ConsumerWidget {
                                 Navigator.push(context,
                                     MaterialPageRoute(builder: (context) {
                                   return ChatDetailScreen(
-                                    barber: reqlist[index],
+                                    barber: barber,
                                   );
                                 }));
                               }),
                           IconButton(
                             icon: Icon(
-                              barberCheck(favlist, reqlist[index])
+                              barberCheck(favlist, barber)
                                   ? Icons.favorite
                                   : Icons.favorite_border,
-                              color: barberCheck(favlist, reqlist[index])
+                              color: barberCheck(favlist, barber)
                                   ? Colors.red
                                   : Colors.grey,
                             ),
                             onPressed: () {
-                              print(reqlist[index].name);
+                              print(barber.name);
                               print(context
                                   .read(favListProv.notifier)
                                   .displayState());
-                              barberCheck(favlist, reqlist[index])
+                              barberCheck(favlist, barber)
                                   ? context
                                       .read(favListProv.notifier)
-                                      .remove(reqlist[index].id)
+                                      .remove(barber.id)
                                   : context
                                       .read(favListProv.notifier)
-                                      .add(reqlist[index]);
+                                      .add(barber);
                             },
                           ),
                         ],
@@ -184,7 +182,7 @@ class BarberDetailScreen extends ConsumerWidget {
                     height: ((55 + 10) * 2).toDouble(),
                     child: GridView.builder(
                       physics: const NeverScrollableScrollPhysics(),
-                      itemCount: reqlist[index].tags.length,
+                      itemCount: barber.tags.length,
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
                         crossAxisSpacing: 10,
@@ -204,7 +202,7 @@ class BarberDetailScreen extends ConsumerWidget {
                             width: 90,
                             child: Center(
                                 child: Text(
-                              reqlist[index].tags[indexx],
+                              barber.tags[indexx],
                               style: TextStyle(
                                 color: Colors.orange,
                                 fontWeight: FontWeight.bold,
@@ -216,7 +214,7 @@ class BarberDetailScreen extends ConsumerWidget {
                   ),
                   SizedBox(height: 25),
                   Text(
-                    reqlist[index].description,
+                    barber.description,
                     style: TextStyle(
                       height: 1.6,
                       color: Colors.grey,
@@ -243,7 +241,7 @@ class BarberDetailScreen extends ConsumerWidget {
                                       month: dateParse.month,
                                       year: dateParse.year,
                                       currentDay: dateParse.day,
-                                      barber: reqlist[index],
+                                      barber: barber,
                                     )));
                         //print("day:" + dateParse.weekday.toString());
                         //var formatter = new DateFormat('MM');

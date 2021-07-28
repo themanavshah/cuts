@@ -1,5 +1,6 @@
 import 'package:cuts/dummy_data/barber_shops_data.dart';
 import 'package:cuts/providers/state_provider.dart';
+import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class ChatBarber {
@@ -95,6 +96,7 @@ var currentUser = User(
         favorite: true,
         image: 'assets/barbers/barberking.png',
         location: const LatLng(22.999665, 72.625233),
+        unikey: GlobalKey(),
         description:
             "Barber king is specialsed in cuttings and other stuffs. What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
         tags: [
@@ -164,6 +166,7 @@ var currentUser = User(
         favorite: true,
         image: 'assets/barbers/topcutter.png',
         location: const LatLng(22.995407, 72.623146),
+        unikey: GlobalKey(),
         description:
             "top cutter is specialsed in cuttings and other stuffs. What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
         tags: [
@@ -236,6 +239,7 @@ var currentUser = User(
         favorite: false,
         image: 'assets/barbers/barberX.png',
         location: const LatLng(23.004285, 72.610163),
+        unikey: GlobalKey(),
         description:
             "Barber X is specialsed in cuttings and other stuffs. What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
         tags: [
@@ -306,6 +310,7 @@ var currentUser = User(
         favorite: false,
         image: 'assets/barbers/barbercuts.png',
         location: const LatLng(22.987396, 72.600517),
+        unikey: GlobalKey(),
         description:
             "Braber cuts is specialsed in cuttings and other stuffs. What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
         tags: [
@@ -376,6 +381,7 @@ var currentUser = User(
         favorite: true,
         image: 'assets/barbers/topcutter.png',
         location: const LatLng(22.995407, 72.623146),
+        unikey: GlobalKey(),
         description:
             "top cutter is specialsed in cuttings and other stuffs. What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
         tags: [
@@ -446,6 +452,7 @@ var currentUser = User(
         favorite: false,
         image: 'assets/barbers/barberkong.png',
         location: const LatLng(22.994880, 72.608653),
+        unikey: GlobalKey(),
         description:
             "Barber kong is specialsed in cuttings and other stuffs. What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
         tags: [

@@ -87,11 +87,10 @@ class FavoriteScreen extends ConsumerWidget {
                                           MaterialPageRoute(
                                               builder: (context) =>
                                                   BarberDetailScreen(
-                                                    reqlist: favlist,
-                                                    index: index,
+                                                    barber: favlist[index],
                                                   )));
                                     },
-                                    child: BarberWidget(index, favlist))),
+                                    child: BarberWidget(favlist[index]))),
                       ),
                     ),
               Container(
