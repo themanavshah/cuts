@@ -35,13 +35,22 @@ class _LoginScreenState extends State<LoginScreen> {
               //mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(height: height > 700 ? 140 : 40),
+                SizedBox(
+                    height: height > 700
+                        ? width > 600
+                            ? 60
+                            : 140
+                        : 40),
                 Text(
                   'cuts',
                   style: TextStyle(
                       color: Colors.orange,
                       fontWeight: FontWeight.w700,
-                      fontSize: height > 700 ? 55 : 40),
+                      fontSize: height > 700
+                          ? width > 600
+                              ? 62
+                              : 55
+                          : 40),
                 ),
                 SizedBox(height: 10),
                 Text(
@@ -49,12 +58,17 @@ class _LoginScreenState extends State<LoginScreen> {
                   style: TextStyle(
                       color: Colors.grey,
                       fontWeight: FontWeight.w400,
-                      fontSize: height > 700 ? 15 : 12),
+                      fontSize: height > 700
+                          ? width > 600
+                              ? 20
+                              : 15
+                          : 12),
                 ),
                 SizedBox(height: height > 700 ? 110 : 80),
                 Container(
                   height: height > 700 ? 80 : 60,
-                  width: MediaQuery.of(context).size.width,
+                  width: MediaQuery.of(context).size.width -
+                      (width > 600 ? 200 : 0),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(height > 700 ? 20 : 12),
                     color: Colors.grey.withOpacity(0.2),
@@ -97,7 +111,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(height: height > 700 ? 30 : 15),
                 Container(
                   height: height > 700 ? 80 : 60,
-                  width: MediaQuery.of(context).size.width,
+                  width: MediaQuery.of(context).size.width -
+                      (width > 600 ? 200 : 0),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(height > 700 ? 20 : 12),
                     color: Colors.grey.withOpacity(0.2),
@@ -107,7 +122,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     children: [
                       Container(
                         height: 80,
-                        width: MediaQuery.of(context).size.width - 150,
+                        width: MediaQuery.of(context).size.width -
+                            150 -
+                            (width > 600 ? 200 : 0),
                         color: Colors.transparent,
                         child: Center(
                           child: Padding(
@@ -172,15 +189,21 @@ class _LoginScreenState extends State<LoginScreen> {
                             MaterialPageRoute(
                                 builder: (context) => ForgotPassScreen()));
                       },
-                      child: Container(
-                        height: 20,
-                        child: Text(
-                          'Forgot password?',
-                          style: TextStyle(
-                              color: Colors.grey,
-                              fontWeight: FontWeight.w400,
-                              fontSize: height > 700 ? 15 : 12),
-                        ),
+                      child: Row(
+                        children: [
+                          SizedBox(width: width > 600 ? 70 : 0),
+                          Container(
+                            height: 20,
+                            //width: width - (width > 600 ? 200 : 0),
+                            child: Text(
+                              'Forgot password?',
+                              style: TextStyle(
+                                  color: Colors.grey,
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: height > 700 ? 15 : 12),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ],
@@ -202,7 +225,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   },
                   child: Container(
                     height: height > 700 ? 75 : 65,
-                    width: MediaQuery.of(context).size.width,
+                    width: MediaQuery.of(context).size.width -
+                        (width > 600 ? 200 : 0),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
                       color: Colors.orange,
@@ -219,7 +243,12 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                 ),
-                SizedBox(height: height > 700 ? 50 : 40),
+                SizedBox(
+                    height: height > 700
+                        ? width > 600
+                            ? 60
+                            : 50
+                        : 40),
                 GestureDetector(
                   onTap: () {
                     //switch to register...
@@ -233,7 +262,11 @@ class _LoginScreenState extends State<LoginScreen> {
                     style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.w500,
-                      fontSize: height > 700 ? 18 : 16,
+                      fontSize: height > 700
+                          ? width > 600
+                              ? 20
+                              : 18
+                          : 16,
                     ),
                   ),
                 ),
