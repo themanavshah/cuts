@@ -19,21 +19,27 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: Center(
         child: Padding(
-          padding:
-              const EdgeInsets.only(top: 10.0, right: 40, left: 40, bottom: 20),
+          padding: const EdgeInsets.only(
+            top: 10.0,
+            right: 40,
+            left: 40,
+            bottom: 20,
+          ),
           child: SingleChildScrollView(
             child: Column(
               children: [
-                SizedBox(height: 60),
+                SizedBox(height: height > 700 ? 60 : 30),
                 Text(
                   'cuts',
                   style: TextStyle(
                       color: Colors.orange,
                       fontWeight: FontWeight.w700,
-                      fontSize: 55),
+                      fontSize: height > 700 ? 55 : 40),
                 ),
                 SizedBox(height: 10),
                 Text(
@@ -41,17 +47,18 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   style: TextStyle(
                       color: Colors.grey,
                       fontWeight: FontWeight.w400,
-                      fontSize: 15),
+                      fontSize: height > 700 ? 15 : 12),
                 ),
-                SizedBox(height: 80),
+                SizedBox(height: height > 700 ? 80 : 50),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
-                      height: 75,
-                      width: 160,
+                      height: height > 700 ? 75 : 60,
+                      width: height > 700 ? 160 : 140,
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
+                        borderRadius:
+                            BorderRadius.circular(height > 700 ? 20 : 15),
                         color: Colors.orange,
                       ),
                       child: Center(
@@ -60,16 +67,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.w500,
-                            fontSize: 20,
+                            fontSize: height > 700 ? 20 : 15,
                           ),
                         ),
                       ),
                     ),
                     Container(
-                      height: 75,
-                      width: 160,
+                      height: height > 700 ? 75 : 60,
+                      width: height > 700 ? 160 : 140,
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
+                        borderRadius:
+                            BorderRadius.circular(height > 700 ? 20 : 15),
                         color: Colors.grey.withOpacity(0.2),
                       ),
                       child: Center(
@@ -78,19 +86,19 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           style: TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.w500,
-                            fontSize: 20,
+                            fontSize: height > 700 ? 20 : 15,
                           ),
                         ),
                       ),
                     ),
                   ],
                 ),
-                SizedBox(height: 50),
+                SizedBox(height: height > 700 ? 50 : 40),
                 Container(
-                  height: 80,
+                  height: height > 700 ? 80 : 60,
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: BorderRadius.circular(height > 700 ? 20 : 12),
                     color: Colors.grey.withOpacity(0.2),
                   ),
                   child: Center(
@@ -128,12 +136,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                   ),
                 ),
-                SizedBox(height: 20),
+                SizedBox(height: height > 700 ? 20 : 15),
                 Container(
-                  height: 80,
+                  height: height > 700 ? 80 : 60,
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: BorderRadius.circular(height > 700 ? 20 : 15),
                     color: Colors.grey.withOpacity(0.2),
                   ),
                   child: Center(
@@ -171,19 +179,19 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                   ),
                 ),
-                SizedBox(height: 20),
+                SizedBox(height: height > 700 ? 20 : 15),
                 Container(
-                  height: 80,
+                  height: height > 700 ? 80 : 60,
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: BorderRadius.circular(height > 700 ? 20 : 15),
                     color: Colors.grey.withOpacity(0.2),
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
-                        height: 80,
+                        height: height > 700 ? 80 : 60,
                         width: MediaQuery.of(context).size.width - 150,
                         color: Colors.transparent,
                         child: Center(
@@ -238,7 +246,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ],
                   ),
                 ),
-                SizedBox(height: 60),
+                SizedBox(height: height > 700 ? 60 : 40),
                 GestureDetector(
                   onTap: () {
                     if (_passwordController.text.length != 0 &&
@@ -255,10 +263,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     }
                   },
                   child: Container(
-                    height: 75,
+                    height: height > 700 ? 75 : 60,
                     width: MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
+                      borderRadius:
+                          BorderRadius.circular(height > 700 ? 20 : 15),
                       color: Colors.orange,
                     ),
                     child: Center(
@@ -267,13 +276,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.w500,
-                          fontSize: 20,
+                          fontSize: height > 700 ? 20 : 15,
                         ),
                       ),
                     ),
                   ),
                 ),
-                SizedBox(height: 50),
+                SizedBox(height: height > 700 ? 50 : 30),
                 GestureDetector(
                   onTap: () {
                     //switch to register...
@@ -284,7 +293,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.w500,
-                      fontSize: 18,
+                      fontSize: height > 700 ? 18 : 15,
                     ),
                   ),
                 ),

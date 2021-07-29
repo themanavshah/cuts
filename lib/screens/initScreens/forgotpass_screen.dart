@@ -7,6 +7,8 @@ class ForgotPassScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.only(
@@ -18,15 +20,15 @@ class ForgotPassScreen extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(height: 190),
+              SizedBox(height: height > 700 ? 190 : 140),
               Text(
                 'Forgot Password',
                 style: TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.w500,
-                    fontSize: 25),
+                    fontSize: height > 700 ? 25 : 20),
               ),
-              SizedBox(height: 30),
+              SizedBox(height: height > 700 ? 30 : 20),
               Container(
                 width: 290,
                 child: Text(
@@ -35,15 +37,15 @@ class ForgotPassScreen extends StatelessWidget {
                   style: TextStyle(
                       color: Colors.grey,
                       fontWeight: FontWeight.w400,
-                      fontSize: 15),
+                      fontSize: height > 700 ? 15 : 12),
                 ),
               ),
-              SizedBox(height: 80),
+              SizedBox(height: height > 700 ? 80 : 60),
               Container(
-                height: 80,
+                height: height > 700 ? 80 : 60,
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: BorderRadius.circular(height > 700 ? 20 : 15),
                   color: Colors.grey.withOpacity(0.2),
                 ),
                 child: Center(
@@ -73,7 +75,7 @@ class ForgotPassScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 130),
+              SizedBox(height: height > 700 ? 130 : 120),
               GestureDetector(
                 onTap: () {
                   //send instructions to it's mail
@@ -82,10 +84,10 @@ class ForgotPassScreen extends StatelessWidget {
                   }
                 },
                 child: Container(
-                  height: 75,
+                  height: height > 700 ? 75 : 60,
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: BorderRadius.circular(height > 700 ? 20 : 15),
                     color: Colors.orange,
                   ),
                   child: Center(
@@ -94,13 +96,13 @@ class ForgotPassScreen extends StatelessWidget {
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.w500,
-                        fontSize: 20,
+                        fontSize: height > 700 ? 20 : 15,
                       ),
                     ),
                   ),
                 ),
               ),
-              SizedBox(height: 50),
+              SizedBox(height: height > 700 ? 50 : 30),
               GestureDetector(
                 onTap: () {
                   //switch to register...
@@ -111,7 +113,7 @@ class ForgotPassScreen extends StatelessWidget {
                   style: TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.w500,
-                    fontSize: 18,
+                    fontSize: height > 700 ? 18 : 15,
                   ),
                 ),
               ),
