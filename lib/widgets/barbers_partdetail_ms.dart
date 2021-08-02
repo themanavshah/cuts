@@ -9,6 +9,8 @@ class BarberDetailModalSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
     return Container(
       //height: 500,
       decoration: BoxDecoration(
@@ -19,11 +21,11 @@ class BarberDetailModalSheet extends StatelessWidget {
         ),
       ),
       child: Padding(
-        padding: const EdgeInsets.only(
+        padding: EdgeInsets.only(
           left: 15.0,
           right: 15.0,
           bottom: 30,
-          top: 100,
+          top: height > 700 ? 100 : 50,
         ),
         child: Column(
           children: [
@@ -49,7 +51,7 @@ class BarberDetailModalSheet extends StatelessWidget {
                 fontSize: 14,
               ),
             ),
-            SizedBox(height: 40),
+            SizedBox(height: width > 600 ? 120 : 40),
             GestureDetector(
               onTap: () {
                 Navigator.push(
@@ -60,8 +62,9 @@ class BarberDetailModalSheet extends StatelessWidget {
                             )));
               },
               child: Container(
-                height: 80,
-                width: MediaQuery.of(context).size.width - 100,
+                height: height > 700 ? 80 : 60,
+                width: MediaQuery.of(context).size.width -
+                    (width > 600 ? 200 : 100),
                 child: Padding(
                   padding: const EdgeInsets.all(15.0),
                   child: Center(

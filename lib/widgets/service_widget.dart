@@ -9,6 +9,8 @@ class Service extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ScopedReader watch) {
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
     final amount = watch(checkoutAmountProvider);
     return GestureDetector(
       onTap: () {
@@ -32,7 +34,7 @@ class Service extends ConsumerWidget {
         child: Container(
           height: 70,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(height > 700 ? 20 : 10),
             color: element.choosen
                 ? Colors.orange.withOpacity(0.2)
                 : Colors.transparent,
@@ -45,22 +47,22 @@ class Service extends ConsumerWidget {
                 Row(
                   children: [
                     CircleAvatar(
-                        radius: 25,
+                        radius: height > 700 ? 25 : 23,
                         backgroundColor: Colors.orange[50],
                         child: element.icon),
-                    SizedBox(width: 30),
+                    SizedBox(width: height > 700 ? 30 : 20),
                     Text(
                       element.name,
                       style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.w500,
-                          fontSize: 17),
+                          fontSize: height > 700 ? 17 : 14),
                     ),
                   ],
                 ),
                 Container(
-                  height: 40,
-                  width: 70,
+                  height: height > 700 ? 40 : 30,
+                  width: height > 700 ? 70 : 60,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(7),
                     color: element.choosen
@@ -75,7 +77,7 @@ class Service extends ConsumerWidget {
                         style: TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.w500,
-                            fontSize: 17),
+                            fontSize: height > 700 ? 17 : 13),
                       ),
                     ),
                   ),

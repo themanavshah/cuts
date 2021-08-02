@@ -10,49 +10,56 @@ class MenuScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ScopedReader watch) {
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
     return Container(
+      height: height,
       child: Center(
-        child: Column(
-          children: [
-            Container(
-                color: Colors.grey[100],
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                    left: 17.0,
-                    right: 17.0,
-                    top: 50,
-                    bottom: 15,
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      IconButton(
-                          icon: Icon(Icons.arrow_back_ios_rounded),
-                          onPressed: () {
-                            context.read(pageindex).state = page.home;
-                          }),
-                      Text(
-                        "settings",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                      IconButton(
-                          icon: Icon(
-                            Icons.arrow_back_ios_rounded,
-                            color: Colors.transparent,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(
+                  color: Colors.grey[100],
+                  child: Padding(
+                    padding: EdgeInsets.only(
+                      left: 17.0,
+                      right: 17.0,
+                      top: height > 700 ? 50 : 25,
+                      bottom: 15,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        IconButton(
+                            icon: Icon(
+                              Icons.arrow_back_ios_rounded,
+                              size: height > 700 ? 24 : 20,
+                            ),
+                            onPressed: () {
+                              context.read(pageindex).state = page.home;
+                            }),
+                        Text(
+                          "settings",
+                          style: TextStyle(
+                            fontSize: height > 700 ? 18 : 16,
+                            fontWeight: FontWeight.w400,
                           ),
-                          onPressed: null),
-                    ],
-                  ),
-                )),
-            SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.only(
+                        ),
+                        IconButton(
+                            icon: Icon(
+                              Icons.arrow_back_ios_rounded,
+                              color: Colors.transparent,
+                              size: height > 700 ? 24 : 18,
+                            ),
+                            onPressed: null),
+                      ],
+                    ),
+                  )),
+              Padding(
+                padding: EdgeInsets.only(
                   left: 17.0,
                   right: 17.0,
-                  top: 30,
+                  top: width > 600 ? 50 : 30,
                 ),
                 child: Column(
                   children: [
@@ -69,7 +76,7 @@ class MenuScreen extends ConsumerWidget {
                           Row(
                             children: [
                               CircleAvatar(
-                                radius: 30,
+                                radius: height > 700 ? 30 : 25,
                                 backgroundImage: AssetImage(currentUser.image),
                               ),
                               SizedBox(width: 16),
@@ -79,7 +86,7 @@ class MenuScreen extends ConsumerWidget {
                                   Text(
                                     currentUser.name,
                                     style: TextStyle(
-                                      fontSize: 18,
+                                      fontSize: height > 700 ? 18 : 14,
                                       fontWeight: FontWeight.w600,
                                     ),
                                   ),
@@ -87,7 +94,7 @@ class MenuScreen extends ConsumerWidget {
                                   Text(
                                     "+91 ${currentUser.phoneNumber}",
                                     style: TextStyle(
-                                      fontSize: 14,
+                                      fontSize: height > 700 ? 14 : 12,
                                       fontWeight: FontWeight.w400,
                                     ),
                                   ),
@@ -99,9 +106,15 @@ class MenuScreen extends ConsumerWidget {
                         ],
                       ),
                     ),
-                    SizedBox(height: 10),
+                    SizedBox(
+                        height: height > 700
+                            ? width > 600
+                                ? 40
+                                : 10
+                            : 30),
                     Container(
-                      height: ((80 * menuList.length) + (15 * menuList.length))
+                      height: (((height > 700 ? 90 : 60) * menuList.length) +
+                              (15 * menuList.length))
                           .toDouble(),
                       child: ListView.builder(
                         //physics: const NeverScrollableScrollPhysics(),
@@ -129,7 +142,7 @@ class MenuScreen extends ConsumerWidget {
                                       padding: const EdgeInsets.symmetric(
                                           horizontal: 12.0),
                                       child: Container(
-                                        height: 80,
+                                        height: height > 700 ? 80 : 60,
                                         child: Column(
                                           children: [
                                             Row(
@@ -138,17 +151,21 @@ class MenuScreen extends ConsumerWidget {
                                                   // color: Colors.orange[50],
                                                   child: menuList[index].icon,
                                                 ),
-                                                SizedBox(width: 30),
+                                                SizedBox(
+                                                    width:
+                                                        height > 700 ? 30 : 20),
                                                 Text(
                                                   menuList[index].name,
                                                   style: TextStyle(
-                                                    fontSize: 16,
+                                                    fontSize:
+                                                        height > 700 ? 16 : 14,
                                                     fontWeight: FontWeight.w500,
                                                   ),
                                                 ),
                                               ],
                                             ),
-                                            SizedBox(height: 30),
+                                            SizedBox(
+                                                height: height > 700 ? 30 : 10),
                                             Divider(),
                                           ],
                                         ),
@@ -158,9 +175,9 @@ class MenuScreen extends ConsumerWidget {
                     ),
                   ],
                 ),
-              ),
-            )
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );

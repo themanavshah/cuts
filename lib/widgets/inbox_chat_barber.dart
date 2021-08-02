@@ -8,6 +8,8 @@ class InboxChatBarber extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
     var usertemp = currentUser.chatbarber
         .where((element) => element.barber.id == barber.id);
     var lastMessage =
@@ -34,7 +36,7 @@ class InboxChatBarber extends StatelessWidget {
                           style: TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.w400,
-                              fontSize: 20),
+                              fontSize: height > 700 ? 20 : 16),
                         ),
                         SizedBox(height: 3),
                         Container(
@@ -45,7 +47,7 @@ class InboxChatBarber extends StatelessWidget {
                             style: TextStyle(
                                 color: Colors.grey,
                                 fontWeight: FontWeight.w300,
-                                fontSize: 14),
+                                fontSize: height > 700 ? 14 : 12),
                           ),
                         ),
                       ],
@@ -58,11 +60,11 @@ class InboxChatBarber extends StatelessWidget {
                   style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.w500,
-                      fontSize: 14),
+                      fontSize: height > 700 ? 14 : 12),
                 ),
               ],
             ),
-            SizedBox(height: 20),
+            SizedBox(height: height > 700 ? 20 : 15),
             Divider(),
           ],
         ),

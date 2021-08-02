@@ -33,6 +33,8 @@ class _RatingScreenState extends State<RatingScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
     print(rating5);
     return Scaffold(
       body: Padding(
@@ -44,7 +46,7 @@ class _RatingScreenState extends State<RatingScreen> {
         ),
         child: Column(
           children: [
-            SizedBox(height: 50),
+            SizedBox(height: height > 700 ? 50 : 30),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -78,23 +80,23 @@ class _RatingScreenState extends State<RatingScreen> {
                 ),
               ],
             ),
-            SizedBox(height: 115),
+            SizedBox(height: height > 700 ? 115 : 60),
             CircleAvatar(
-              radius: 65,
+              radius: height > 700 ? 65 : 40,
               backgroundImage: AssetImage(widget.barber.image),
             ),
-            SizedBox(height: 30),
+            SizedBox(height: height > 700 ? 30 : 20),
             Text(
               widget.barber.name,
               style: TextStyle(
-                fontSize: 24,
+                fontSize: height > 700 ? 24 : 16,
                 fontWeight: FontWeight.w500,
               ),
             ),
             SizedBox(height: 60),
             Container(
-              height: 55,
-              width: 280,
+              height: height > 700 ? 55 : 45,
+              width: height > 700 ? 280 : 235,
               child: ListView.builder(
                   physics: const NeverScrollableScrollPhysics(),
                   scrollDirection: Axis.horizontal,
@@ -109,10 +111,10 @@ class _RatingScreenState extends State<RatingScreen> {
                           setState(() {});
                         },
                         child: Container(
-                          height: 40,
-                          width: 40,
+                          height: height > 700 ? 40 : 30,
+                          width: height > 700 ? 40 : 30,
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
+                            borderRadius: BorderRadius.circular(5),
                             color: Colors.grey.withOpacity(0.2),
                           ),
                           child: Icon(
@@ -126,7 +128,7 @@ class _RatingScreenState extends State<RatingScreen> {
                     );
                   }),
             ),
-            SizedBox(height: 80),
+            SizedBox(height: height > 700 ? 80 : 60),
             GestureDetector(
               onTap: () {
                 //submitting logic should be instered;
@@ -134,10 +136,10 @@ class _RatingScreenState extends State<RatingScreen> {
                     MaterialPageRoute(builder: (context) => CommonScaffold()));
               },
               child: Container(
-                height: 75,
+                height: height > 700 ? 75 : 60,
                 width: MediaQuery.of(context).size.width - 100,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: BorderRadius.circular(height > 700 ? 20 : 15),
                   color: Colors.orange,
                 ),
                 child: Center(
@@ -146,13 +148,13 @@ class _RatingScreenState extends State<RatingScreen> {
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.w500,
-                      fontSize: 20,
+                      fontSize: height > 700 ? 20 : 16,
                     ),
                   ),
                 ),
               ),
             ),
-            SizedBox(height: 50),
+            SizedBox(height: height > 700 ? 50 : 35),
             GestureDetector(
               onTap: () {
                 Navigator.pushReplacement(context,
@@ -163,7 +165,7 @@ class _RatingScreenState extends State<RatingScreen> {
                 style: TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.w500,
-                  fontSize: 18,
+                  fontSize: height > 700 ? 18 : 16,
                 ),
               ),
             )

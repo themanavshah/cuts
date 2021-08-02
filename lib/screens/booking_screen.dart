@@ -41,6 +41,8 @@ class BookingScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ScopedReader watch) {
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
     //String formattedDate = DateFormat('kk:mm:ss \n EEE d MMM').format(itsnow);
     var currentHour = DateTime.parse(itsnow.toString()).hour;
     var currentDay = DateTime.parse(itsnow.toString()).day;
@@ -61,18 +63,18 @@ class BookingScreen extends ConsumerWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(height: 50),
+              SizedBox(height: height > 700 ? 50 : 25),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   CircleAvatar(
-                    radius: 22,
+                    radius: height > 700 ? 22 : 18,
                     backgroundColor: Colors.grey.withOpacity(0.2),
                     child: IconButton(
                       icon: Icon(
                         Icons.arrow_back_ios_rounded,
                         color: Colors.black,
-                        size: 18,
+                        size: height > 700 ? 18 : 14,
                       ),
                       onPressed: () {
                         context.read(selectedHourProvider).state = null;
@@ -85,8 +87,8 @@ class BookingScreen extends ConsumerWidget {
                     'Booking',
                     style: TextStyle(
                         color: Colors.black,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 20),
+                        fontWeight: FontWeight.w400,
+                        fontSize: height > 700 ? 20 : 18),
                   ),
                   CircleAvatar(
                     radius: 22,
@@ -99,7 +101,7 @@ class BookingScreen extends ConsumerWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 60),
+              SizedBox(height: height > 700 ? 60 : 40),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -205,7 +207,7 @@ class BookingScreen extends ConsumerWidget {
                   },
                 ),
               ),
-              SizedBox(height: 55),
+              SizedBox(height: height > 700 ? 55 : 10),
               Row(
                 children: [
                   Text(
@@ -219,7 +221,7 @@ class BookingScreen extends ConsumerWidget {
               ),
               //SizedBox(height: 10),
               Container(
-                height: 250,
+                height: height > 700 ? 250 : 220,
                 child: GridView.builder(
                   physics: const NeverScrollableScrollPhysics(),
                   itemCount: barber.slots.length,
@@ -259,14 +261,15 @@ class BookingScreen extends ConsumerWidget {
                                         !(selectedDate.state == currentDay)
                                     ? Colors.black
                                     : Colors.grey),
-                            borderRadius: BorderRadius.circular(10),
+                            borderRadius:
+                                BorderRadius.circular(height > 700 ? 10 : 5),
                             color:
                                 selectedHour.state == barber.slots[index].hour
                                     ? Colors.black
                                     : Colors.white,
                           ),
-                          height: 10,
-                          width: 90,
+                          height: height > 700 ? 10 : 8,
+                          width: height > 700 ? 90 : 80,
                           child: Center(
                               child: Text(
                             barber.slots[index].hour.toString() +

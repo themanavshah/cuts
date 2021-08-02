@@ -25,6 +25,8 @@ class BarberWidget extends ConsumerWidget {
 //class _BarberWidgetState extends State<BarberWidget> {
   @override
   Widget build(BuildContext context, ScopedReader watch) {
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
     var favlist = watch(favListProv);
     print("rebuild of barbWidget");
     return Container(
@@ -34,7 +36,7 @@ class BarberWidget extends ConsumerWidget {
           Row(
             children: [
               Container(
-                height: 110,
+                height: height > 700 ? 110 : 100,
                 width: 80,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
@@ -60,7 +62,7 @@ class BarberWidget extends ConsumerWidget {
                     style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.w500,
-                        fontSize: 20),
+                        fontSize: height > 700 ? 20 : 16),
                   ),
                   SizedBox(height: 3),
                   Row(
@@ -70,12 +72,12 @@ class BarberWidget extends ConsumerWidget {
                         style: TextStyle(
                             color: Colors.blue,
                             fontWeight: FontWeight.w300,
-                            fontSize: 15),
+                            fontSize: height > 700 ? 15 : 12),
                       ),
                       SizedBox(width: 15),
                       Icon(
                         Icons.access_time_rounded,
-                        size: 10,
+                        size: height > 700 ? 10 : 8,
                       ),
                       SizedBox(width: 5),
                       Text(
@@ -83,7 +85,7 @@ class BarberWidget extends ConsumerWidget {
                         style: TextStyle(
                             color: Colors.grey,
                             fontWeight: FontWeight.w300,
-                            fontSize: 10),
+                            fontSize: height > 700 ? 10 : 9),
                       ),
                     ],
                   ),
@@ -92,7 +94,7 @@ class BarberWidget extends ConsumerWidget {
                     children: [
                       Icon(
                         Icons.star,
-                        size: 14,
+                        size: height > 700 ? 14 : 12,
                         color: Colors.yellow,
                       ),
                       SizedBox(width: 5),
@@ -106,7 +108,7 @@ class BarberWidget extends ConsumerWidget {
                       SizedBox(width: 9),
                       Icon(
                         Icons.location_pin,
-                        size: 14,
+                        size: height > 700 ? 14 : 12,
                         color: Colors.grey,
                       ),
                       SizedBox(width: 5),
@@ -115,7 +117,7 @@ class BarberWidget extends ConsumerWidget {
                         style: TextStyle(
                             color: Colors.grey,
                             fontWeight: FontWeight.w300,
-                            fontSize: 12),
+                            fontSize: height > 700 ? 12 : 10),
                       ),
                     ],
                   )
@@ -128,28 +130,15 @@ class BarberWidget extends ConsumerWidget {
               barberCheck(favlist, barber)
                   ? Icons.favorite
                   : Icons.favorite_border,
+              size: height > 700 ? 22 : 18,
               color: barberCheck(favlist, barber) ? Colors.red : Colors.grey,
             ),
             onPressed: () {
-              //print("1 " + favBarbers.toString());
               print(barber.name);
               print(context.read(favListProv.notifier).displayState());
-              // print(index);
-              // context
-              //     .read(favListProv.notifier)
-              //     .remove(nearbyBrabers[index].id);
-              //print(context.read(favListProv.notifier).displayState());
-              //favBarbers.add(nearbyBrabers[index]);
-              // barberCheck(favBarbers, nearbyBrabers[index])
-              //     ? favBarbers
-              //         .removeWhere((barb) => barb.id == nearbyBrabers[index].id)
-              //     : favBarbers.add(nearbyBrabers[index]);
               barberCheck(favlist, barber)
                   ? context.read(favListProv.notifier).remove(barber.id)
                   : context.read(favListProv.notifier).add(barber);
-              // // barberslist[index].favorite =
-              //     !barberslist[index].favorite;
-              //print("2 " + favBarbers.toString());
             },
           ),
         ],

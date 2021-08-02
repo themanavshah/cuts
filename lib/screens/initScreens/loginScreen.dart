@@ -215,7 +215,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         _usernameController.text.length != 0) {
                       //to the home screen fecthing the data from database and storing a copy in local phone storage
                       print("continue");
-                      Navigator.push(
+                      Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
                               builder: (context) => CommonScaffold()));

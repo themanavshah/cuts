@@ -24,21 +24,23 @@ class HomeScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ScopedReader watch) {
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
     //final index = watch(pageindex);
     //print(index.state);
     return Container(
         //backgroundColor: Colors.white,
         child: Padding(
-      padding: const EdgeInsets.only(
+      padding: EdgeInsets.only(
         bottom: 10,
-        left: 30,
-        right: 30,
-        top: 15,
+        left: height > 700 ? 30 : 25,
+        right: height > 700 ? 30 : 25,
+        //top: 15,
       ),
       child: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(height: 80),
+            SizedBox(height: height > 700 ? 80 : 40),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -49,7 +51,7 @@ class HomeScreen extends ConsumerWidget {
                   child: Row(
                     children: [
                       CircleAvatar(
-                        radius: 25,
+                        radius: height > 700 ? 25 : 18,
                         backgroundImage: AssetImage(currentUser.image),
                       ),
                       SizedBox(width: 20),
@@ -61,14 +63,15 @@ class HomeScreen extends ConsumerWidget {
                               style: TextStyle(
                                   color: Colors.black.withOpacity(0.5),
                                   //fontWeight: FontWeight.bold,
-                                  fontSize: 12),
+                                  fontSize: height > 700 ? 12 : 10),
                             ),
+                            SizedBox(height: 5),
                             Text(
                               currentUser.name,
                               style: TextStyle(
                                   color: Colors.black,
                                   fontWeight: FontWeight.w500,
-                                  fontSize: 18),
+                                  fontSize: height > 700 ? 18 : 14),
                             ),
                           ]),
                     ],
@@ -79,18 +82,19 @@ class HomeScreen extends ConsumerWidget {
                     context.read(pageindex).state = page.notification;
                   },
                   child: CircleAvatar(
-                    radius: 25,
+                    radius: height > 700 ? 25 : 18,
                     backgroundColor: Colors.grey.withOpacity(0.2),
                     child: Stack(
                       children: [
                         Icon(
                           Icons.notifications_none_rounded,
                           color: Colors.black,
+                          size: height > 700 ? 22 : 16,
                         ),
                         Positioned(
                           right: 0,
                           child: CircleAvatar(
-                            radius: 3,
+                            radius: height > 700 ? 3 : 2,
                             backgroundColor:
                                 notificationChecker(currentUser.notification)
                                     ? Colors.red
@@ -103,76 +107,91 @@ class HomeScreen extends ConsumerWidget {
                 ),
               ],
             ),
-            SizedBox(height: 70),
+            SizedBox(height: height > 1050 ? 70 : 50),
             Container(
-              //height: 70,
+              height: height > 1050 ? 70 : 70,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
                 color: Colors.grey.withOpacity(0.2),
               ),
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 5.0, horizontal: 20.0),
-                child: TextFormField(
-                  cursorColor: Colors.orange,
-                  controller: _searchController,
-                  decoration: new InputDecoration(
-                    border: InputBorder.none,
-                    focusedBorder: InputBorder.none,
-                    enabledBorder: InputBorder.none,
-                    errorBorder: InputBorder.none,
-                    disabledBorder: InputBorder.none,
-                    hintText: "Search barber",
-                    fillColor: Colors.grey.withOpacity(0.2),
-                    // border: new OutlineInputBorder(
-                    //   borderRadius: new BorderRadius.circular(25.0),
-                    //   borderSide: new BorderSide(),
+              child: Center(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 5.0, horizontal: 20.0),
+                  child: TextFormField(
+                    cursorColor: Colors.orange,
+                    controller: _searchController,
+                    decoration: new InputDecoration(
+                      border: InputBorder.none,
+                      focusedBorder: InputBorder.none,
+                      enabledBorder: InputBorder.none,
+                      errorBorder: InputBorder.none,
+                      disabledBorder: InputBorder.none,
+                      hintText: "Search barber",
+                      fillColor: Colors.grey.withOpacity(0.2),
+                      // border: new OutlineInputBorder(
+                      //   borderRadius: new BorderRadius.circular(25.0),
+                      //   borderSide: new BorderSide(),
+                      // ),
+                      //fillColor: Colors.green
+                    ),
+                    validator: (val) {
+                      if (val.length == 0) {
+                        return;
+                      } else {
+                        return null;
+                      }
+                    },
+                    // style: new TextStyle(
+                    //   fontFamily: "Poppins",
                     // ),
-                    //fillColor: Colors.green
                   ),
-                  validator: (val) {
-                    if (val.length == 0) {
-                      return;
-                    } else {
-                      return null;
-                    }
-                  },
-                  // style: new TextStyle(
-                  //   fontFamily: "Poppins",
-                  // ),
                 ),
               ),
             ),
-            SizedBox(height: 30),
+            SizedBox(height: height > 1050 ? 80 : 30),
             Container(
-              height: 180,
-              //width: 60,
-              child: ListView.builder(
-                //shrinkWrap: true,
-                scrollDirection: Axis.horizontal,
-                itemCount: actionList.length,
-                itemBuilder: (BuildContext context, int index) => Padding(
-                    padding: const EdgeInsets.only(right: 20),
-                    child: Center(
-                        child: GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => ActionScreen(
-                                            element: actionList[index].name,
-                                          )));
-                            },
-                            child: HomeOptionWidget(index)))),
+              width: width,
+              child: Center(
+                child: Container(
+                  height: height > 700 ? 180 : 150,
+                  //width: 60,
+                  child: ListView.builder(
+                    //shrinkWrap: true,
+                    scrollDirection: Axis.horizontal,
+                    itemCount: actionList.length,
+                    itemBuilder: (BuildContext context, int index) => Padding(
+                        padding: EdgeInsets.only(right: 20),
+                        child: Container(
+                          width: width > 600
+                              ? height > 1050
+                                  ? 170
+                                  : 160
+                              : 120,
+                          child: Center(
+                              child: GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => ActionScreen(
+                                                  element:
+                                                      actionList[index].name,
+                                                )));
+                                  },
+                                  child: HomeOptionWidget(index))),
+                        )),
+                  ),
+                ),
               ),
             ),
-            SizedBox(height: 30),
+            SizedBox(height: height > 700 ? 30 : 20),
             Stack(
               clipBehavior: Clip.none,
               children: [
                 Container(
-                  height: 180,
+                  height: width > 600 ? 250 : 180,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     color: Colors.orange,
@@ -192,7 +211,7 @@ class HomeScreen extends ConsumerWidget {
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 20,
+                              fontSize: width > 600 ? 24 : 20,
                               fontWeight: FontWeight.w600,
                             ),
                           ),
@@ -202,7 +221,7 @@ class HomeScreen extends ConsumerWidget {
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 14,
+                              fontSize: width > 600 ? 18 : 14,
                               fontWeight: FontWeight.w300,
                             ),
                           ),
@@ -240,27 +259,28 @@ class HomeScreen extends ConsumerWidget {
                   style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.w500,
-                      fontSize: 25),
+                      fontSize: height > 700 ? 25 : 20),
                 ),
                 GestureDetector(
                   onTap: () {
                     context.read(pageindex).state = page.show_all;
+                    //Navigator.of(context).pop();
                   },
                   child: Text(
                     'show all',
                     style: TextStyle(
                         color: Colors.orange,
                         fontWeight: FontWeight.w400,
-                        fontSize: 16),
+                        fontSize: height > 700 ? 16 : 13),
                   ),
                 ),
               ],
             ),
+            SizedBox(height: height > 1050 ? 40 : 10),
             Container(
-              height: ((120 * currentUser.nearbyBarber.length) +
-                          (15 * currentUser.nearbyBarber.length))
-                      .toDouble() +
-                  50,
+              height: ((107 * currentUser.nearbyBarber.length) +
+                      (15 * currentUser.nearbyBarber.length))
+                  .toDouble(),
               child: ListView.builder(
                 physics: const NeverScrollableScrollPhysics(),
                 //shrinkWrap: true,

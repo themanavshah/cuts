@@ -114,6 +114,8 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
 
   @override
   Widget build(BuildContext context) {
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
     print(_markers);
     return Scaffold(
       // appBar: AppBar(
@@ -134,8 +136,8 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(
-              top: 70.0,
+            padding: EdgeInsets.only(
+              top: height > 700 ? 70.0 : 40,
               right: 30,
             ),
             child: Align(

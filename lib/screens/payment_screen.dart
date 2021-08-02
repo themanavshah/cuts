@@ -53,6 +53,8 @@ class _PaymentScreenState extends State<PaymentScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
     _cardNumberFormatter(1234567890123456);
     return Scaffold(
       body: Padding(
@@ -65,18 +67,18 @@ class _PaymentScreenState extends State<PaymentScreen> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(height: 50),
+              SizedBox(height: height > 700 ? 50 : 25),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   CircleAvatar(
-                    radius: 22,
+                    radius: height > 700 ? 22 : 18,
                     backgroundColor: Colors.grey.withOpacity(0.2),
                     child: IconButton(
                       icon: Icon(
                         Icons.arrow_back_ios_rounded,
                         color: Colors.black,
-                        size: 18,
+                        size: height > 700 ? 18 : 14,
                       ),
                       onPressed: () {
                         Navigator.of(context).pop();
@@ -88,7 +90,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                     style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.w500,
-                        fontSize: 20),
+                        fontSize: height > 700 ? 20 : 18),
                   ),
                   CircleAvatar(
                     radius: 22,
@@ -116,7 +118,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
               ),
               SizedBox(height: 30),
               Container(
-                height: 200,
+                height: height > 700 ? 200 : 180,
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
@@ -144,7 +146,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                 strokeWidth: 2,
                                 dash: <int>[12, 8]))
                         : Container(
-                            height: 200,
+                            height: height > 700 ? 200 : 180,
                             width: MediaQuery.of(context).size.width,
                             child: Center(
                                 child: Stack(
@@ -218,6 +220,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                               ],
                             )),
                             decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
                               image: new DecorationImage(
                                 image: new ExactAssetImage(
                                     'assets/dummies/cardbg.png'),
@@ -238,7 +241,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                   ),
                 ],
               ),
-              SizedBox(height: 40),
+              SizedBox(height: height > 700 ? 40 : 20),
               GestureDetector(
                 onTap: () {
                   setState(() {
@@ -299,7 +302,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                   ),
                 ),
               ),
-              SizedBox(height: 20),
+              SizedBox(height: height > 700 ? 20 : 5),
               GestureDetector(
                 onTap: () {
                   setState(() {
@@ -360,7 +363,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                   ),
                 ),
               ),
-              SizedBox(height: 60),
+              SizedBox(height: height > 700 ? 60 : 40),
               GestureDetector(
                 onTap: () {
                   if (_isSelcted) {
@@ -392,8 +395,9 @@ class _PaymentScreenState extends State<PaymentScreen> {
                   }
                 },
                 child: Container(
-                  height: 80,
-                  width: MediaQuery.of(context).size.width,
+                  height: height > 700 ? 80 : 60,
+                  width: MediaQuery.of(context).size.width -
+                      (height > 700 ? 0 : 50),
                   child: Padding(
                     padding: const EdgeInsets.all(15.0),
                     child: Center(
@@ -402,7 +406,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                         style: TextStyle(
                           color: _isSelcted ? Colors.white : Colors.grey,
                           fontWeight: FontWeight.w600,
-                          fontSize: 16,
+                          fontSize: height > 700 ? 16 : 14,
                         ),
                       ),
                     ),
