@@ -13,6 +13,8 @@ class NotificationWidget extends StatefulWidget {
 class _NotificationWidgetState extends State<NotificationWidget> {
   @override
   Widget build(BuildContext context) {
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
     return GestureDetector(
       onTap: () {
         setState(() {
@@ -56,12 +58,12 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                         ),
                       ],
                     ),
-                    SizedBox(height: 10),
+                    SizedBox(height: height > 700 ? 10 : 8),
                     Text(
                       widget.element.mainName,
                       style: TextStyle(
                         color: Colors.black,
-                        fontSize: 16,
+                        fontSize: height > 700 ? 16 : 14,
                         fontWeight: FontWeight.w500,
                       ),
                     ),
@@ -72,7 +74,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                         widget.element.description,
                         style: TextStyle(
                           color: Colors.grey,
-                          fontSize: 14,
+                          fontSize: height > 700 ? 14 : 12,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
@@ -83,7 +85,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                   backgroundColor: !currentUser.notification[widget.index].seen
                       ? Colors.black
                       : Colors.transparent,
-                  radius: 6,
+                  radius: 4,
                 )
               ],
             ),

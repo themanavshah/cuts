@@ -11,6 +11,8 @@ class ConfirmModalSheet extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ScopedReader watch) {
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
     //also adding the logic if request was not processed...
     final hourProvider = watch(selectedHourProvider);
     final minProvider = watch(selectedMinProvider);
@@ -37,39 +39,70 @@ class ConfirmModalSheet extends ConsumerWidget {
         ),
       ),
       child: Padding(
-        padding: const EdgeInsets.only(
+        padding: EdgeInsets.only(
           left: 15.0,
           right: 15.0,
           bottom: 30,
-          top: 30,
+          top: width > 600
+              ? height > 1050
+                  ? 110
+                  : 50
+              : 30,
         ),
         child: Center(
           child: Column(
             children: [
               Container(
+                height: height > 700
+                    ? width > 600
+                        ? height > 1050
+                            ? 220
+                            : 180
+                        : 160
+                    : 120,
                 child: Image.asset("assets/dummies/clap.png"),
               ),
-              SizedBox(height: 10),
+              SizedBox(height: height > 700 ? 10 : 5),
               Text(
                 'Congratulations',
                 style: TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.w500,
-                    fontSize: 22),
+                    fontSize: height > 700
+                        ? width > 600
+                            ? height > 1050
+                                ? 26
+                                : 24
+                            : 22
+                        : 18),
               ),
-              SizedBox(height: 25),
+              SizedBox(height: height > 700 ? 25 : 18),
               Container(
-                width: MediaQuery.of(context).size.width - 170,
+                width: MediaQuery.of(context).size.width -
+                    (height > 1050 ? 300 : 170),
                 child: Text(
                   'You have successfully ordered our services. For further information, you can see at the notification',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       color: Colors.grey,
                       fontWeight: FontWeight.w300,
-                      fontSize: 14),
+                      fontSize: height > 700
+                          ? width > 600
+                              ? height > 1050
+                                  ? 20
+                                  : 16
+                              : 14
+                          : 12),
                 ),
               ),
-              SizedBox(height: 50),
+              SizedBox(
+                  height: height > 700
+                      ? width > 600
+                          ? height > 1050
+                              ? 100
+                              : 70
+                          : 50
+                      : 35),
               GestureDetector(
                 onTap: () {
                   context.read(pageindex).state = page.home;
@@ -82,8 +115,9 @@ class ConfirmModalSheet extends ConsumerWidget {
                   );
                 },
                 child: Container(
-                  height: 80,
-                  width: MediaQuery.of(context).size.width - 100,
+                  height: height > 700 ? 80 : 60,
+                  width: MediaQuery.of(context).size.width -
+                      (height > 1050 ? 160 : 100),
                   child: Padding(
                     padding: const EdgeInsets.all(15.0),
                     child: Center(
@@ -98,7 +132,7 @@ class ConfirmModalSheet extends ConsumerWidget {
                     ),
                   ),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: BorderRadius.circular(height > 700 ? 20 : 15),
                     color: Colors.orange,
                   ),
                 ),

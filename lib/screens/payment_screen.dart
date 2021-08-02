@@ -53,30 +53,32 @@ class _PaymentScreenState extends State<PaymentScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
     _cardNumberFormatter(1234567890123456);
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.only(
+        padding: EdgeInsets.only(
           bottom: 40,
-          left: 30,
-          right: 30,
+          left: height > 1050 ? 60 : 30,
+          right: height > 1050 ? 60 : 30,
           top: 15,
         ),
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(height: 50),
+              SizedBox(height: height > 700 ? 50 : 25),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   CircleAvatar(
-                    radius: 22,
+                    radius: height > 700 ? 22 : 18,
                     backgroundColor: Colors.grey.withOpacity(0.2),
                     child: IconButton(
                       icon: Icon(
                         Icons.arrow_back_ios_rounded,
                         color: Colors.black,
-                        size: 18,
+                        size: height > 700 ? 18 : 14,
                       ),
                       onPressed: () {
                         Navigator.of(context).pop();
@@ -88,7 +90,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                     style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.w500,
-                        fontSize: 20),
+                        fontSize: height > 700 ? 20 : 18),
                   ),
                   CircleAvatar(
                     radius: 22,
@@ -101,7 +103,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                   ),
                 ],
               ),
-              SizedBox(height: 50),
+              SizedBox(height: height > 1050 ? 130 : 50),
               Row(
                 children: [
                   Text(
@@ -109,14 +111,20 @@ class _PaymentScreenState extends State<PaymentScreen> {
                     style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.w500,
-                      fontSize: 20,
+                      fontSize: width > 600 ? 24 : 20,
                     ),
                   ),
                 ],
               ),
               SizedBox(height: 30),
               Container(
-                height: 200,
+                height: height > 700
+                    ? width > 600
+                        ? height > 1050
+                            ? 340
+                            : 250
+                        : 200
+                    : 180,
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
@@ -125,15 +133,20 @@ class _PaymentScreenState extends State<PaymentScreen> {
                 child: Center(
                     child: currentUser.card == null
                         ? Container(
-                            height: 160,
-                            width: MediaQuery.of(context).size.width - 110,
+                            height: width > 600
+                                ? height > 1050
+                                    ? 260
+                                    : 200
+                                : 160,
+                            width: MediaQuery.of(context).size.width -
+                                (height > 1050 ? 190 : 110),
                             child: Center(
                               child: Text(
                                 "Add a card",
                                 style: TextStyle(
                                   color: Colors.grey,
                                   fontWeight: FontWeight.w400,
-                                  fontSize: 16,
+                                  fontSize: width > 600 ? 18 : 16,
                                 ),
                               ),
                             ),
@@ -144,7 +157,13 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                 strokeWidth: 2,
                                 dash: <int>[12, 8]))
                         : Container(
-                            height: 200,
+                            height: height > 700
+                                ? width > 600
+                                    ? height > 1050
+                                        ? 340
+                                        : 250
+                                    : 200
+                                : 180,
                             width: MediaQuery.of(context).size.width,
                             child: Center(
                                 child: Stack(
@@ -161,7 +180,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                         style: TextStyle(
                                           color: Colors.white,
                                           fontWeight: FontWeight.w400,
-                                          fontSize: 14,
+                                          fontSize: height > 1050 ? 16 : 14,
                                         ),
                                       ),
                                       SizedBox(height: 8),
@@ -170,18 +189,18 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                         style: TextStyle(
                                           color: Colors.white,
                                           fontWeight: FontWeight.w500,
-                                          fontSize: 22,
+                                          fontSize: height > 1050 ? 28 : 22,
                                         ),
                                       ),
                                     ],
                                   ),
                                 ),
                                 Positioned(
-                                  bottom: 45,
+                                  bottom: height > 1050 ? 60 : 45,
                                   left: 40,
                                   child: Container(
-                                      height: 25,
-                                      width: 32,
+                                      height: height > 1050 ? 35 : 25,
+                                      width: height > 1050 ? 50 : 32,
                                       decoration: BoxDecoration(
                                         image: new DecorationImage(
                                           image: new ExactAssetImage(
@@ -199,25 +218,26 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                     style: TextStyle(
                                       color: Colors.white,
                                       fontWeight: FontWeight.w400,
-                                      fontSize: 13,
+                                      fontSize: height > 1050 ? 20 : 13,
                                     ),
                                   ),
                                 ),
                                 Positioned(
                                   right: 40,
-                                  top: 40,
+                                  top: height > 1050 ? 60 : 40,
                                   child: Text(
                                     cardTypere(currentUser.card.cardType),
                                     style: TextStyle(
                                       color: Colors.white,
                                       fontWeight: FontWeight.w700,
-                                      fontSize: 23,
+                                      fontSize: height > 1050 ? 32 : 23,
                                     ),
                                   ),
                                 ),
                               ],
                             )),
                             decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
                               image: new DecorationImage(
                                 image: new ExactAssetImage(
                                     'assets/dummies/cardbg.png'),
@@ -225,20 +245,25 @@ class _PaymentScreenState extends State<PaymentScreen> {
                               ),
                             ))),
               ),
-              SizedBox(height: 50),
+              SizedBox(
+                  height: width > 600
+                      ? height > 1050
+                          ? 100
+                          : 80
+                      : 50),
               Row(
                 children: [
                   Text(
-                    "Paymnet method",
+                    "Payment method",
                     style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.w500,
-                      fontSize: 20,
+                      fontSize: width > 600 ? 25 : 20,
                     ),
                   ),
                 ],
               ),
-              SizedBox(height: 40),
+              SizedBox(height: height > 700 ? 40 : 20),
               GestureDetector(
                 onTap: () {
                   setState(() {
@@ -256,10 +281,11 @@ class _PaymentScreenState extends State<PaymentScreen> {
                         Row(
                           children: [
                             CircleAvatar(
+                              radius: height > 1050 ? 30 : 22,
                               backgroundColor: Colors.orange.withOpacity(0.1),
                               child: Icon(
                                 Icons.online_prediction_rounded,
-                                size: 18,
+                                size: height > 1050 ? 22 : 18,
                                 color: Colors.orange,
                               ),
                             ),
@@ -269,7 +295,11 @@ class _PaymentScreenState extends State<PaymentScreen> {
                               style: TextStyle(
                                 color: Colors.black,
                                 fontWeight: FontWeight.w400,
-                                fontSize: 16,
+                                fontSize: width > 600
+                                    ? height > 1050
+                                        ? 22
+                                        : 18
+                                    : 16,
                               ),
                             ),
                           ],
@@ -299,7 +329,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                   ),
                 ),
               ),
-              SizedBox(height: 20),
+              SizedBox(height: height > 700 ? 20 : 5),
               GestureDetector(
                 onTap: () {
                   setState(() {
@@ -317,10 +347,11 @@ class _PaymentScreenState extends State<PaymentScreen> {
                         Row(
                           children: [
                             CircleAvatar(
+                              radius: height > 1050 ? 30 : 22,
                               backgroundColor: Colors.orange.withOpacity(0.1),
                               child: Icon(
                                 Icons.payment_rounded,
-                                size: 18,
+                                size: height > 1050 ? 22 : 18,
                                 color: Colors.orange,
                               ),
                             ),
@@ -330,7 +361,11 @@ class _PaymentScreenState extends State<PaymentScreen> {
                               style: TextStyle(
                                 color: Colors.black,
                                 fontWeight: FontWeight.w400,
-                                fontSize: 16,
+                                fontSize: width > 600
+                                    ? height > 1050
+                                        ? 22
+                                        : 18
+                                    : 16,
                               ),
                             ),
                           ],
@@ -360,7 +395,12 @@ class _PaymentScreenState extends State<PaymentScreen> {
                   ),
                 ),
               ),
-              SizedBox(height: 60),
+              SizedBox(
+                  height: height > 700
+                      ? width > 600
+                          ? 80
+                          : 60
+                      : 40),
               GestureDetector(
                 onTap: () {
                   if (_isSelcted) {
@@ -392,8 +432,13 @@ class _PaymentScreenState extends State<PaymentScreen> {
                   }
                 },
                 child: Container(
-                  height: 80,
-                  width: MediaQuery.of(context).size.width,
+                  height: height > 700
+                      ? height > 1050
+                          ? 100
+                          : 80
+                      : 60,
+                  width: MediaQuery.of(context).size.width -
+                      (height > 700 ? 0 : 50),
                   child: Padding(
                     padding: const EdgeInsets.all(15.0),
                     child: Center(
@@ -402,7 +447,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                         style: TextStyle(
                           color: _isSelcted ? Colors.white : Colors.grey,
                           fontWeight: FontWeight.w600,
-                          fontSize: 16,
+                          fontSize: height > 700 ? 16 : 14,
                         ),
                       ),
                     ),

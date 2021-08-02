@@ -9,14 +9,16 @@ class HomeOptionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
     return Container(
       child: Column(
         children: [
           CircleAvatar(
-            radius: 60,
+            radius: height > 700 ? 60 : 45,
             backgroundColor: Colors.grey.withOpacity(0.2),
             child: CircleAvatar(
-              radius: 30,
+              radius: height > 700 ? 30 : 25,
               backgroundColor: Colors.transparent,
               backgroundImage: AssetImage(actionList[index].path.toString()),
             ),
@@ -26,7 +28,7 @@ class HomeOptionWidget extends StatelessWidget {
               style: TextStyle(
                 color: Colors.black,
                 fontWeight: FontWeight.w500,
-                fontSize: 16,
+                fontSize: height > 700 ? 16 : 13,
               ))
         ],
       ),

@@ -9,27 +9,29 @@ class EditProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.only(
+        padding: EdgeInsets.only(
           left: 25.0,
           right: 25.0,
-          top: 30,
+          top: height > 700 ? 30 : 0,
         ),
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(height: 30),
+              SizedBox(height: height > 700 ? 30 : 25),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   CircleAvatar(
-                    radius: 25,
+                    radius: height > 700 ? 25 : 20,
                     backgroundColor: Colors.grey.withOpacity(0.2),
                     child: IconButton(
                         icon: Icon(
                           Icons.arrow_back_ios_rounded,
-                          size: 18,
+                          size: height > 700 ? 18 : 14,
                           color: Colors.black,
                         ),
                         onPressed: () {
@@ -39,7 +41,7 @@ class EditProfileScreen extends StatelessWidget {
                   Text(
                     "Profile",
                     style: TextStyle(
-                      fontSize: 22,
+                      fontSize: height > 700 ? 22 : 18,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
@@ -51,45 +53,60 @@ class EditProfileScreen extends StatelessWidget {
                       onPressed: null),
                 ],
               ),
-              SizedBox(height: 65),
+              SizedBox(
+                  height: height > 700
+                      ? height > 1050
+                          ? 130
+                          : 65
+                      : 35),
               CircleAvatar(
-                radius: 65,
+                radius: height > 700 ? 65 : 45,
                 backgroundImage: AssetImage(currentUser.image),
               ),
               SizedBox(height: 30),
               Text(
                 currentUser.name,
                 style: TextStyle(
-                  fontSize: 24,
+                  fontSize: height > 700 ? 24 : 20,
                   fontWeight: FontWeight.w500,
                 ),
               ),
-              SizedBox(height: 12),
+              SizedBox(height: height > 700 ? 10 : 6),
               Text(
                 "+91 ${currentUser.phoneNumber}",
                 style: TextStyle(
-                    fontSize: 13,
+                    fontSize: height > 700 ? 13 : 10,
                     fontWeight: FontWeight.w400,
                     color: Colors.grey),
               ),
-              SizedBox(height: 70),
-              Row(
-                children: [
-                  Text(
-                    "Full name",
-                    style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.grey),
-                  ),
-                ],
-              ),
-              SizedBox(height: 15),
+              SizedBox(
+                  height: height > 700
+                      ? height > 1050
+                          ? 100
+                          : 70
+                      : 50),
               Container(
-                height: 80,
-                width: MediaQuery.of(context).size.width,
+                width: MediaQuery.of(context).size.width -
+                    (height > 1000 ? 200 : 0),
+                child: Row(
+                  children: [
+                    Text(
+                      "Full name",
+                      style: TextStyle(
+                          fontSize: height > 700 ? 15 : 12,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.grey),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: height > 700 ? 15 : 12),
+              Container(
+                height: height > 700 ? 80 : 60,
+                width: MediaQuery.of(context).size.width -
+                    (height > 1000 ? 200 : 0),
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: BorderRadius.circular(height > 700 ? 20 : 15),
                   color: Colors.grey.withOpacity(0.2),
                 ),
                 child: Center(
@@ -127,24 +144,29 @@ class EditProfileScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 30),
-              Row(
-                children: [
-                  Text(
-                    "phone number",
-                    style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.grey),
-                  ),
-                ],
-              ),
-              SizedBox(height: 15),
+              SizedBox(height: height > 700 ? 30 : 20),
               Container(
-                height: 80,
-                width: MediaQuery.of(context).size.width,
+                width: MediaQuery.of(context).size.width -
+                    (height > 1000 ? 200 : 0),
+                child: Row(
+                  children: [
+                    Text(
+                      "phone number",
+                      style: TextStyle(
+                          fontSize: height > 700 ? 15 : 12,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.grey),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: height > 700 ? 15 : 12),
+              Container(
+                height: height > 700 ? 80 : 60,
+                width: MediaQuery.of(context).size.width -
+                    (height > 1000 ? 200 : 0),
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: BorderRadius.circular(height > 700 ? 20 : 15),
                   color: Colors.grey.withOpacity(0.2),
                 ),
                 child: Center(
@@ -182,7 +204,12 @@ class EditProfileScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 75),
+              SizedBox(
+                  height: height > 700
+                      ? height > 1150
+                          ? 95
+                          : 75
+                      : 55),
               GestureDetector(
                 onTap: () {
                   if (_phonenumberController.text.isNotEmpty) {
@@ -204,8 +231,9 @@ class EditProfileScreen extends StatelessWidget {
                   }
                 },
                 child: Container(
-                  height: 80,
-                  width: MediaQuery.of(context).size.width,
+                  height: height > 700 ? 80 : 60,
+                  width: MediaQuery.of(context).size.width -
+                      (height > 1000 ? 200 : 0),
                   child: Padding(
                     padding: const EdgeInsets.all(15.0),
                     child: Center(
@@ -220,7 +248,7 @@ class EditProfileScreen extends StatelessWidget {
                     ),
                   ),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: BorderRadius.circular(height > 700 ? 20 : 15),
                     color: Colors.orange,
                   ),
                 ),

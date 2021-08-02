@@ -25,19 +25,21 @@ class _ActionScreenState extends State<ActionScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: Container(
         child: Padding(
-          padding: const EdgeInsets.only(
-            bottom: 90,
-            left: 30,
-            right: 30,
-            top: 15,
+          padding: EdgeInsets.only(
+            bottom: 0,
+            left: height > 700 ? 30 : 20,
+            right: height > 700 ? 30 : 20,
+            top: 0,
           ),
           child: SingleChildScrollView(
             child: Column(
               children: [
-                SizedBox(height: 70),
+                SizedBox(height: height > 700 ? 70 : 40),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -85,12 +87,17 @@ class _ActionScreenState extends State<ActionScreen> {
                 //     ),
                 //   ],
                 // ),
-                SizedBox(height: 10),
+                SizedBox(
+                    height: height > 700
+                        ? width > 700
+                            ? 60
+                            : 10
+                        : 30),
                 Container(
                   height:
                       ((120 * reqAlgoBarb.length) + (15 * reqAlgoBarb.length))
                               .toDouble() +
-                          50,
+                          (height > 700 ? 50 : 50),
                   child: ListView.builder(
                     physics: const NeverScrollableScrollPhysics(),
                     //shrinkWrap: true,

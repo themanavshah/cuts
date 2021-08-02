@@ -8,9 +8,11 @@ class MarkerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
     return Container(
-      height: 100,
-      width: 230,
+      height: height > 700 ? 100 : 60,
+      width: height > 700 ? 230 : 170,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
         color: Colors.white,
@@ -22,35 +24,35 @@ class MarkerWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
-              width: 60,
-              height: 60,
+              width: height > 700 ? 60 : 40,
+              height: height > 700 ? 60 : 40,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
+                  borderRadius: BorderRadius.circular(height > 700 ? 15 : 10),
                   color: Colors.white,
                   image: DecorationImage(
                     image: AssetImage(barber.image),
                     fit: BoxFit.cover,
                   )),
             ),
-            SizedBox(width: 20),
+            SizedBox(width: height > 700 ? 20 : 15),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: 18),
+                SizedBox(height: height > 700 ? 18 : 5),
                 Text(
                   barber.name,
                   style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.w500,
-                      fontSize: 22),
+                      fontSize: height > 700 ? 22 : 16),
                 ),
-                SizedBox(height: 5),
+                SizedBox(height: height > 700 ? 5 : 2),
                 Text(
                   '${barber.distance} km away',
                   style: TextStyle(
                       color: Colors.grey,
                       fontWeight: FontWeight.w400,
-                      fontSize: 18),
+                      fontSize: height > 700 ? 18 : 12),
                 ),
               ],
             )

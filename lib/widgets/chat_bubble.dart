@@ -9,6 +9,8 @@ class ChatBubble extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
     print(message.length);
     return Padding(
       padding: const EdgeInsets.only(
@@ -18,13 +20,27 @@ class ChatBubble extends StatelessWidget {
         alignment: barber.id == sentBy ? Alignment.topLeft : Alignment.topRight,
         child: Container(
           width: !(message.length > 30)
-              ? ((message.length * 8) + 50).toDouble()
+              ? ((message.length * 8) +
+                      (height > 700
+                          ? width > 600
+                              ? 100
+                              : 50
+                          : 40))
+                  .toDouble()
               : 280,
           child: Center(
             child: Padding(
-              padding: const EdgeInsets.only(
-                top: 15.0,
-                bottom: 15,
+              padding: EdgeInsets.only(
+                top: height > 700
+                    ? width > 600
+                        ? 17
+                        : 15.0
+                    : 12,
+                bottom: height > 700
+                    ? width > 600
+                        ? 17
+                        : 15
+                    : 12,
                 right: 20,
                 left: 20,
               ),
@@ -33,20 +49,24 @@ class ChatBubble extends StatelessWidget {
                 //softWrap: false,
                 style: TextStyle(
                   color: barber.id == sentBy ? Colors.white : Colors.black,
-                  fontSize: 15,
+                  fontSize: height > 700
+                      ? width > 600
+                          ? 18
+                          : 15
+                      : 14,
                 ),
               ),
             ),
           ),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(18),
-                topRight: Radius.circular(18),
+                topLeft: Radius.circular(height > 700 ? 18 : 14),
+                topRight: Radius.circular(height > 700 ? 18 : 14),
                 bottomLeft: barber.id == sentBy
                     ? Radius.circular(0)
-                    : Radius.circular(18),
+                    : Radius.circular(height > 700 ? 18 : 14),
                 bottomRight: barber.id == sentBy
-                    ? Radius.circular(18)
+                    ? Radius.circular(height > 700 ? 18 : 14)
                     : Radius.circular(0)),
             color: !(barber.id == sentBy) ? Colors.white : Colors.orange,
           ),

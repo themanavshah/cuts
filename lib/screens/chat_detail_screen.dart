@@ -70,8 +70,19 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
     super.initState();
   }
 
+  // ScrollController _scrollController = ScrollController();
+
+  // _scrollToBottom() {
+  //   if (msgs.isNotEmpty) {
+  //     _scrollController.jumpTo(_scrollController.position.maxScrollExtent);
+  //   }
+  // }
+
   @override
   Widget build(BuildContext context) {
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
+    print(height);
     var usertemp = currentUser.chatbarber
         .where((element) => element.barber.id == widget.barber.id);
     print("UT; " + usertemp.isEmpty.toString());
@@ -98,11 +109,11 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
                   //height: MediaQuery.of(context).size.height,
                   color: Colors.white,
                   child: Padding(
-                    padding: const EdgeInsets.only(
-                      left: 15.0,
-                      right: 30,
-                      bottom: 25,
-                      top: 50,
+                    padding: EdgeInsets.only(
+                      left: height > 700 ? 15.0 : 10,
+                      right: height > 700 ? 30 : 20,
+                      bottom: height > 700 ? 35 : 20,
+                      top: height > 700 ? 50 : 35,
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -113,15 +124,15 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
                               icon: Icon(
                                 Icons.arrow_back_ios_rounded,
                                 color: Colors.black,
-                                size: 25,
+                                size: height > 700 ? 25 : 18,
                               ),
                               onPressed: () {
                                 Navigator.of(context).pop();
                               },
                             ),
-                            SizedBox(width: 10),
+                            SizedBox(width: height > 700 ? 10 : 5),
                             CircleAvatar(
-                              radius: 28,
+                              radius: height > 700 ? 28 : 22,
                               backgroundImage: AssetImage(widget.barber.image),
                             ),
                             SizedBox(width: 18),
@@ -134,7 +145,7 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
                                   style: TextStyle(
                                     color: Colors.black,
                                     fontWeight: FontWeight.w600,
-                                    fontSize: 20,
+                                    fontSize: height > 700 ? 20 : 16,
                                   ),
                                 ),
                                 SizedBox(height: 3),
@@ -143,7 +154,7 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
                                   style: TextStyle(
                                     color: Colors.grey,
                                     fontWeight: FontWeight.w500,
-                                    fontSize: 14,
+                                    fontSize: height > 700 ? 14 : 12,
                                   ),
                                 )
                               ],
@@ -151,13 +162,13 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
                           ],
                         ),
                         CircleAvatar(
-                          radius: 25,
+                          radius: height > 700 ? 25 : 20,
                           backgroundColor: Colors.orange[50],
                           child: IconButton(
                             icon: Icon(
                               Icons.call,
                               color: Colors.orange,
-                              size: 18,
+                              size: height > 700 ? 18 : 14,
                             ),
                             onPressed: () {
                               print("call");
@@ -171,11 +182,18 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
                 Padding(
                   padding: const EdgeInsets.all(18.0),
                   child: Container(
-                    height: MediaQuery.of(context).size.height - 220,
+                    height:
+                        WidgetsBinding.instance.window.viewInsets.bottom > 0.0
+                            ? MediaQuery.of(context).size.height -
+                                (height > 700 ? 520 : 450)
+                            : MediaQuery.of(context).size.height -
+                                (height > 700 ? 180 : 180),
                     child: ListView.builder(
                       //reverse: true,
+                      //controller: _scrollController,
                       shrinkWrap: true,
                       itemBuilder: (BuildContext context, int index) {
+                        //_scrollToBottom();
                         return ChatBubble(
                           message: msgs[index].data,
                           barber: widget.barber,
@@ -191,90 +209,108 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
           ),
           Positioned(
             bottom: 0,
+            //left: height
             child: Padding(
-              padding: const EdgeInsets.only(
-                right: 20.0,
-                left: 20,
-                bottom: 10,
+              padding: EdgeInsets.only(
+                right: height > 700 ? 20.0 : 12,
+                left: height > 700 ? 20 : 12,
+                bottom: height > 700 ? 20 : 0,
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  CircleAvatar(
-                      backgroundColor: Colors.orange,
-                      child: IconButton(
-                        icon: Icon(
-                          Icons.add,
-                          color: Colors.white,
+              child: Container(
+                width: MediaQuery.of(context).size.width -
+                    (height > 1050
+                        ? 40
+                        : height > 700
+                            ? 50
+                            : 15),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    CircleAvatar(
+                        radius: height > 700 ? 24 : 20,
+                        backgroundColor: Colors.orange,
+                        child: IconButton(
+                          icon: Icon(
+                            Icons.add,
+                            size: height > 700 ? 20 : 14,
+                            color: Colors.white,
+                          ),
+                          onPressed: () {},
+                        )),
+                    SizedBox(width: height > 700 ? 25 : 20),
+                    Container(
+                      height: height > 700 ? 60 : 50,
+                      width: width > 600 ? 590 : 230,
+                      child: Padding(
+                        padding: EdgeInsets.only(
+                          top: height > 700 ? 8.0 : 20,
+                          right: 15,
+                          left: 15,
+                          bottom: 10,
                         ),
-                        onPressed: () {},
-                      )),
-                  SizedBox(width: 25),
-                  Container(
-                    height: 60,
-                    width: 250,
-                    child: Padding(
-                      padding: const EdgeInsets.only(
-                        top: 10.0,
-                        right: 15,
-                        left: 15,
-                        bottom: 10,
+                        child: Center(
+                          child: TextFormField(
+                            controller: _controller,
+                            cursorColor: Colors.black,
+                            cursorWidth: 1,
+                            decoration: InputDecoration(
+                                border: InputBorder.none,
+                                focusedBorder: InputBorder.none,
+                                enabledBorder: InputBorder.none,
+                                errorBorder: InputBorder.none,
+                                disabledBorder: InputBorder.none,
+                                hintText: "Type a message",
+                                hintStyle: TextStyle(
+                                  fontSize: 14,
+                                )),
+                          ),
+                        ),
                       ),
-                      child: Center(
-                        child: TextFormField(
-                          controller: _controller,
-                          decoration: InputDecoration(
-                              border: InputBorder.none,
-                              focusedBorder: InputBorder.none,
-                              enabledBorder: InputBorder.none,
-                              errorBorder: InputBorder.none,
-                              disabledBorder: InputBorder.none,
-                              hintText: "Type a message"),
-                        ),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: Colors.white,
                       ),
                     ),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: Colors.white,
-                    ),
-                  ),
-                  SizedBox(width: 25),
-                  CircleAvatar(
-                      backgroundColor: Colors.orange,
-                      child: IconButton(
-                        icon: Icon(
-                          Icons.send_rounded,
-                          color: Colors.white,
-                          size: 14,
-                        ),
-                        onPressed: () {
-                          // print(currentUser.chatbarber.where(
-                          //     (element) => element.id == widget.barber.id));
-                          setState(() {
-                            if (_controller.text.trim().isNotEmpty) {
-                              if (!barberCheck(
-                                  currentUser.chatbarber, widget.barber)) {
-                                currentUser.chatbarber
-                                    .add(ChatBarber(barber: widget.barber));
+                    SizedBox(width: 20),
+                    CircleAvatar(
+                        radius: height > 700 ? 24 : 20,
+                        backgroundColor: Colors.orange,
+                        child: IconButton(
+                          icon: Icon(
+                            Icons.send_rounded,
+                            color: Colors.white,
+                            size: height > 700 ? 20 : 14,
+                          ),
+                          onPressed: () {
+                            // print(currentUser.chatbarber.where(
+                            //     (element) => element.id == widget.barber.id));
+                            setState(() {
+                              if (_controller.text.trim().isNotEmpty) {
+                                if (!barberCheck(
+                                    currentUser.chatbarber, widget.barber)) {
+                                  currentUser.chatbarber
+                                      .add(ChatBarber(barber: widget.barber));
+                                }
+                                var usertemp = currentUser.chatbarber.where(
+                                    (element) =>
+                                        element.barber.id == widget.barber.id);
+                                usertemp.first.messageList.insert(
+                                    usertemp.first.messageList.length,
+                                    Message(
+                                      data: _controller.text,
+                                      sentbyid: currentUser.userId,
+                                      senttoid: widget.barber.id,
+                                    ));
+                                sendMessage(_controller.text);
+                                _controller.clear();
                               }
-                              var usertemp = currentUser.chatbarber.where(
-                                  (element) =>
-                                      element.barber.id == widget.barber.id);
-                              usertemp.first.messageList.insert(
-                                  usertemp.first.messageList.length,
-                                  Message(
-                                    data: _controller.text,
-                                    sentbyid: currentUser.userId,
-                                    senttoid: widget.barber.id,
-                                  ));
-                              sendMessage(_controller.text);
-                              _controller.clear();
-                            }
-                          });
-                          print(currentUser.chatbarber);
-                        },
-                      )),
-                ],
+                              //_scrollToBottom();
+                            });
+                            print(currentUser.chatbarber);
+                          },
+                        )),
+                  ],
+                ),
               ),
             ),
           ),

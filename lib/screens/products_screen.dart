@@ -19,182 +19,206 @@ class ProductScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ScopedReader watch) {
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
     final amount = watch(checkoutAmountProvider);
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.only(
+        padding: EdgeInsets.only(
           bottom: 40,
-          left: 30,
-          right: 30,
+          left: height > 1050 ? 60 : 30,
+          right: height > 1050 ? 60 : 30,
           top: 15,
         ),
-        child: Column(
-          children: [
-            SizedBox(height: 50),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                CircleAvatar(
-                  radius: 22,
-                  backgroundColor: Colors.grey.withOpacity(0.2),
-                  child: IconButton(
-                    icon: Icon(
-                      Icons.arrow_back_ios_rounded,
-                      color: Colors.black,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(height: height > 700 ? 50 : 30),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  CircleAvatar(
+                    radius: height > 700 ? 22 : 18,
+                    backgroundColor: Colors.grey.withOpacity(0.2),
+                    child: IconButton(
+                      icon: Icon(
+                        Icons.arrow_back_ios_rounded,
+                        color: Colors.black,
+                        size: height > 700 ? 18 : 14,
+                      ),
+                      onPressed: () {
+                        amount.state = 0;
+                        setToFalse(productsList);
+                        Navigator.of(context).pop();
+                      },
+                    ),
+                  ),
+                  Text(
+                    'Service',
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.w500,
+                        fontSize: height > 700 ? 20 : 16),
+                  ),
+                  CircleAvatar(
+                    radius: 22,
+                    backgroundColor: Colors.transparent,
+                    child: Icon(
+                      Icons.more_vert,
+                      color: Colors.transparent,
                       size: 18,
                     ),
-                    onPressed: () {
-                      amount.state = 0;
-                      setToFalse(productsList);
-                      Navigator.of(context).pop();
-                    },
                   ),
-                ),
-                Text(
-                  'Service',
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 20),
-                ),
-                CircleAvatar(
-                  radius: 22,
-                  backgroundColor: Colors.transparent,
-                  child: Icon(
-                    Icons.more_vert,
-                    color: Colors.transparent,
-                    size: 18,
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(height: 30),
-            Container(
-              height: 100,
-              child: Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Center(
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Note',
-                        style: TextStyle(
-                          color: Colors.orange,
-                          fontWeight: FontWeight.w700,
-                          fontSize: 20,
-                        ),
-                      ),
-                      SizedBox(width: 15),
-                      Container(
-                        width: MediaQuery.of(context).size.width - 165,
-                        child: Text(
-                          'Additional charges may apply in the shop if you want something to be diffrent or additional. Those are the basic charges',
+                ],
+              ),
+              SizedBox(height: height > 1050 ? 120 : 30),
+              Container(
+                height: 100,
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Center(
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Note',
                           style: TextStyle(
                             color: Colors.orange,
+                            fontWeight: FontWeight.w700,
+                            fontSize: height > 700
+                                ? height > 1050
+                                    ? 28
+                                    : 20
+                                : 16,
+                          ),
+                        ),
+                        SizedBox(width: height > 1050 ? 25 : 15),
+                        Container(
+                          width: MediaQuery.of(context).size.width -
+                              (height > 1050 ? 260 : 165),
+                          child: Text(
+                            'Additional charges may apply in the shop if you want something to be diffrent or additional. Those are the basic charges',
+                            style: TextStyle(
+                              height: height > 700 ? 1 : 1.25,
+                              color: Colors.orange,
+                              fontWeight: FontWeight.w500,
+                              fontSize: height > 700
+                                  ? height > 1050
+                                      ? 18
+                                      : 13
+                                  : 12,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(25),
+                  //color: Colors.orange.withOpacity(0.2),
+                  color: Colors.orange[50],
+                ),
+              ),
+              SizedBox(
+                  height: height > 700
+                      ? height > 1050
+                          ? 40
+                          : 0
+                      : 10),
+              Container(
+                height:
+                    ((85 * productsList.length) + (15 * productsList.length))
+                        .toDouble(),
+                child: ListView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
+                  //shrinkWrap: true,
+                  //scrollDirection: Axis.horizontal,
+                  itemCount: productsList.length,
+                  itemBuilder: (BuildContext context, int index) => Padding(
+                      padding: const EdgeInsets.only(bottom: 15),
+                      child: GestureDetector(
+                          onTap: () {
+                            // Navigator.push(
+                            //     context,
+                            //     MaterialPageRoute(
+                            //         builder: (context) => BarberDetailScreen(
+                            //               reqlist: currentUser.nearbyBarber,
+                            //               index: index,
+                            //             )));
+                          },
+                          child: Service(
+                            element: productsList[index],
+                          ))),
+                ),
+              ),
+              SizedBox(height: height > 1050 ? 100 : 40),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      print("payment screen");
+                      if (amount.state > 0) {
+                        setToFalse(productsList);
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    PaymentScreen(barber: barber)));
+                      } else {
+                        print("value = 0");
+                      }
+                    },
+                    child: Container(
+                      height: height > 700 ? 70 : 50,
+                      width: MediaQuery.of(context).size.width -
+                          (height > 1050 ? 240 : 160),
+                      decoration: BoxDecoration(
+                        borderRadius:
+                            BorderRadius.circular(height > 700 ? 20 : 10),
+                        color: amount.state > 0
+                            ? Colors.orange
+                            : Colors.grey.withOpacity(0.2),
+                      ),
+                      child: Center(
+                        child: Text(
+                          'Proceed',
+                          style: TextStyle(
+                            color:
+                                amount.state > 0 ? Colors.white : Colors.grey,
                             fontWeight: FontWeight.w500,
-                            fontSize: 13,
+                            fontSize: height > 700 ? 20 : 15,
                           ),
                         ),
                       ),
-                    ],
-                  ),
-                ),
-              ),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(25),
-                //color: Colors.orange.withOpacity(0.2),
-                color: Colors.orange[50],
-              ),
-            ),
-            SizedBox(height: 20),
-            Container(
-              height: ((70 * productsList.length) + (15 * productsList.length))
-                  .toDouble(),
-              child: ListView.builder(
-                //physics: const NeverScrollableScrollPhysics(),
-                //shrinkWrap: true,
-                //scrollDirection: Axis.horizontal,
-                itemCount: productsList.length,
-                itemBuilder: (BuildContext context, int index) => Padding(
-                    padding: const EdgeInsets.only(bottom: 15),
-                    child: GestureDetector(
-                        onTap: () {
-                          // Navigator.push(
-                          //     context,
-                          //     MaterialPageRoute(
-                          //         builder: (context) => BarberDetailScreen(
-                          //               reqlist: currentUser.nearbyBarber,
-                          //               index: index,
-                          //             )));
-                        },
-                        child: Service(
-                          element: productsList[index],
-                        ))),
-              ),
-            ),
-            SizedBox(height: 40),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    print("payment screen");
-                    if (amount.state > 0) {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  PaymentScreen(barber: barber)));
-                    } else {
-                      print("value = 0");
-                    }
-                  },
-                  child: Container(
-                    height: 70,
-                    width: MediaQuery.of(context).size.width - 160,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: amount.state > 0
-                          ? Colors.orange
-                          : Colors.grey.withOpacity(0.2),
                     ),
-                    child: Center(
-                      child: Text(
-                        'Proceed',
-                        style: TextStyle(
-                          color: amount.state > 0 ? Colors.white : Colors.grey,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 20,
+                  ),
+                  //SizedBox(width: 10),
+                  Container(
+                    height: height > 700 ? 70 : 50,
+                    width: height > 700 ? 80 : 65,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(16),
+                      color: Colors.orange,
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Center(
+                        child: Text(
+                          "₹ ${amount.state}",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w500,
+                              fontSize: height > 700 ? 17 : 14),
                         ),
                       ),
                     ),
                   ),
-                ),
-                //SizedBox(width: 10),
-                Container(
-                  height: 70,
-                  width: 80,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(7),
-                    color: Colors.orange,
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Center(
-                      child: Text(
-                        "₹ ${amount.state}",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w500,
-                            fontSize: 17),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            )
-          ],
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );
