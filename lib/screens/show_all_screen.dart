@@ -62,7 +62,7 @@ class ShowAllScreen extends ConsumerWidget {
                 ),
                 SizedBox(height: width > 600 ? 70 : 30),
                 Container(
-                  height: ((100 * currentUser.nearbyBarber.length) +
+                  height: ((110 * currentUser.nearbyBarber.length) +
                               (15 * currentUser.nearbyBarber.length))
                           .toDouble() +
                       (height > 700 ? 50 : 0),

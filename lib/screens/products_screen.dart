@@ -24,10 +24,10 @@ class ProductScreen extends ConsumerWidget {
     final amount = watch(checkoutAmountProvider);
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.only(
+        padding: EdgeInsets.only(
           bottom: 40,
-          left: 30,
-          right: 30,
+          left: height > 1050 ? 60 : 30,
+          right: height > 1050 ? 60 : 30,
           top: 15,
         ),
         child: SingleChildScrollView(
@@ -71,7 +71,7 @@ class ProductScreen extends ConsumerWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 30),
+              SizedBox(height: height > 1050 ? 120 : 30),
               Container(
                 height: 100,
                 child: Padding(
@@ -85,19 +85,28 @@ class ProductScreen extends ConsumerWidget {
                           style: TextStyle(
                             color: Colors.orange,
                             fontWeight: FontWeight.w700,
-                            fontSize: height > 700 ? 20 : 16,
+                            fontSize: height > 700
+                                ? height > 1050
+                                    ? 28
+                                    : 20
+                                : 16,
                           ),
                         ),
-                        SizedBox(width: 15),
+                        SizedBox(width: height > 1050 ? 25 : 15),
                         Container(
-                          width: MediaQuery.of(context).size.width - 165,
+                          width: MediaQuery.of(context).size.width -
+                              (height > 1050 ? 260 : 165),
                           child: Text(
                             'Additional charges may apply in the shop if you want something to be diffrent or additional. Those are the basic charges',
                             style: TextStyle(
                               height: height > 700 ? 1 : 1.25,
                               color: Colors.orange,
                               fontWeight: FontWeight.w500,
-                              fontSize: height > 700 ? 13 : 12,
+                              fontSize: height > 700
+                                  ? height > 1050
+                                      ? 18
+                                      : 13
+                                  : 12,
                             ),
                           ),
                         ),
@@ -111,7 +120,12 @@ class ProductScreen extends ConsumerWidget {
                   color: Colors.orange[50],
                 ),
               ),
-              SizedBox(height: height > 700 ? 0 : 10),
+              SizedBox(
+                  height: height > 700
+                      ? height > 1050
+                          ? 40
+                          : 0
+                      : 10),
               Container(
                 height:
                     ((85 * productsList.length) + (15 * productsList.length))
@@ -138,7 +152,7 @@ class ProductScreen extends ConsumerWidget {
                           ))),
                 ),
               ),
-              SizedBox(height: 40),
+              SizedBox(height: height > 1050 ? 100 : 40),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -158,7 +172,8 @@ class ProductScreen extends ConsumerWidget {
                     },
                     child: Container(
                       height: height > 700 ? 70 : 50,
-                      width: MediaQuery.of(context).size.width - 160,
+                      width: MediaQuery.of(context).size.width -
+                          (height > 1050 ? 240 : 160),
                       decoration: BoxDecoration(
                         borderRadius:
                             BorderRadius.circular(height > 700 ? 20 : 10),
@@ -184,7 +199,7 @@ class ProductScreen extends ConsumerWidget {
                     height: height > 700 ? 70 : 50,
                     width: height > 700 ? 80 : 65,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(7),
+                      borderRadius: BorderRadius.circular(16),
                       color: Colors.orange,
                     ),
                     child: Padding(

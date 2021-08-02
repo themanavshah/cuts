@@ -166,7 +166,7 @@ class HomeScreen extends ConsumerWidget {
                         child: Container(
                           width: width > 600
                               ? height > 1050
-                                  ? 170
+                                  ? 190
                                   : 160
                               : 120,
                           child: Center(

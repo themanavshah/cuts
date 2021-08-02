@@ -46,7 +46,12 @@ class _RatingScreenState extends State<RatingScreen> {
         ),
         child: Column(
           children: [
-            SizedBox(height: height > 700 ? 50 : 30),
+            SizedBox(
+                height: height > 700
+                    ? height > 1050
+                        ? 100
+                        : 50
+                    : 30),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -67,7 +72,7 @@ class _RatingScreenState extends State<RatingScreen> {
                   style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.w500,
-                      fontSize: 20),
+                      fontSize: height > 1050 ? 28 : 20),
                 ),
                 CircleAvatar(
                   radius: 22,
@@ -80,7 +85,12 @@ class _RatingScreenState extends State<RatingScreen> {
                 ),
               ],
             ),
-            SizedBox(height: height > 700 ? 115 : 60),
+            SizedBox(
+                height: height > 700
+                    ? height > 1050
+                        ? 250
+                        : 115
+                    : 60),
             CircleAvatar(
               radius: height > 700 ? 65 : 40,
               backgroundImage: AssetImage(widget.barber.image),
@@ -137,7 +147,8 @@ class _RatingScreenState extends State<RatingScreen> {
               },
               child: Container(
                 height: height > 700 ? 75 : 60,
-                width: MediaQuery.of(context).size.width - 100,
+                width: MediaQuery.of(context).size.width -
+                    (height > 1050 ? 250 : 100),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(height > 700 ? 20 : 15),
                   color: Colors.orange,

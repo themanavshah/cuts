@@ -209,98 +209,108 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
           ),
           Positioned(
             bottom: 0,
+            //left: height
             child: Padding(
               padding: EdgeInsets.only(
                 right: height > 700 ? 20.0 : 12,
                 left: height > 700 ? 20 : 12,
-                bottom: 10,
+                bottom: height > 700 ? 20 : 0,
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  CircleAvatar(
-                      radius: height > 700 ? 24 : 20,
-                      backgroundColor: Colors.orange,
-                      child: IconButton(
-                        icon: Icon(
-                          Icons.add,
-                          size: height > 700 ? 20 : 14,
-                          color: Colors.white,
+              child: Container(
+                width: MediaQuery.of(context).size.width -
+                    (height > 1050
+                        ? 40
+                        : height > 700
+                            ? 50
+                            : 15),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    CircleAvatar(
+                        radius: height > 700 ? 24 : 20,
+                        backgroundColor: Colors.orange,
+                        child: IconButton(
+                          icon: Icon(
+                            Icons.add,
+                            size: height > 700 ? 20 : 14,
+                            color: Colors.white,
+                          ),
+                          onPressed: () {},
+                        )),
+                    SizedBox(width: height > 700 ? 25 : 20),
+                    Container(
+                      height: height > 700 ? 60 : 50,
+                      width: width > 600 ? 590 : 230,
+                      child: Padding(
+                        padding: EdgeInsets.only(
+                          top: height > 700 ? 8.0 : 20,
+                          right: 15,
+                          left: 15,
+                          bottom: 10,
                         ),
-                        onPressed: () {},
-                      )),
-                  SizedBox(width: height > 700 ? 25 : 20),
-                  Container(
-                    height: height > 700 ? 60 : 50,
-                    width: 230,
-                    child: Padding(
-                      padding: EdgeInsets.only(
-                        top: height > 700 ? 8.0 : 20,
-                        right: 15,
-                        left: 15,
-                        bottom: 10,
+                        child: Center(
+                          child: TextFormField(
+                            controller: _controller,
+                            cursorColor: Colors.black,
+                            cursorWidth: 1,
+                            decoration: InputDecoration(
+                                border: InputBorder.none,
+                                focusedBorder: InputBorder.none,
+                                enabledBorder: InputBorder.none,
+                                errorBorder: InputBorder.none,
+                                disabledBorder: InputBorder.none,
+                                hintText: "Type a message",
+                                hintStyle: TextStyle(
+                                  fontSize: 14,
+                                )),
+                          ),
+                        ),
                       ),
-                      child: Center(
-                        child: TextFormField(
-                          controller: _controller,
-                          cursorColor: Colors.black,
-                          cursorWidth: 1,
-                          decoration: InputDecoration(
-                              border: InputBorder.none,
-                              focusedBorder: InputBorder.none,
-                              enabledBorder: InputBorder.none,
-                              errorBorder: InputBorder.none,
-                              disabledBorder: InputBorder.none,
-                              hintText: "Type a message",
-                              hintStyle: TextStyle(
-                                fontSize: 14,
-                              )),
-                        ),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: Colors.white,
                       ),
                     ),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: Colors.white,
-                    ),
-                  ),
-                  SizedBox(width: 20),
-                  CircleAvatar(
-                      backgroundColor: Colors.orange,
-                      child: IconButton(
-                        icon: Icon(
-                          Icons.send_rounded,
-                          color: Colors.white,
-                          size: 14,
-                        ),
-                        onPressed: () {
-                          // print(currentUser.chatbarber.where(
-                          //     (element) => element.id == widget.barber.id));
-                          setState(() {
-                            if (_controller.text.trim().isNotEmpty) {
-                              if (!barberCheck(
-                                  currentUser.chatbarber, widget.barber)) {
-                                currentUser.chatbarber
-                                    .add(ChatBarber(barber: widget.barber));
+                    SizedBox(width: 20),
+                    CircleAvatar(
+                        radius: height > 700 ? 24 : 20,
+                        backgroundColor: Colors.orange,
+                        child: IconButton(
+                          icon: Icon(
+                            Icons.send_rounded,
+                            color: Colors.white,
+                            size: height > 700 ? 20 : 14,
+                          ),
+                          onPressed: () {
+                            // print(currentUser.chatbarber.where(
+                            //     (element) => element.id == widget.barber.id));
+                            setState(() {
+                              if (_controller.text.trim().isNotEmpty) {
+                                if (!barberCheck(
+                                    currentUser.chatbarber, widget.barber)) {
+                                  currentUser.chatbarber
+                                      .add(ChatBarber(barber: widget.barber));
+                                }
+                                var usertemp = currentUser.chatbarber.where(
+                                    (element) =>
+                                        element.barber.id == widget.barber.id);
+                                usertemp.first.messageList.insert(
+                                    usertemp.first.messageList.length,
+                                    Message(
+                                      data: _controller.text,
+                                      sentbyid: currentUser.userId,
+                                      senttoid: widget.barber.id,
+                                    ));
+                                sendMessage(_controller.text);
+                                _controller.clear();
                               }
-                              var usertemp = currentUser.chatbarber.where(
-                                  (element) =>
-                                      element.barber.id == widget.barber.id);
-                              usertemp.first.messageList.insert(
-                                  usertemp.first.messageList.length,
-                                  Message(
-                                    data: _controller.text,
-                                    sentbyid: currentUser.userId,
-                                    senttoid: widget.barber.id,
-                                  ));
-                              sendMessage(_controller.text);
-                              _controller.clear();
-                            }
-                            //_scrollToBottom();
-                          });
-                          print(currentUser.chatbarber);
-                        },
-                      )),
-                ],
+                              //_scrollToBottom();
+                            });
+                            print(currentUser.chatbarber);
+                          },
+                        )),
+                  ],
+                ),
               ),
             ),
           ),

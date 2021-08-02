@@ -39,6 +39,8 @@ class _OTBottomSheetState extends State<OTBottomSheet> {
 
   @override
   Widget build(BuildContext context) {
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
@@ -51,10 +53,10 @@ class _OTBottomSheetState extends State<OTBottomSheet> {
       // width: 250,
       child: Center(
           child: Padding(
-        padding: const EdgeInsets.only(
-          left: 35.0,
-          right: 35.0,
-          top: 60,
+        padding: EdgeInsets.only(
+          left: height > 1050 ? 80 : 35.0,
+          right: height > 1050 ? 80 : 35.0,
+          top: height > 1050 ? 160 : 60,
         ),
         child: Column(
           children: [
@@ -65,13 +67,13 @@ class _OTBottomSheetState extends State<OTBottomSheet> {
                   style: TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.w500,
-                    fontSize: 24,
+                    fontSize: height > 1050 ? 28 : 20,
                   ),
                 ),
               ],
             ),
             //...
-            SizedBox(height: 40),
+            SizedBox(height: 20),
             GestureDetector(
               onTap: () {
                 setState(() {
@@ -89,20 +91,21 @@ class _OTBottomSheetState extends State<OTBottomSheet> {
                       Row(
                         children: [
                           CircleAvatar(
+                            radius: height > 1050 ? 30 : 18,
                             backgroundColor: Colors.orange.withOpacity(0.1),
                             child: Icon(
                               Icons.pages_rounded,
-                              size: 18,
+                              size: height > 1050 ? 22 : 16,
                               color: Colors.orange,
                             ),
                           ),
-                          SizedBox(width: 20),
+                          SizedBox(width: 15),
                           Text(
                             "Paytm",
                             style: TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.w400,
-                              fontSize: 16,
+                              fontSize: height > 1050 ? 20 : 16,
                             ),
                           ),
                         ],
@@ -131,7 +134,7 @@ class _OTBottomSheetState extends State<OTBottomSheet> {
                 ),
               ),
             ),
-            SizedBox(height: 15),
+            SizedBox(height: height > 700 ? 20 : 8),
             GestureDetector(
               onTap: () {
                 setState(() {
@@ -149,10 +152,11 @@ class _OTBottomSheetState extends State<OTBottomSheet> {
                       Row(
                         children: [
                           CircleAvatar(
+                            radius: height > 1050 ? 30 : 18,
                             backgroundColor: Colors.orange.withOpacity(0.1),
                             child: Icon(
                               Icons.payment_rounded,
-                              size: 18,
+                              size: height > 1050 ? 22 : 16,
                               color: Colors.orange,
                             ),
                           ),
@@ -162,7 +166,7 @@ class _OTBottomSheetState extends State<OTBottomSheet> {
                             style: TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.w400,
-                              fontSize: 16,
+                              fontSize: height > 1050 ? 20 : 16,
                             ),
                           ),
                         ],
@@ -192,7 +196,12 @@ class _OTBottomSheetState extends State<OTBottomSheet> {
                 ),
               ),
             ),
-            SizedBox(height: 50),
+            SizedBox(
+                height: height > 1050
+                    ? 100
+                    : height > 700
+                        ? 50
+                        : 20),
             GestureDetector(
               onTap: () {
                 print("next");
@@ -204,7 +213,7 @@ class _OTBottomSheetState extends State<OTBottomSheet> {
                 }
               },
               child: Container(
-                height: 80,
+                height: height > 700 ? 80 : 60,
                 width: MediaQuery.of(context).size.width,
                 child: Padding(
                   padding: const EdgeInsets.all(15.0),
@@ -220,7 +229,7 @@ class _OTBottomSheetState extends State<OTBottomSheet> {
                   ),
                 ),
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: BorderRadius.circular(height > 700 ? 20 : 15),
                   color:
                       _isSelcted ? Colors.orange : Colors.grey.withOpacity(0.1),
                 ),

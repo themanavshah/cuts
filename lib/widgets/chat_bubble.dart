@@ -20,13 +20,27 @@ class ChatBubble extends StatelessWidget {
         alignment: barber.id == sentBy ? Alignment.topLeft : Alignment.topRight,
         child: Container(
           width: !(message.length > 30)
-              ? ((message.length * 8) + (height > 700 ? 50 : 40)).toDouble()
+              ? ((message.length * 8) +
+                      (height > 700
+                          ? width > 600
+                              ? 100
+                              : 50
+                          : 40))
+                  .toDouble()
               : 280,
           child: Center(
             child: Padding(
               padding: EdgeInsets.only(
-                top: height > 700 ? 15.0 : 12,
-                bottom: height > 700 ? 15 : 12,
+                top: height > 700
+                    ? width > 600
+                        ? 17
+                        : 15.0
+                    : 12,
+                bottom: height > 700
+                    ? width > 600
+                        ? 17
+                        : 15
+                    : 12,
                 right: 20,
                 left: 20,
               ),
@@ -35,7 +49,11 @@ class ChatBubble extends StatelessWidget {
                 //softWrap: false,
                 style: TextStyle(
                   color: barber.id == sentBy ? Colors.white : Colors.black,
-                  fontSize: height > 700 ? 15 : 14,
+                  fontSize: height > 700
+                      ? width > 600
+                          ? 18
+                          : 15
+                      : 14,
                 ),
               ),
             ),
