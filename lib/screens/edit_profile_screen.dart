@@ -16,22 +16,27 @@ class EditProfileScreen extends StatelessWidget {
         padding: EdgeInsets.only(
           left: 25.0,
           right: 25.0,
-          top: height > 700 ? 30 : 0,
+          top: height > 850 ? 30 : 0,
         ),
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(height: height > 700 ? 30 : 25),
+              SizedBox(
+                  height: height > 850
+                      ? 30
+                      : height > 700
+                          ? 80
+                          : 25),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   CircleAvatar(
-                    radius: height > 700 ? 25 : 20,
+                    radius: height > 850 ? 25 : 20,
                     backgroundColor: Colors.grey.withOpacity(0.2),
                     child: IconButton(
                         icon: Icon(
                           Icons.arrow_back_ios_rounded,
-                          size: height > 700 ? 18 : 14,
+                          size: height > 850 ? 18 : 14,
                           color: Colors.black,
                         ),
                         onPressed: () {
@@ -41,7 +46,7 @@ class EditProfileScreen extends StatelessWidget {
                   Text(
                     "Profile",
                     style: TextStyle(
-                      fontSize: height > 700 ? 22 : 18,
+                      fontSize: height > 850 ? 22 : 18,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
@@ -54,33 +59,33 @@ class EditProfileScreen extends StatelessWidget {
                 ],
               ),
               SizedBox(
-                  height: height > 700
+                  height: height > 850
                       ? height > 1050
                           ? 130
                           : 65
                       : 35),
               CircleAvatar(
-                radius: height > 700 ? 65 : 45,
+                radius: height > 850 ? 65 : 45,
                 backgroundImage: AssetImage(currentUser.image),
               ),
               SizedBox(height: 30),
               Text(
                 currentUser.name,
                 style: TextStyle(
-                  fontSize: height > 700 ? 24 : 20,
+                  fontSize: height > 850 ? 24 : 20,
                   fontWeight: FontWeight.w500,
                 ),
               ),
-              SizedBox(height: height > 700 ? 10 : 6),
+              SizedBox(height: height > 850 ? 10 : 6),
               Text(
                 "+91 ${currentUser.phoneNumber}",
                 style: TextStyle(
-                    fontSize: height > 700 ? 13 : 10,
+                    fontSize: height > 850 ? 13 : 10,
                     fontWeight: FontWeight.w400,
                     color: Colors.grey),
               ),
               SizedBox(
-                  height: height > 700
+                  height: height > 850
                       ? height > 1050
                           ? 100
                           : 70
@@ -93,20 +98,20 @@ class EditProfileScreen extends StatelessWidget {
                     Text(
                       "Full name",
                       style: TextStyle(
-                          fontSize: height > 700 ? 15 : 12,
+                          fontSize: height > 850 ? 15 : 12,
                           fontWeight: FontWeight.w400,
                           color: Colors.grey),
                     ),
                   ],
                 ),
               ),
-              SizedBox(height: height > 700 ? 15 : 12),
+              SizedBox(height: height > 850 ? 15 : 12),
               Container(
-                height: height > 700 ? 80 : 60,
+                height: height > 850 ? 80 : 60,
                 width: MediaQuery.of(context).size.width -
                     (height > 1000 ? 200 : 0),
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(height > 700 ? 20 : 15),
+                  borderRadius: BorderRadius.circular(height > 850 ? 20 : 15),
                   color: Colors.grey.withOpacity(0.2),
                 ),
                 child: Center(
@@ -144,7 +149,7 @@ class EditProfileScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: height > 700 ? 30 : 20),
+              SizedBox(height: height > 850 ? 30 : 20),
               Container(
                 width: MediaQuery.of(context).size.width -
                     (height > 1000 ? 200 : 0),
@@ -153,20 +158,20 @@ class EditProfileScreen extends StatelessWidget {
                     Text(
                       "phone number",
                       style: TextStyle(
-                          fontSize: height > 700 ? 15 : 12,
+                          fontSize: height > 850 ? 15 : 12,
                           fontWeight: FontWeight.w400,
                           color: Colors.grey),
                     ),
                   ],
                 ),
               ),
-              SizedBox(height: height > 700 ? 15 : 12),
+              SizedBox(height: height > 850 ? 15 : 12),
               Container(
-                height: height > 700 ? 80 : 60,
+                height: height > 850 ? 80 : 60,
                 width: MediaQuery.of(context).size.width -
                     (height > 1000 ? 200 : 0),
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(height > 700 ? 20 : 15),
+                  borderRadius: BorderRadius.circular(height > 850 ? 20 : 15),
                   color: Colors.grey.withOpacity(0.2),
                 ),
                 child: Center(
@@ -205,7 +210,7 @@ class EditProfileScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                  height: height > 700
+                  height: height > 850
                       ? height > 1150
                           ? 95
                           : 75
@@ -231,7 +236,7 @@ class EditProfileScreen extends StatelessWidget {
                   }
                 },
                 child: Container(
-                  height: height > 700 ? 80 : 60,
+                  height: height > 850 ? 80 : 60,
                   width: MediaQuery.of(context).size.width -
                       (height > 1000 ? 200 : 0),
                   child: Padding(
@@ -248,7 +253,7 @@ class EditProfileScreen extends StatelessWidget {
                     ),
                   ),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(height > 700 ? 20 : 15),
+                    borderRadius: BorderRadius.circular(height > 850 ? 20 : 15),
                     color: Colors.orange,
                   ),
                 ),

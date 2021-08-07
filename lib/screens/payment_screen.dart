@@ -67,18 +67,23 @@ class _PaymentScreenState extends State<PaymentScreen> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(height: height > 700 ? 50 : 25),
+              SizedBox(
+                  height: height > 850
+                      ? 50
+                      : height > 700
+                          ? 40
+                          : 25),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   CircleAvatar(
-                    radius: height > 700 ? 22 : 18,
+                    radius: height > 850 ? 22 : 18,
                     backgroundColor: Colors.grey.withOpacity(0.2),
                     child: IconButton(
                       icon: Icon(
                         Icons.arrow_back_ios_rounded,
                         color: Colors.black,
-                        size: height > 700 ? 18 : 14,
+                        size: height > 850 ? 18 : 14,
                       ),
                       onPressed: () {
                         Navigator.of(context).pop();
@@ -90,7 +95,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                     style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.w500,
-                        fontSize: height > 700 ? 20 : 18),
+                        fontSize: height > 850 ? 20 : 18),
                   ),
                   CircleAvatar(
                     radius: 22,
@@ -118,7 +123,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
               ),
               SizedBox(height: 30),
               Container(
-                height: height > 700
+                height: height > 850
                     ? width > 600
                         ? height > 1050
                             ? 340
@@ -157,7 +162,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                 strokeWidth: 2,
                                 dash: <int>[12, 8]))
                         : Container(
-                            height: height > 700
+                            height: height > 850
                                 ? width > 600
                                     ? height > 1050
                                         ? 340
@@ -229,7 +234,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                     cardTypere(currentUser.card.cardType),
                                     style: TextStyle(
                                       color: Colors.white,
-                                      fontWeight: FontWeight.w700,
+                                      fontWeight: FontWeight.bold,
                                       fontSize: height > 1050 ? 32 : 23,
                                     ),
                                   ),
@@ -263,7 +268,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                   ),
                 ],
               ),
-              SizedBox(height: height > 700 ? 40 : 20),
+              SizedBox(height: height > 850 ? 40 : 20),
               GestureDetector(
                 onTap: () {
                   setState(() {
@@ -329,7 +334,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                   ),
                 ),
               ),
-              SizedBox(height: height > 700 ? 20 : 5),
+              SizedBox(height: height > 850 ? 20 : 5),
               GestureDetector(
                 onTap: () {
                   setState(() {
@@ -396,7 +401,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                 ),
               ),
               SizedBox(
-                  height: height > 700
+                  height: height > 850
                       ? width > 600
                           ? 80
                           : 60
@@ -432,13 +437,13 @@ class _PaymentScreenState extends State<PaymentScreen> {
                   }
                 },
                 child: Container(
-                  height: height > 700
+                  height: height > 850
                       ? height > 1050
                           ? 100
                           : 80
                       : 60,
                   width: MediaQuery.of(context).size.width -
-                      (height > 700 ? 0 : 50),
+                      (height > 850 ? 0 : 50),
                   child: Padding(
                     padding: const EdgeInsets.all(15.0),
                     child: Center(
@@ -447,7 +452,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                         style: TextStyle(
                           color: _isSelcted ? Colors.white : Colors.grey,
                           fontWeight: FontWeight.w600,
-                          fontSize: height > 700 ? 16 : 14,
+                          fontSize: height > 850 ? 16 : 14,
                         ),
                       ),
                     ),

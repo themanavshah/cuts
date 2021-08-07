@@ -58,12 +58,12 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                         ),
                       ],
                     ),
-                    SizedBox(height: height > 700 ? 10 : 8),
+                    SizedBox(height: height > 850 ? 10 : 8),
                     Text(
                       widget.element.mainName,
                       style: TextStyle(
                         color: Colors.black,
-                        fontSize: height > 700 ? 16 : 14,
+                        fontSize: height > 850 ? 16 : 14,
                         fontWeight: FontWeight.w500,
                       ),
                     ),
@@ -74,7 +74,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                         widget.element.description,
                         style: TextStyle(
                           color: Colors.grey,
-                          fontSize: height > 700 ? 14 : 12,
+                          fontSize: height > 850 ? 14 : 12,
                           fontWeight: FontWeight.w400,
                         ),
                       ),

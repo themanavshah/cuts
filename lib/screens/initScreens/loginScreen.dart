@@ -1,7 +1,9 @@
 import 'package:cuts/common_scaffold.dart';
 import 'package:cuts/screens/initScreens/forgotpass_screen.dart';
 import 'package:cuts/screens/initScreens/register_screen.dart';
+import 'package:cuts/services/auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class LoginScreen extends StatefulWidget {
   LoginScreen({Key key}) : super(key: key);
@@ -11,11 +13,12 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final _usernameController = TextEditingController();
+  final _emailController = TextEditingController();
 
   final _passwordController = TextEditingController();
 
   bool _passvisible = true;
+  var token;
 
   @override
   Widget build(BuildContext context) {
@@ -36,17 +39,17 @@ class _LoginScreenState extends State<LoginScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SizedBox(
-                    height: height > 700
+                    height: height > 850
                         ? width > 600
                             ? 60
-                            : 140
+                            : 80
                         : 40),
                 Text(
                   'cuts',
                   style: TextStyle(
                       color: Colors.orange,
-                      fontWeight: FontWeight.w700,
-                      fontSize: height > 700
+                      fontWeight: FontWeight.bold,
+                      fontSize: height > 850
                           ? width > 600
                               ? 62
                               : 55
@@ -58,19 +61,19 @@ class _LoginScreenState extends State<LoginScreen> {
                   style: TextStyle(
                       color: Colors.grey,
                       fontWeight: FontWeight.w400,
-                      fontSize: height > 700
+                      fontSize: height > 850
                           ? width > 600
                               ? 20
                               : 15
                           : 12),
                 ),
-                SizedBox(height: height > 700 ? 110 : 80),
+                SizedBox(height: height > 850 ? 110 : 80),
                 Container(
-                  height: height > 700 ? 80 : 60,
+                  height: height > 850 ? 80 : 60,
                   width: MediaQuery.of(context).size.width -
                       (width > 600 ? 200 : 0),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(height > 700 ? 20 : 12),
+                    borderRadius: BorderRadius.circular(height > 850 ? 20 : 12),
                     color: Colors.grey.withOpacity(0.2),
                   ),
                   child: Center(
@@ -79,14 +82,14 @@ class _LoginScreenState extends State<LoginScreen> {
                           vertical: 5.0, horizontal: 20.0),
                       child: TextFormField(
                         cursorColor: Colors.orange,
-                        controller: _usernameController,
+                        controller: _emailController,
                         decoration: new InputDecoration(
                           border: InputBorder.none,
                           focusedBorder: InputBorder.none,
                           enabledBorder: InputBorder.none,
                           errorBorder: InputBorder.none,
                           disabledBorder: InputBorder.none,
-                          hintText: "username",
+                          hintText: "Email address",
                           fillColor: Colors.grey.withOpacity(0.2),
                           // border: new OutlineInputBorder(
                           //   borderRadius: new BorderRadius.circular(25.0),
@@ -108,13 +111,13 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                 ),
-                SizedBox(height: height > 700 ? 30 : 15),
+                SizedBox(height: height > 850 ? 30 : 15),
                 Container(
-                  height: height > 700 ? 80 : 60,
+                  height: height > 850 ? 80 : 60,
                   width: MediaQuery.of(context).size.width -
                       (width > 600 ? 200 : 0),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(height > 700 ? 20 : 12),
+                    borderRadius: BorderRadius.circular(height > 850 ? 20 : 12),
                     color: Colors.grey.withOpacity(0.2),
                   ),
                   child: Row(
@@ -200,7 +203,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               style: TextStyle(
                                   color: Colors.grey,
                                   fontWeight: FontWeight.w400,
-                                  fontSize: height > 700 ? 15 : 12),
+                                  fontSize: height > 850 ? 15 : 12),
                             ),
                           ),
                         ],
@@ -208,23 +211,54 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ],
                 ),
-                SizedBox(height: height > 700 ? 80 : 60),
+                SizedBox(height: height > 850 ? 80 : 60),
                 GestureDetector(
                   onTap: () {
                     if (_passwordController.text.length != 0 &&
-                        _usernameController.text.length != 0) {
+                        _emailController.text.length != 0) {
                       //to the home screen fecthing the data from database and storing a copy in local phone storage
-                      print("continue");
-                      Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => CommonScaffold()));
+                      // print("continue");
+                      // Navigator.pushReplacement(
+                      //     context,
+                      //     MaterialPageRoute(
+                      //         builder: (context) => CommonScaffold()));
+                      Auth()
+                          .login(
+                              _emailController.text, _passwordController.text)
+                          .then((val) {
+                        if (val.data['success']) {
+                          //token = val.data['token'];
+                          print("continue");
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => CommonScaffold()));
+                        } else {
+                          print(val.data['msg']);
+                          Fluttertoast.showToast(
+                            msg: val.data['msg'],
+                            toastLength: Toast.LENGTH_SHORT,
+                            gravity: ToastGravity.BOTTOM,
+                            backgroundColor: Colors.red,
+                            textColor: Colors.white,
+                            fontSize: 15,
+                          );
+                        }
+                      });
                     } else {
                       print("something is wrong!");
+                      Fluttertoast.showToast(
+                        msg: "Fields can't be empty!",
+                        toastLength: Toast.LENGTH_SHORT,
+                        gravity: ToastGravity.BOTTOM,
+                        backgroundColor: Colors.red,
+                        textColor: Colors.white,
+                        fontSize: 15,
+                      );
                     }
                   },
                   child: Container(
-                    height: height > 700 ? 75 : 65,
+                    height: height > 850 ? 75 : 65,
                     width: MediaQuery.of(context).size.width -
                         (width > 600 ? 200 : 0),
                     decoration: BoxDecoration(
@@ -237,14 +271,14 @@ class _LoginScreenState extends State<LoginScreen> {
                         style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.w500,
-                          fontSize: height > 700 ? 20 : 18,
+                          fontSize: height > 850 ? 20 : 18,
                         ),
                       ),
                     ),
                   ),
                 ),
                 SizedBox(
-                    height: height > 700
+                    height: height > 850
                         ? width > 600
                             ? 60
                             : 50
@@ -262,7 +296,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.w500,
-                      fontSize: height > 700
+                      fontSize: height > 850
                           ? width > 600
                               ? 20
                               : 18

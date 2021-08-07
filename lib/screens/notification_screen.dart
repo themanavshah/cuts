@@ -34,7 +34,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
             child: Column(
               children: [
                 SizedBox(
-                    height: height > 700
+                    height: height > 850
                         ? width > 600
                             ? 50
                             : 70
@@ -43,13 +43,13 @@ class _NotificationScreenState extends State<NotificationScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     CircleAvatar(
-                      radius: height > 700 ? 22 : 18,
+                      radius: height > 850 ? 22 : 18,
                       backgroundColor: Colors.grey.withOpacity(0.2),
                       child: IconButton(
                         icon: Icon(
                           Icons.arrow_back_ios_rounded,
                           color: Colors.black,
-                          size: height > 700 ? 18 : 14,
+                          size: height > 850 ? 18 : 14,
                         ),
                         onPressed: () {
                           context.read(pageindex).state = page.home;
@@ -61,7 +61,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                       style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.w500,
-                          fontSize: height > 700 ? 22 : 18),
+                          fontSize: height > 850 ? 22 : 18),
                     ),
                     CircleAvatar(
                       radius: 22,
@@ -75,7 +75,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                   ],
                 ),
                 SizedBox(
-                    height: height > 700
+                    height: height > 850
                         ? width > 600
                             ? 80
                             : 50
@@ -88,7 +88,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                       style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.w500,
-                          fontSize: height > 700 ? 22 : 18),
+                          fontSize: height > 850 ? 22 : 18),
                     ),
                     GestureDetector(
                       onTap: () {
@@ -101,14 +101,14 @@ class _NotificationScreenState extends State<NotificationScreen> {
                         style: TextStyle(
                             color: Colors.grey,
                             fontWeight: FontWeight.w400,
-                            fontSize: height > 700 ? 14 : 10),
+                            fontSize: height > 850 ? 14 : 10),
                       ),
                     ),
                   ],
                 ),
-                SizedBox(height: 20),
+                SizedBox(height: 10),
                 Container(
-                  height: ((80 * currentUser.notification.length) +
+                  height: ((90 * currentUser.notification.length) +
                               (15 * currentUser.notification.length))
                           .toDouble() +
                       50,

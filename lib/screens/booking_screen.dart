@@ -63,18 +63,18 @@ class BookingScreen extends ConsumerWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(height: height > 700 ? 50 : 25),
+              SizedBox(height: height > 850 ? 50 : 25),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   CircleAvatar(
-                    radius: height > 700 ? 22 : 18,
+                    radius: height > 850 ? 22 : 18,
                     backgroundColor: Colors.grey.withOpacity(0.2),
                     child: IconButton(
                       icon: Icon(
                         Icons.arrow_back_ios_rounded,
                         color: Colors.black,
-                        size: height > 700 ? 18 : 14,
+                        size: height > 850 ? 18 : 14,
                       ),
                       onPressed: () {
                         context.read(selectedHourProvider).state = null;
@@ -88,7 +88,7 @@ class BookingScreen extends ConsumerWidget {
                     style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.w400,
-                        fontSize: height > 700 ? 20 : 18),
+                        fontSize: height > 850 ? 20 : 18),
                   ),
                   CircleAvatar(
                     radius: 22,
@@ -109,7 +109,7 @@ class BookingScreen extends ConsumerWidget {
                 ),
                 child: Column(
                   children: [
-                    SizedBox(height: height > 700 ? 60 : 40),
+                    SizedBox(height: height > 850 ? 60 : 40),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -228,7 +228,7 @@ class BookingScreen extends ConsumerWidget {
                         },
                       ),
                     ),
-                    SizedBox(height: height > 700 ? 55 : 10),
+                    SizedBox(height: height > 850 ? 55 : 10),
                     Row(
                       children: [
                         Text(
@@ -242,7 +242,7 @@ class BookingScreen extends ConsumerWidget {
                     ),
                     SizedBox(height: width > 600 ? 50 : 0),
                     Container(
-                      height: height > 700 ? 250 : 220,
+                      height: height > 850 ? 250 : 240,
                       width: width > 600
                           ? height > 1050
                               ? 650
@@ -292,14 +292,14 @@ class BookingScreen extends ConsumerWidget {
                                           ? Colors.black
                                           : Colors.grey),
                                   borderRadius: BorderRadius.circular(
-                                      height > 700 ? 10 : 5),
+                                      height > 850 ? 10 : 5),
                                   color: selectedHour.state ==
                                           barber.slots[index].hour
                                       ? Colors.black
                                       : Colors.white,
                                 ),
-                                height: height > 700 ? 10 : 8,
-                                width: height > 700 ? 90 : 80,
+                                height: height > 850 ? 10 : 8,
+                                width: height > 850 ? 90 : 80,
                                 child: Center(
                                     child: Text(
                                   barber.slots[index].hour.toString() +

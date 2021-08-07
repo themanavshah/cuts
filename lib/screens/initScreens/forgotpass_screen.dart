@@ -23,7 +23,7 @@ class ForgotPassScreen extends StatelessWidget {
               child: Column(
                 children: [
                   SizedBox(
-                      height: height > 700
+                      height: height > 850
                           ? width > 600
                               ? 60
                               : 190
@@ -33,13 +33,13 @@ class ForgotPassScreen extends StatelessWidget {
                     style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.w500,
-                        fontSize: height > 700
+                        fontSize: height > 850
                             ? width > 600
                                 ? 30
                                 : 25
                             : 20),
                   ),
-                  SizedBox(height: height > 700 ? 30 : 20),
+                  SizedBox(height: height > 850 ? 30 : 20),
                   Container(
                     width: 290,
                     child: Text(
@@ -48,21 +48,21 @@ class ForgotPassScreen extends StatelessWidget {
                       style: TextStyle(
                           color: Colors.grey,
                           fontWeight: FontWeight.w400,
-                          fontSize: height > 700
+                          fontSize: height > 850
                               ? width > 600
                                   ? 18
                                   : 15
                               : 12),
                     ),
                   ),
-                  SizedBox(height: height > 700 ? 80 : 60),
+                  SizedBox(height: height > 850 ? 80 : 60),
                   Container(
-                    height: height > 700 ? 80 : 60,
+                    height: height > 850 ? 80 : 60,
                     width: MediaQuery.of(context).size.width -
                         (width > 600 ? 200 : 0),
                     decoration: BoxDecoration(
                       borderRadius:
-                          BorderRadius.circular(height > 700 ? 20 : 15),
+                          BorderRadius.circular(height > 850 ? 20 : 15),
                       color: Colors.grey.withOpacity(0.2),
                     ),
                     child: Center(
@@ -92,7 +92,7 @@ class ForgotPassScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(height: height > 700 ? 130 : 120),
+                  SizedBox(height: height > 850 ? 130 : 120),
                   GestureDetector(
                     onTap: () {
                       //send instructions to it's mail
@@ -101,12 +101,12 @@ class ForgotPassScreen extends StatelessWidget {
                       }
                     },
                     child: Container(
-                      height: height > 700 ? 75 : 60,
+                      height: height > 850 ? 75 : 60,
                       width: MediaQuery.of(context).size.width -
                           (width > 600 ? 200 : 0),
                       decoration: BoxDecoration(
                         borderRadius:
-                            BorderRadius.circular(height > 700 ? 20 : 15),
+                            BorderRadius.circular(height > 850 ? 20 : 15),
                         color: Colors.orange,
                       ),
                       child: Center(
@@ -115,14 +115,14 @@ class ForgotPassScreen extends StatelessWidget {
                           style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.w500,
-                            fontSize: height > 700 ? 20 : 15,
+                            fontSize: height > 850 ? 20 : 15,
                           ),
                         ),
                       ),
                     ),
                   ),
                   SizedBox(
-                      height: height > 700
+                      height: height > 850
                           ? width > 600
                               ? 60
                               : 50
@@ -137,7 +137,7 @@ class ForgotPassScreen extends StatelessWidget {
                       style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.w500,
-                        fontSize: height > 700
+                        fontSize: height > 850
                             ? width > 600
                                 ? 20
                                 : 18

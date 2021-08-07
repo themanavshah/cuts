@@ -76,9 +76,9 @@ class BarberDetailScreen extends ConsumerWidget {
                 ),
                 Padding(
                   padding: EdgeInsets.only(
-                    top: height > 700 ? 40.0 : 30,
-                    right: height > 700 ? 40 : 25,
-                    left: height > 700 ? 40 : 25,
+                    top: height > 850 ? 40.0 : 30,
+                    right: height > 850 ? 40 : 25,
+                    left: height > 850 ? 40 : 25,
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -95,7 +95,7 @@ class BarberDetailScreen extends ConsumerWidget {
                                 style: TextStyle(
                                   color: Colors.black,
                                   fontWeight: FontWeight.bold,
-                                  fontSize: height > 700
+                                  fontSize: height > 850
                                       ? height > 1100
                                           ? 35
                                           : 25
@@ -108,7 +108,7 @@ class BarberDetailScreen extends ConsumerWidget {
                                 style: TextStyle(
                                   color: Colors.grey,
                                   fontWeight: FontWeight.w400,
-                                  fontSize: height > 700
+                                  fontSize: height > 850
                                       ? height > 1100
                                           ? 20
                                           : 14
@@ -131,7 +131,7 @@ class BarberDetailScreen extends ConsumerWidget {
                                             (BuildContext context, int index) =>
                                                 Icon(
                                                   Icons.star,
-                                                  size: height > 700
+                                                  size: height > 850
                                                       ? height > 1100
                                                           ? 20
                                                           : 16
@@ -144,7 +144,7 @@ class BarberDetailScreen extends ConsumerWidget {
                                     style: TextStyle(
                                         color: Colors.yellow,
                                         fontWeight: FontWeight.w300,
-                                        fontSize: height > 700
+                                        fontSize: height > 850
                                             ? height > 1100
                                                 ? 20
                                                 : 16
@@ -160,7 +160,7 @@ class BarberDetailScreen extends ConsumerWidget {
                                   icon: Icon(
                                     Icons.chat_outlined,
                                     color: Colors.grey,
-                                    size: height > 700
+                                    size: height > 850
                                         ? height > 1100
                                             ? 35
                                             : 24
@@ -184,7 +184,7 @@ class BarberDetailScreen extends ConsumerWidget {
                                   color: barberCheck(favlist, barber)
                                       ? Colors.red
                                       : Colors.grey,
-                                  size: height > 700
+                                  size: height > 850
                                       ? height > 1100
                                           ? 35
                                           : 24
@@ -209,13 +209,13 @@ class BarberDetailScreen extends ConsumerWidget {
                         ],
                       ),
                       SizedBox(
-                          height: height > 700
+                          height: height > 850
                               ? width > 600
                                   ? height > 1100
                                       ? 40
                                       : 20
                                   : 0
-                              : 20),
+                              : 0),
                       // Container(
                       //   height: 120,
                       //   width: MediaQuery.of(context).size.width,
@@ -223,13 +223,13 @@ class BarberDetailScreen extends ConsumerWidget {
                       //   color: Colors.orange.withOpacity(0.2),
                       // ),
                       Container(
-                        height: height > 700
+                        height: height > 850
                             ? width > 600
                                 ? height > 1100
                                     ? 250
                                     : 180
                                 : 130
-                            : 100,
+                            : 130,
                         child: GridView.builder(
                           physics: const NeverScrollableScrollPhysics(),
                           itemCount: barber.tags.length,
@@ -257,7 +257,7 @@ class BarberDetailScreen extends ConsumerWidget {
                                   style: TextStyle(
                                     color: Colors.orange,
                                     fontWeight: FontWeight.bold,
-                                    fontSize: height > 700
+                                    fontSize: height > 850
                                         ? width > 600
                                             ? 18
                                             : 15
@@ -274,7 +274,7 @@ class BarberDetailScreen extends ConsumerWidget {
                           height: 1.6,
                           color: Colors.grey,
                           fontWeight: FontWeight.w400,
-                          fontSize: height > 700
+                          fontSize: height > 850
                               ? width > 600
                                   ? height > 1100
                                       ? 20
@@ -284,7 +284,7 @@ class BarberDetailScreen extends ConsumerWidget {
                         ),
                       ),
                       SizedBox(
-                          height: height > 700
+                          height: height > 850
                               ? width > 600
                                   ? height > 1100
                                       ? 70
@@ -317,7 +317,7 @@ class BarberDetailScreen extends ConsumerWidget {
                             //print(dateParse.month);
                           },
                           child: Container(
-                            height: height > 700
+                            height: height > 850
                                 ? height > 1100
                                     ? 90
                                     : 70
@@ -325,7 +325,7 @@ class BarberDetailScreen extends ConsumerWidget {
                             width: MediaQuery.of(context).size.width,
                             decoration: BoxDecoration(
                               borderRadius:
-                                  BorderRadius.circular(height > 700 ? 20 : 15),
+                                  BorderRadius.circular(height > 850 ? 20 : 15),
                               color: Colors.orange,
                             ),
                             child: Center(
@@ -334,7 +334,7 @@ class BarberDetailScreen extends ConsumerWidget {
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.w500,
-                                  fontSize: height > 700 ? 20 : 15,
+                                  fontSize: height > 850 ? 20 : 15,
                                 ),
                               ),
                             ),

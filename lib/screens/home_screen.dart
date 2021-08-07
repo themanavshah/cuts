@@ -33,8 +33,8 @@ class HomeScreen extends ConsumerWidget {
         child: Padding(
       padding: EdgeInsets.only(
         bottom: 10,
-        left: height > 700 ? 30 : 25,
-        right: height > 700 ? 30 : 25,
+        left: height > 850 ? 30 : 22,
+        right: height > 850 ? 30 : 22,
         //top: 15,
       ),
       child: SingleChildScrollView(
