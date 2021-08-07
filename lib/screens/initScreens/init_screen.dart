@@ -22,7 +22,7 @@ class _InitScreenState extends State<InitScreen> {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
     //in responsive ness ternary is used in which ot checks for
-    //height greater than 700 which includes big phones and tabs
+    //height greater than 800 which includes big phones and tabs
     //after that check for tab with width greater than 600 and
     //rest is history.
     print("width: " + MediaQuery.of(context).size.height.toString());
@@ -39,10 +39,10 @@ class _InitScreenState extends State<InitScreen> {
             child: Column(
               children: [
                 SizedBox(
-                    height: height > 700
+                    height: height > 800
                         ? width > 600
                             ? 50
-                            : 70
+                            : 50
                         : 30),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
@@ -61,22 +61,22 @@ class _InitScreenState extends State<InitScreen> {
                           style: TextStyle(
                               color: Colors.orange,
                               fontWeight: FontWeight.w500,
-                              fontSize: height > 700 ? 18 : 14),
+                              fontSize: height > 800 ? 18 : 14),
                         ),
                       ),
                     ),
                   ],
                 ),
                 SizedBox(
-                    height: height > 700
+                    height: height > 800
                         ? width > 600
                             ? height > 1250
                                 ? 250
                                 : 120
-                            : 120
+                            : 80
                         : 80),
                 Container(
-                  height: height > 700
+                  height: height > 800
                       ? width > 600
                           ? height > 1250
                               ? 350
@@ -89,13 +89,13 @@ class _InitScreenState extends State<InitScreen> {
                           ? "assets/dummies/initscreen2.png"
                           : "assets/dummies/initscreen3.png"),
                 ),
-                SizedBox(height: height > 700 ? 80 : 50),
+                SizedBox(height: height > 800 ? 80 : 50),
                 Container(
                   width: widget.currentscreen != screen.initscreen2
-                      ? height > 700
+                      ? height > 800
                           ? 250
                           : 180
-                      : height > 700
+                      : height > 800
                           ? 300
                           : 250,
                   child: Text(
@@ -109,7 +109,7 @@ class _InitScreenState extends State<InitScreen> {
                         height: 1.4,
                         color: Colors.black,
                         fontWeight: FontWeight.w600,
-                        fontSize: height > 700
+                        fontSize: height > 800
                             ? width > 600
                                 ? 25
                                 : 22
@@ -119,10 +119,10 @@ class _InitScreenState extends State<InitScreen> {
                 SizedBox(height: 30),
                 Container(
                   width: widget.currentscreen != screen.initscreen2
-                      ? height > 700
+                      ? height > 800
                           ? 280
                           : 230
-                      : height > 700
+                      : height > 800
                           ? 320
                           : 250,
                   child: Text(
@@ -139,59 +139,59 @@ class _InitScreenState extends State<InitScreen> {
                         fontSize: width > 600 ? 16 : 12),
                   ),
                 ),
-                SizedBox(height: height > 700 ? 40 : 30),
+                SizedBox(height: height > 800 ? 40 : 30),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     widget.currentscreen == screen.initscreen1
                         ? Container(
-                            height: height > 700 ? 8 : 4,
-                            width: height > 700 ? 20 : 16,
+                            height: height > 800 ? 8 : 4,
+                            width: height > 800 ? 20 : 16,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(4),
                               color: Colors.orange,
                             ),
                           )
                         : CircleAvatar(
-                            radius: height > 700 ? 4 : 2,
+                            radius: height > 800 ? 4 : 2,
                             backgroundColor: Colors.orange[100],
                           ),
                     SizedBox(width: 3),
                     widget.currentscreen == screen.initscreen2
                         ? Container(
-                            height: height > 700 ? 8 : 4,
-                            width: height > 700 ? 20 : 16,
+                            height: height > 800 ? 8 : 4,
+                            width: height > 800 ? 20 : 16,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(4),
                               color: Colors.orange,
                             ),
                           )
                         : CircleAvatar(
-                            radius: height > 700 ? 4 : 2,
+                            radius: height > 800 ? 4 : 2,
                             backgroundColor: Colors.orange[100],
                           ),
                     SizedBox(width: 3),
                     widget.currentscreen == screen.initscreen3
                         ? Container(
-                            height: height > 700 ? 8 : 4,
-                            width: height > 700 ? 20 : 16,
+                            height: height > 800 ? 8 : 4,
+                            width: height > 800 ? 20 : 16,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(4),
                               color: Colors.orange,
                             ),
                           )
                         : CircleAvatar(
-                            radius: height > 700 ? 4 : 2,
+                            radius: height > 800 ? 4 : 2,
                             backgroundColor: Colors.orange[100],
                           ),
                   ],
                 ),
                 SizedBox(
                     height: widget.currentscreen != screen.initscreen3
-                        ? height > 700
+                        ? height > 800
                             ? 80
                             : 45
-                        : height > 700
+                        : height > 800
                             ? width > 600
                                 ? 100
                                 : 60
@@ -215,29 +215,29 @@ class _InitScreenState extends State<InitScreen> {
                   },
                   child: widget.currentscreen != screen.initscreen3
                       ? CircleAvatar(
-                          radius: height > 700
+                          radius: height > 800
                               ? width > 600
                                   ? 45
-                                  : 40
+                                  : 30
                               : 25,
                           backgroundColor: Colors.orange,
                           child: Icon(
                             Icons.arrow_forward,
-                            size: height > 700 ? 28 : 14,
+                            size: height > 800 ? 28 : 14,
                             color: Colors.white,
                           ),
                         )
                       : Container(
-                          height: height > 700 ? 80 : 50,
+                          height: height > 800 ? 80 : 50,
                           width: MediaQuery.of(context).size.width -
-                              (height > 700
+                              (height > 800
                                   ? width > 600
                                       ? 200
                                       : 100
                                   : 120),
                           decoration: BoxDecoration(
                             borderRadius:
-                                BorderRadius.circular(height > 700 ? 20 : 14),
+                                BorderRadius.circular(height > 800 ? 20 : 14),
                             color: Colors.orange,
                           ),
                           child: Center(
@@ -246,7 +246,7 @@ class _InitScreenState extends State<InitScreen> {
                               style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.w500,
-                                fontSize: height > 700 ? 20 : 14,
+                                fontSize: height > 800 ? 20 : 14,
                               ),
                             ),
                           ),

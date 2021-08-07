@@ -110,9 +110,9 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
                   color: Colors.white,
                   child: Padding(
                     padding: EdgeInsets.only(
-                      left: height > 700 ? 15.0 : 10,
-                      right: height > 700 ? 30 : 20,
-                      bottom: height > 700 ? 35 : 20,
+                      left: height > 850 ? 15.0 : 10,
+                      right: height > 850 ? 30 : 20,
+                      bottom: height > 850 ? 35 : 20,
                       top: height > 700 ? 50 : 35,
                     ),
                     child: Row(
@@ -124,15 +124,15 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
                               icon: Icon(
                                 Icons.arrow_back_ios_rounded,
                                 color: Colors.black,
-                                size: height > 700 ? 25 : 18,
+                                size: height > 850 ? 25 : 18,
                               ),
                               onPressed: () {
                                 Navigator.of(context).pop();
                               },
                             ),
-                            SizedBox(width: height > 700 ? 10 : 5),
+                            SizedBox(width: height > 850 ? 10 : 5),
                             CircleAvatar(
-                              radius: height > 700 ? 28 : 22,
+                              radius: height > 850 ? 28 : 22,
                               backgroundImage: AssetImage(widget.barber.image),
                             ),
                             SizedBox(width: 18),
@@ -145,7 +145,7 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
                                   style: TextStyle(
                                     color: Colors.black,
                                     fontWeight: FontWeight.w600,
-                                    fontSize: height > 700 ? 20 : 16,
+                                    fontSize: height > 850 ? 20 : 16,
                                   ),
                                 ),
                                 SizedBox(height: 3),
@@ -154,7 +154,7 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
                                   style: TextStyle(
                                     color: Colors.grey,
                                     fontWeight: FontWeight.w500,
-                                    fontSize: height > 700 ? 14 : 12,
+                                    fontSize: height > 850 ? 14 : 12,
                                   ),
                                 )
                               ],
@@ -162,13 +162,13 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
                           ],
                         ),
                         CircleAvatar(
-                          radius: height > 700 ? 25 : 20,
+                          radius: height > 850 ? 25 : 20,
                           backgroundColor: Colors.orange[50],
                           child: IconButton(
                             icon: Icon(
                               Icons.call,
                               color: Colors.orange,
-                              size: height > 700 ? 18 : 14,
+                              size: height > 850 ? 18 : 14,
                             ),
                             onPressed: () {
                               print("call");
@@ -185,9 +185,9 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
                     height:
                         WidgetsBinding.instance.window.viewInsets.bottom > 0.0
                             ? MediaQuery.of(context).size.height -
-                                (height > 700 ? 520 : 450)
+                                (height > 850 ? 520 : 450)
                             : MediaQuery.of(context).size.height -
-                                (height > 700 ? 180 : 180),
+                                (height > 850 ? 180 : 180),
                     child: ListView.builder(
                       //reverse: true,
                       //controller: _scrollController,
@@ -212,38 +212,38 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
             //left: height
             child: Padding(
               padding: EdgeInsets.only(
-                right: height > 700 ? 20.0 : 12,
-                left: height > 700 ? 20 : 12,
-                bottom: height > 700 ? 20 : 0,
+                right: height > 850 ? 20.0 : 12,
+                left: height > 850 ? 20 : 12,
+                bottom: height > 850 ? 20 : 0,
               ),
               child: Container(
                 width: MediaQuery.of(context).size.width -
                     (height > 1050
                         ? 40
-                        : height > 700
+                        : height > 850
                             ? 50
                             : 15),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     CircleAvatar(
-                        radius: height > 700 ? 24 : 20,
+                        radius: height > 850 ? 24 : 20,
                         backgroundColor: Colors.orange,
                         child: IconButton(
                           icon: Icon(
                             Icons.add,
-                            size: height > 700 ? 20 : 14,
+                            size: height > 850 ? 20 : 14,
                             color: Colors.white,
                           ),
                           onPressed: () {},
                         )),
-                    SizedBox(width: height > 700 ? 25 : 20),
+                    SizedBox(width: height > 850 ? 25 : 20),
                     Container(
-                      height: height > 700 ? 60 : 50,
+                      height: height > 850 ? 60 : 50,
                       width: width > 600 ? 590 : 230,
                       child: Padding(
                         padding: EdgeInsets.only(
-                          top: height > 700 ? 8.0 : 20,
+                          top: height > 850 ? 8.0 : 20,
                           right: 15,
                           left: 15,
                           bottom: 10,
@@ -273,13 +273,13 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
                     ),
                     SizedBox(width: 20),
                     CircleAvatar(
-                        radius: height > 700 ? 24 : 20,
+                        radius: height > 850 ? 24 : 20,
                         backgroundColor: Colors.orange,
                         child: IconButton(
                           icon: Icon(
                             Icons.send_rounded,
                             color: Colors.white,
-                            size: height > 700 ? 20 : 14,
+                            size: height > 850 ? 20 : 14,
                           ),
                           onPressed: () {
                             // print(currentUser.chatbarber.where(

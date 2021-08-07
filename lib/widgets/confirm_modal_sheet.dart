@@ -45,30 +45,34 @@ class ConfirmModalSheet extends ConsumerWidget {
           bottom: 30,
           top: width > 600
               ? height > 1050
-                  ? 110
+                  ? 70
                   : 50
-              : 30,
+              : height > 700
+                  ? 50
+                  : 30,
         ),
         child: Center(
           child: Column(
             children: [
               Container(
-                height: height > 700
+                height: height > 850
                     ? width > 600
                         ? height > 1050
                             ? 220
                             : 180
                         : 160
-                    : 120,
+                    : height > 700
+                        ? 150
+                        : 120,
                 child: Image.asset("assets/dummies/clap.png"),
               ),
-              SizedBox(height: height > 700 ? 10 : 5),
+              SizedBox(height: height > 850 ? 10 : 5),
               Text(
                 'Congratulations',
                 style: TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.w500,
-                    fontSize: height > 700
+                    fontSize: height > 850
                         ? width > 600
                             ? height > 1050
                                 ? 26
@@ -76,7 +80,7 @@ class ConfirmModalSheet extends ConsumerWidget {
                             : 22
                         : 18),
               ),
-              SizedBox(height: height > 700 ? 25 : 18),
+              SizedBox(height: height > 850 ? 25 : 18),
               Container(
                 width: MediaQuery.of(context).size.width -
                     (height > 1050 ? 300 : 170),
@@ -86,7 +90,7 @@ class ConfirmModalSheet extends ConsumerWidget {
                   style: TextStyle(
                       color: Colors.grey,
                       fontWeight: FontWeight.w300,
-                      fontSize: height > 700
+                      fontSize: height > 850
                           ? width > 600
                               ? height > 1050
                                   ? 20
@@ -96,10 +100,10 @@ class ConfirmModalSheet extends ConsumerWidget {
                 ),
               ),
               SizedBox(
-                  height: height > 700
+                  height: height > 850
                       ? width > 600
                           ? height > 1050
-                              ? 100
+                              ? 70
                               : 70
                           : 50
                       : 35),
@@ -115,11 +119,11 @@ class ConfirmModalSheet extends ConsumerWidget {
                   );
                 },
                 child: Container(
-                  height: height > 700 ? 80 : 60,
+                  height: height > 850 ? 80 : 60,
                   width: MediaQuery.of(context).size.width -
-                      (height > 1050 ? 160 : 100),
+                      (height > 1050 ? 160 : 120),
                   child: Padding(
-                    padding: const EdgeInsets.all(15.0),
+                    padding: const EdgeInsets.all(5.0),
                     child: Center(
                       child: Text(
                         "Next",
@@ -132,7 +136,7 @@ class ConfirmModalSheet extends ConsumerWidget {
                     ),
                   ),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(height > 700 ? 20 : 15),
+                    borderRadius: BorderRadius.circular(height > 850 ? 20 : 15),
                     color: Colors.orange,
                   ),
                 ),

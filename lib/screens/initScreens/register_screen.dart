@@ -1,5 +1,7 @@
 import 'package:cuts/common_scaffold.dart';
+import 'package:cuts/services/auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class RegisterScreen extends StatefulWidget {
   RegisterScreen({Key key}) : super(key: key);
@@ -34,7 +36,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             child: Column(
               children: [
                 SizedBox(
-                    height: height > 700
+                    height: height > 850
                         ? width > 600
                             ? 30
                             : 60
@@ -43,8 +45,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   'cuts',
                   style: TextStyle(
                       color: Colors.orange,
-                      fontWeight: FontWeight.w700,
-                      fontSize: height > 700
+                      fontWeight: FontWeight.bold,
+                      fontSize: height > 850
                           ? width > 600
                               ? 62
                               : 55
@@ -56,24 +58,24 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   style: TextStyle(
                       color: Colors.grey,
                       fontWeight: FontWeight.w400,
-                      fontSize: height > 700
+                      fontSize: height > 850
                           ? width > 600
                               ? 20
                               : 15
                           : 12),
                 ),
-                SizedBox(height: height > 700 ? 80 : 50),
+                SizedBox(height: height > 850 ? 80 : 50),
                 Container(
                   width: width - (width > 600 ? 400 : 0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
-                        height: height > 700 ? 75 : 60,
-                        width: height > 700 ? 160 : 140,
+                        height: height > 850 ? 75 : 60,
+                        width: height > 850 ? 140 : 140,
                         decoration: BoxDecoration(
                           borderRadius:
-                              BorderRadius.circular(height > 700 ? 20 : 15),
+                              BorderRadius.circular(height > 850 ? 20 : 15),
                           color: Colors.orange,
                         ),
                         child: Center(
@@ -82,17 +84,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.w500,
-                              fontSize: height > 700 ? 20 : 15,
+                              fontSize: height > 850 ? 18 : 15,
                             ),
                           ),
                         ),
                       ),
                       Container(
-                        height: height > 700 ? 75 : 60,
-                        width: height > 700 ? 160 : 140,
+                        height: height > 850 ? 75 : 60,
+                        width: height > 850 ? 140 : 140,
                         decoration: BoxDecoration(
                           borderRadius:
-                              BorderRadius.circular(height > 700 ? 20 : 15),
+                              BorderRadius.circular(height > 850 ? 20 : 15),
                           color: Colors.grey.withOpacity(0.2),
                         ),
                         child: Center(
@@ -101,7 +103,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             style: TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.w500,
-                              fontSize: height > 700 ? 20 : 15,
+                              fontSize: height > 850 ? 18 : 15,
                             ),
                           ),
                         ),
@@ -110,17 +112,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                 ),
                 SizedBox(
-                    height: height > 700
+                    height: height > 850
                         ? width > 600
                             ? 60
                             : 50
                         : 40),
                 Container(
-                  height: height > 700 ? 80 : 60,
+                  height: height > 850 ? 80 : 60,
                   width: MediaQuery.of(context).size.width -
                       (width > 600 ? 200 : 0),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(height > 700 ? 20 : 12),
+                    borderRadius: BorderRadius.circular(height > 850 ? 20 : 12),
                     color: Colors.grey.withOpacity(0.2),
                   ),
                   child: Center(
@@ -158,13 +160,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                   ),
                 ),
-                SizedBox(height: height > 700 ? 20 : 15),
+                SizedBox(height: height > 850 ? 20 : 15),
                 Container(
-                  height: height > 700 ? 80 : 60,
+                  height: height > 850 ? 80 : 60,
                   width: MediaQuery.of(context).size.width -
                       (width > 600 ? 200 : 0),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(height > 700 ? 20 : 15),
+                    borderRadius: BorderRadius.circular(height > 850 ? 20 : 15),
                     color: Colors.grey.withOpacity(0.2),
                   ),
                   child: Center(
@@ -202,20 +204,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                   ),
                 ),
-                SizedBox(height: height > 700 ? 20 : 15),
+                SizedBox(height: height > 850 ? 20 : 15),
                 Container(
-                  height: height > 700 ? 80 : 60,
+                  height: height > 850 ? 80 : 60,
                   width: MediaQuery.of(context).size.width -
                       (width > 600 ? 200 : 0),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(height > 700 ? 20 : 15),
+                    borderRadius: BorderRadius.circular(height > 850 ? 20 : 15),
                     color: Colors.grey.withOpacity(0.2),
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
-                        height: height > 700 ? 80 : 60,
+                        height: height > 850 ? 80 : 60,
                         width: MediaQuery.of(context).size.width -
                             150 -
                             (width > 600 ? 200 : 0),
@@ -273,7 +275,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                 ),
                 SizedBox(
-                    height: height > 700
+                    height: height > 850
                         ? width > 600
                             ? 70
                             : 60
@@ -284,22 +286,52 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         _usernameController.text.length != 0 &&
                         _emailController.text.length != 0) {
                       //to the home screen fecthing the data from database and storing a copy in local phone storage
-                      print("continue");
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => CommonScaffold()));
+                      // print("continue");
+                      // Navigator.push(
+                      //     context,
+                      //     MaterialPageRoute(
+                      //         builder: (context) => CommonScaffold()));
+                      Auth()
+                          .signUp(_usernameController.text,
+                              _emailController.text, _passwordController.text)
+                          .then((val) {
+                        if (val.data['success']) {
+                          print("continue");
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => CommonScaffold()));
+                        } else {
+                          print(val.data['msg']);
+                          Fluttertoast.showToast(
+                            msg: val.data['msg'],
+                            toastLength: Toast.LENGTH_SHORT,
+                            gravity: ToastGravity.BOTTOM,
+                            backgroundColor: Colors.red,
+                            textColor: Colors.white,
+                            fontSize: 15,
+                          );
+                        }
+                      });
                     } else {
                       print("something is wrong!");
+                      Fluttertoast.showToast(
+                        msg: "Fields can't be empty!",
+                        toastLength: Toast.LENGTH_SHORT,
+                        gravity: ToastGravity.BOTTOM,
+                        backgroundColor: Colors.red,
+                        textColor: Colors.white,
+                        fontSize: 15,
+                      );
                     }
                   },
                   child: Container(
-                    height: height > 700 ? 75 : 60,
+                    height: height > 850 ? 75 : 60,
                     width: MediaQuery.of(context).size.width -
                         (width > 600 ? 200 : 0),
                     decoration: BoxDecoration(
                       borderRadius:
-                          BorderRadius.circular(height > 700 ? 20 : 15),
+                          BorderRadius.circular(height > 850 ? 20 : 15),
                       color: Colors.orange,
                     ),
                     child: Center(
@@ -308,7 +340,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.w500,
-                          fontSize: height > 700
+                          fontSize: height > 850
                               ? width > 600
                                   ? 22
                                   : 20
@@ -318,7 +350,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                   ),
                 ),
-                SizedBox(height: height > 700 ? 50 : 30),
+                SizedBox(height: height > 850 ? 50 : 30),
                 GestureDetector(
                   onTap: () {
                     //switch to register...
@@ -329,7 +361,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.w500,
-                      fontSize: height > 700
+                      fontSize: height > 850
                           ? width > 600
                               ? 22
                               : 18

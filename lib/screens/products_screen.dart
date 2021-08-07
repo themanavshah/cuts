@@ -33,18 +33,18 @@ class ProductScreen extends ConsumerWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(height: height > 700 ? 50 : 30),
+              SizedBox(height: height > 850 ? 50 : 30),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   CircleAvatar(
-                    radius: height > 700 ? 22 : 18,
+                    radius: height > 850 ? 22 : 18,
                     backgroundColor: Colors.grey.withOpacity(0.2),
                     child: IconButton(
                       icon: Icon(
                         Icons.arrow_back_ios_rounded,
                         color: Colors.black,
-                        size: height > 700 ? 18 : 14,
+                        size: height > 850 ? 18 : 14,
                       ),
                       onPressed: () {
                         amount.state = 0;
@@ -58,7 +58,7 @@ class ProductScreen extends ConsumerWidget {
                     style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.w500,
-                        fontSize: height > 700 ? 20 : 16),
+                        fontSize: height > 850 ? 20 : 16),
                   ),
                   CircleAvatar(
                     radius: 22,
@@ -84,8 +84,8 @@ class ProductScreen extends ConsumerWidget {
                           'Note',
                           style: TextStyle(
                             color: Colors.orange,
-                            fontWeight: FontWeight.w700,
-                            fontSize: height > 700
+                            fontWeight: FontWeight.bold,
+                            fontSize: height > 850
                                 ? height > 1050
                                     ? 28
                                     : 20
@@ -99,10 +99,10 @@ class ProductScreen extends ConsumerWidget {
                           child: Text(
                             'Additional charges may apply in the shop if you want something to be diffrent or additional. Those are the basic charges',
                             style: TextStyle(
-                              height: height > 700 ? 1 : 1.25,
+                              height: height > 850 ? 1 : 1.25,
                               color: Colors.orange,
                               fontWeight: FontWeight.w500,
-                              fontSize: height > 700
+                              fontSize: height > 850
                                   ? height > 1050
                                       ? 18
                                       : 13
@@ -121,7 +121,7 @@ class ProductScreen extends ConsumerWidget {
                 ),
               ),
               SizedBox(
-                  height: height > 700
+                  height: height > 850
                       ? height > 1050
                           ? 40
                           : 0
@@ -171,12 +171,12 @@ class ProductScreen extends ConsumerWidget {
                       }
                     },
                     child: Container(
-                      height: height > 700 ? 70 : 50,
+                      height: height > 850 ? 70 : 50,
                       width: MediaQuery.of(context).size.width -
                           (height > 1050 ? 240 : 160),
                       decoration: BoxDecoration(
                         borderRadius:
-                            BorderRadius.circular(height > 700 ? 20 : 10),
+                            BorderRadius.circular(height > 850 ? 20 : 10),
                         color: amount.state > 0
                             ? Colors.orange
                             : Colors.grey.withOpacity(0.2),
@@ -188,7 +188,7 @@ class ProductScreen extends ConsumerWidget {
                             color:
                                 amount.state > 0 ? Colors.white : Colors.grey,
                             fontWeight: FontWeight.w500,
-                            fontSize: height > 700 ? 20 : 15,
+                            fontSize: height > 850 ? 20 : 15,
                           ),
                         ),
                       ),
@@ -196,8 +196,8 @@ class ProductScreen extends ConsumerWidget {
                   ),
                   //SizedBox(width: 10),
                   Container(
-                    height: height > 700 ? 70 : 50,
-                    width: height > 700 ? 80 : 65,
+                    height: height > 850 ? 70 : 50,
+                    width: height > 850 ? 80 : 65,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(16),
                       color: Colors.orange,
@@ -210,7 +210,7 @@ class ProductScreen extends ConsumerWidget {
                           style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.w500,
-                              fontSize: height > 700 ? 17 : 14),
+                              fontSize: height > 850 ? 17 : 14),
                         ),
                       ),
                     ),

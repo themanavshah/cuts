@@ -25,7 +25,7 @@ class BarberDetailModalSheet extends StatelessWidget {
           left: 15.0,
           right: 15.0,
           bottom: 30,
-          top: height > 700 ? 100 : 50,
+          top: height > 800 ? 100 : 70,
         ),
         child: Column(
           children: [
@@ -62,7 +62,7 @@ class BarberDetailModalSheet extends StatelessWidget {
                             )));
               },
               child: Container(
-                height: height > 700 ? 80 : 60,
+                height: height > 800 ? 80 : 60,
                 width: MediaQuery.of(context).size.width -
                     (width > 600 ? 200 : 100),
                 child: Padding(
