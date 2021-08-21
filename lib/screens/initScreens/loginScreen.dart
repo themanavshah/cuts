@@ -1,9 +1,15 @@
+import 'dart:convert';
+
 import 'package:cuts/common_scaffold.dart';
+import 'package:cuts/dummy_data/user_dummy_data.dart';
 import 'package:cuts/screens/initScreens/forgotpass_screen.dart';
 import 'package:cuts/screens/initScreens/register_screen.dart';
 import 'package:cuts/services/auth.dart';
+import 'package:cuts/services/barber_api_calls.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:cuts/providers/state_provider.dart';
 
 class LoginScreen extends StatefulWidget {
   LoginScreen({Key key}) : super(key: key);
@@ -212,71 +218,95 @@ class _LoginScreenState extends State<LoginScreen> {
                   ],
                 ),
                 SizedBox(height: height > 850 ? 80 : 60),
-                GestureDetector(
-                  onTap: () {
-                    if (_passwordController.text.length != 0 &&
-                        _emailController.text.length != 0) {
-                      //to the home screen fecthing the data from database and storing a copy in local phone storage
-                      // print("continue");
-                      // Navigator.pushReplacement(
-                      //     context,
-                      //     MaterialPageRoute(
-                      //         builder: (context) => CommonScaffold()));
-                      Auth()
-                          .login(
-                              _emailController.text, _passwordController.text)
-                          .then((val) {
-                        if (val.data['success']) {
-                          //token = val.data['token'];
-                          print("continue");
-                          Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => CommonScaffold()));
-                        } else {
-                          print(val.data['msg']);
-                          Fluttertoast.showToast(
-                            msg: val.data['msg'],
-                            toastLength: Toast.LENGTH_SHORT,
-                            gravity: ToastGravity.BOTTOM,
-                            backgroundColor: Colors.red,
-                            textColor: Colors.white,
-                            fontSize: 15,
-                          );
-                        }
-                      });
-                    } else {
-                      print("something is wrong!");
-                      Fluttertoast.showToast(
-                        msg: "Fields can't be empty!",
-                        toastLength: Toast.LENGTH_SHORT,
-                        gravity: ToastGravity.BOTTOM,
-                        backgroundColor: Colors.red,
-                        textColor: Colors.white,
-                        fontSize: 15,
-                      );
-                    }
-                  },
-                  child: Container(
-                    height: height > 850 ? 75 : 65,
-                    width: MediaQuery.of(context).size.width -
-                        (width > 600 ? 200 : 0),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: Colors.orange,
-                    ),
-                    child: Center(
-                      child: Text(
-                        'Login',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w500,
-                          fontSize: height > 850 ? 20 : 18,
+                Consumer(builder: (context, watch, _) {
+                  return GestureDetector(
+                    onTap: () {
+                      if (_passwordController.text.length != 0 &&
+                          _emailController.text.length != 0) {
+                        //to the home screen fecthing the data from database and storing a copy in local phone storage
+                        Auth()
+                            .login(
+                                _emailController.text, _passwordController.text)
+                            .then((val) {
+                          if (val.data['success']) {
+                            //token = val.data['token'];
+                            print("continue");
+                            //print("val: " + val.toString());
+                            //print(val.data['user']);
+                            Auth()
+                                .getDecodedToken(val.data['token'])
+                                .then((user) {
+                              print("barb list: " +
+                                  user.data["user"]["favBarber"].toString());
+                              BarberApi()
+                                  .getBarber(user.data["user"]["favBarber"][0])
+                                  .then((barb) {
+                                print(barb);
+                                var image =
+                                    base64.decode(barb.data["data"]["image"]);
+                                Image xyz = Image.memory(image);
+                                currentUser.image = xyz;
+                              });
+                              // context.read(useremailProvider).state =
+                              //     user.data["user"]["email"];
+                              // context.read(emailFavBarber).state =
+                              //     user.data["user"]["favbarber"];
+                              // context.read(emailchatBarber).state =
+                              //     user.data["user"]["chatBarber"];
+                              // context.read(emailnearbyBarber).state =
+                              //     user.data["user"]["nearbyBarber"];
+                            });
+                            context.read(tokenProvider).state =
+                                val.data['token'];
+                            Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => CommonScaffold()));
+                          } else {
+                            print(val.data['msg']);
+                            Fluttertoast.showToast(
+                              msg: val.data['msg'],
+                              toastLength: Toast.LENGTH_SHORT,
+                              gravity: ToastGravity.BOTTOM,
+                              backgroundColor: Colors.red,
+                              textColor: Colors.white,
+                              fontSize: 15,
+                            );
+                          }
+                        });
+                      } else {
+                        print("something is wrong!");
+                        Fluttertoast.showToast(
+                          msg: "Fields can't be empty!",
+                          toastLength: Toast.LENGTH_SHORT,
+                          gravity: ToastGravity.BOTTOM,
+                          backgroundColor: Colors.red,
+                          textColor: Colors.white,
+                          fontSize: 15,
+                        );
+                      }
+                    },
+                    child: Container(
+                      height: height > 850 ? 75 : 65,
+                      width: MediaQuery.of(context).size.width -
+                          (width > 600 ? 200 : 0),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: Colors.orange,
+                      ),
+                      child: Center(
+                        child: Text(
+                          'Login',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w500,
+                            fontSize: height > 850 ? 20 : 18,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ),
+                  );
+                }),
                 SizedBox(
                     height: height > 850
                         ? width > 600

@@ -52,7 +52,8 @@ class HomeScreen extends ConsumerWidget {
                     children: [
                       CircleAvatar(
                         radius: height > 700 ? 25 : 18,
-                        backgroundImage: AssetImage(currentUser.image),
+                        //backgroundImage: AssetImage(currentUser.image),
+                        child: currentUser.image,
                       ),
                       SizedBox(width: 20),
                       Column(

@@ -423,6 +423,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                       //logic of drct pymt...
                       print("drct pymnet");
                       showModalBottomSheet(
+                        isDismissible: false,
                         backgroundColor: Colors.transparent,
                         context: context,
                         builder: (context) {

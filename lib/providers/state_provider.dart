@@ -1,5 +1,6 @@
 import 'package:cuts/dummy_data/barber_shops_data.dart';
 import 'package:cuts/dummy_data/user_dummy_data.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 enum page {
@@ -43,6 +44,24 @@ final selectedMinProvider = StateProvider<int>((ref) {
 
 final checkoutAmountProvider = StateProvider<int>((ref) {
   return 0;
+});
+
+final tokenProvider = StateProvider<String>((ref) {
+  return null;
+});
+final useremailProvider = StateProvider<String>((ref) {
+  return null;
+});
+
+final emailFavBarber = StateProvider<List<String>>((ref) {
+  return [];
+});
+final emailchatBarber = StateProvider<List<String>>((ref) {
+  return [];
+});
+
+final emailnearbyBarber = StateProvider<List<String>>((ref) {
+  return [];
 });
 
 var favList = [];

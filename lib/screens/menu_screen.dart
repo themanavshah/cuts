@@ -76,7 +76,8 @@ class MenuScreen extends ConsumerWidget {
                           children: [
                             CircleAvatar(
                               radius: height > 700 ? 30 : 25,
-                              backgroundImage: AssetImage(currentUser.image),
+                              //backgroundImage: AssetImage(currentUser.image),
+                              child: currentUser.image,
                             ),
                             SizedBox(width: 16),
                             Column(
