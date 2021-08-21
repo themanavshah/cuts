@@ -21,11 +21,10 @@ class Auth with ChangeNotifier {
       );
       _token = response.data['token'];
       print('auth' + '$_token');
-      notifyListeners();
       return response;
-    } on DioError catch (e) {
+    } on DioError catch (err) {
       Fluttertoast.showToast(
-        msg: e.response.data['msg'],
+        msg: err.response.data['msg'],
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.BOTTOM,
         backgroundColor: Colors.red,
@@ -57,9 +56,31 @@ class Auth with ChangeNotifier {
       );
       loginToken(email, password);
       return response;
-    } on DioError catch (e) {
+    } on DioError catch (err) {
       Fluttertoast.showToast(
-        msg: e.response.data['msg'],
+        msg: err.response.data['msg'],
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+        fontSize: 15,
+      );
+    }
+  }
+
+  getDecodedToken(String token) async {
+    try {
+      var response = await dio.get('http://localhost:6969/getinfo',
+          options: Options(headers: {
+            //"accept": "*/*",
+            "Authorization": "Bearer $token",
+            "Content-Type": "application/x-www-form-urlencoded"
+          }));
+      print(response);
+      return response;
+    } on DioError catch (err) {
+      Fluttertoast.showToast(
+        msg: err.response.data['msg'],
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.BOTTOM,
         backgroundColor: Colors.red,
@@ -69,3 +90,5 @@ class Auth with ChangeNotifier {
     }
   }
 }
+
+//tester02@cuts.com

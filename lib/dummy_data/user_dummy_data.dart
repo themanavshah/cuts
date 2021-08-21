@@ -54,7 +54,7 @@ class NotificationModel {
 class User {
   int userId;
   String name;
-  String image;
+  Image image;
   List<Barber> favBarbers;
   List<Barber> nearbyBarber;
   List<ChatBarber> chatbarber;
@@ -85,7 +85,7 @@ var currentUser = User(
         expMonth: 12,
         expYear: 26,
         holderName: "John J. Snow"),
-    image: "assets/dummies/mancuts.jpg",
+    image: null,
     favBarbers: [
       Barber(
         id: 3,
