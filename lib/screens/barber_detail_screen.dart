@@ -1,8 +1,8 @@
 import 'package:cuts/dummy_data/barber_shops_data.dart';
 import 'package:cuts/providers/state_provider.dart';
-import 'package:cuts/screens/booking_screen.dart';
+import 'package:cuts/screens/bookingScreens/booking_screen.dart';
 import 'package:cuts/screens/chat_detail_screen.dart';
-import 'package:cuts/widgets/days_in_month.dart';
+import 'package:cuts/widgets/bookingWidgets/days_in_month.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

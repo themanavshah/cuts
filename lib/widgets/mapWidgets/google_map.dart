@@ -4,10 +4,10 @@ import 'dart:typed_data';
 import 'dart:ui' as ui;
 
 import 'package:cuts/dummy_data/user_dummy_data.dart';
-import 'package:cuts/widgets/barbers_partdetail_ms.dart';
-import 'package:cuts/widgets/get_custom_marker_widget.dart';
+import 'package:cuts/widgets/mapWidgets/barbers_partdetail_ms.dart';
+import 'package:cuts/widgets/mapWidgets/get_custom_marker_widget.dart';
 //import 'package:cuts/widgets/get_custom_marker_widget.dart';
-import 'package:cuts/widgets/marker_widget.dart';
+import 'package:cuts/widgets/mapWidgets/marker_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';

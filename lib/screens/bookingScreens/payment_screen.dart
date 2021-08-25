@@ -1,7 +1,7 @@
 import 'package:cuts/dummy_data/barber_shops_data.dart';
 import 'package:cuts/dummy_data/user_dummy_data.dart';
-import 'package:cuts/widgets/confirm_modal_sheet.dart';
-import 'package:cuts/widgets/online_transfer_dialogBox.dart';
+import 'package:cuts/widgets/bookingWidgets/confirm_modal_sheet.dart';
+import 'package:cuts/widgets/bookingWidgets/online_transfer_dialogBox.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:dotted_decoration/dotted_decoration.dart';

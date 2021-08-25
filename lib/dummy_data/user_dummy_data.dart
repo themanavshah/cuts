@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:cuts/dummy_data/barber_shops_data.dart';
 import 'package:cuts/providers/state_provider.dart';
 import 'package:flutter/material.dart';
@@ -54,7 +56,7 @@ class NotificationModel {
 class User {
   int userId;
   String name;
-  Image image;
+  Uint8List image;
   List<Barber> favBarbers;
   List<Barber> nearbyBarber;
   List<ChatBarber> chatbarber;

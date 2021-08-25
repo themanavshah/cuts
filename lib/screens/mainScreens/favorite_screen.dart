@@ -3,7 +3,7 @@ import 'package:cuts/widgets/barber_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'barber_detail_screen.dart';
+import '../barber_detail_screen.dart';
 
 class FavoriteScreen extends ConsumerWidget {
   @override

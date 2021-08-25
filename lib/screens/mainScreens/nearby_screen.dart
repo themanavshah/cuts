@@ -1,4 +1,4 @@
-import 'package:cuts/widgets/google_map.dart';
+import 'package:cuts/widgets/mapWidgets/google_map.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

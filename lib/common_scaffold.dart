@@ -1,10 +1,10 @@
 import 'package:cuts/providers/state_provider.dart';
 //import 'package:cuts/screens/actions_screen.dart';
-import 'package:cuts/screens/chat_screen.dart';
-import 'package:cuts/screens/favorite_screen.dart';
-import 'package:cuts/screens/home_screen.dart';
+import 'package:cuts/screens/mainScreens/chat_screen.dart';
+import 'package:cuts/screens/mainScreens/favorite_screen.dart';
+import 'package:cuts/screens/mainScreens/home_screen.dart';
 import 'package:cuts/screens/menu_screen.dart';
-import 'package:cuts/screens/nearby_screen.dart';
+import 'package:cuts/screens/mainScreens/nearby_screen.dart';
 import 'package:cuts/screens/notification_screen.dart';
 import 'package:cuts/screens/show_all_screen.dart';
 import 'package:cuts/widgets/bottom_widget.dart';

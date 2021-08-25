@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:typed_data';
 
 import 'package:cuts/common_scaffold.dart';
 import 'package:cuts/dummy_data/user_dummy_data.dart';
@@ -242,10 +243,16 @@ class _LoginScreenState extends State<LoginScreen> {
                                   .getBarber(user.data["user"]["favBarber"][0])
                                   .then((barb) {
                                 print(barb);
-                                var image =
-                                    base64.decode(barb.data["data"]["image"]);
-                                Image xyz = Image.memory(image);
-                                currentUser.image = xyz;
+                                var image = barb.data["data"]["image"];
+                                print("_______________-" +
+                                    image["data"].runtimeType.toString());
+                                List<int> imgdata = image["data"].cast<int>();
+                                //List<int> imgbytes = image.readAsBytesSync();
+                                //print("+++++++++++++++=" + imgbytes.toString());
+                                Image xyz =
+                                    Image.memory(Uint8List.fromList(imgdata));
+                                currentUser.image = Uint8List.fromList(imgdata);
+                                print(xyz);
                               });
                               // context.read(useremailProvider).state =
                               //     user.data["user"]["email"];

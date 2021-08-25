@@ -1,6 +1,6 @@
 import 'package:cuts/dummy_data/barber_shops_data.dart';
 import 'package:cuts/providers/state_provider.dart';
-import 'package:cuts/screens/payment_screen.dart';
+import 'package:cuts/screens/bookingScreens/payment_screen.dart';
 import 'package:cuts/screens/products_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

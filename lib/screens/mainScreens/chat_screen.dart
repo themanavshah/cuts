@@ -1,7 +1,7 @@
 import 'package:cuts/dummy_data/user_dummy_data.dart';
 import 'package:cuts/providers/state_provider.dart';
 import 'package:cuts/screens/chat_detail_screen.dart';
-import 'package:cuts/widgets/inbox_chat_barber.dart';
+import 'package:cuts/widgets/chatWidgets/inbox_chat_barber.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:socket_io_client/socket_io_client.dart' as io;

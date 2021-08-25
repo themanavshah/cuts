@@ -1,7 +1,7 @@
 import 'package:cuts/dummy_data/barber_shops_data.dart';
 import 'package:cuts/dummy_data/user_dummy_data.dart';
 import 'package:cuts/providers/state_provider.dart';
-import 'package:cuts/widgets/chat_bubble.dart';
+import 'package:cuts/widgets/chatWidgets/chat_bubble.dart';
 import 'package:flutter/material.dart';
 import 'package:socket_io_client/socket_io_client.dart' as io;
 

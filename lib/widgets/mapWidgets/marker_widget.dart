@@ -1,5 +1,5 @@
 import 'package:cuts/dummy_data/barber_shops_data.dart';
-import 'package:cuts/widgets/barbers_partdetail_ms.dart';
+import 'package:cuts/widgets/mapWidgets/barbers_partdetail_ms.dart';
 import 'package:flutter/material.dart';
 
 class MarkerWidget extends StatelessWidget {
