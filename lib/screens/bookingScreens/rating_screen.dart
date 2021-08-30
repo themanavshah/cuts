@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:cuts/common_scaffold.dart';
 import 'package:cuts/dummy_data/barber_shops_data.dart';
 import 'package:flutter/material.dart';
@@ -93,7 +95,11 @@ class _RatingScreenState extends State<RatingScreen> {
                     : 60),
             CircleAvatar(
               radius: height > 850 ? 65 : 40,
-              backgroundImage: AssetImage(widget.barber.image),
+              //backgroundImage: AssetImage(widget.barber.image),
+              child: Image.memory(
+                Uint8List.fromList(widget.barber.image),
+                fit: BoxFit.fill,
+              ),
             ),
             SizedBox(height: height > 850 ? 30 : 20),
             Text(

@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:cuts/dummy_data/barber_shops_data.dart';
 import 'package:cuts/dummy_data/user_dummy_data.dart';
 import 'package:cuts/providers/state_provider.dart';
@@ -133,7 +135,11 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
                             SizedBox(width: height > 850 ? 10 : 5),
                             CircleAvatar(
                               radius: height > 850 ? 28 : 22,
-                              backgroundImage: AssetImage(widget.barber.image),
+                              //backgroundImage: AssetImage(widget.barber.image),
+                              child: Image.memory(
+                                Uint8List.fromList(widget.barber.image),
+                                fit: BoxFit.fill,
+                              ),
                             ),
                             SizedBox(width: 18),
                             Column(

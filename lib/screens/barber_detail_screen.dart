@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:cuts/dummy_data/barber_shops_data.dart';
 import 'package:cuts/providers/state_provider.dart';
 import 'package:cuts/screens/bookingScreens/booking_screen.dart';
@@ -41,10 +43,14 @@ class BarberDetailScreen extends ConsumerWidget {
                           : 320,
                       decoration: BoxDecoration(
                         color: Colors.grey.withOpacity(0.2),
-                        image: DecorationImage(
-                          fit: BoxFit.fill,
-                          image: AssetImage(barber.image),
-                        ),
+                        // image: DecorationImage(
+                        //   fit: BoxFit.fill,
+                        //   image: AssetImage(barber.image),
+                        // ),
+                      ),
+                      child: Image.memory(
+                        Uint8List.fromList(barber.image),
+                        fit: BoxFit.fill,
                       ),
                     ),
                     Container(
@@ -126,7 +132,7 @@ class BarberDetailScreen extends ConsumerWidget {
                                         scrollDirection: Axis.horizontal,
                                         physics:
                                             const NeverScrollableScrollPhysics(),
-                                        itemCount: barber.rating.floor(),
+                                        itemCount: 4,
                                         itemBuilder:
                                             (BuildContext context, int index) =>
                                                 Icon(

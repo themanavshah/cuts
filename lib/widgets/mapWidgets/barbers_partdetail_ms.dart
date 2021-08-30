@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:cuts/dummy_data/barber_shops_data.dart';
 import 'package:cuts/dummy_data/user_dummy_data.dart';
 import 'package:cuts/screens/barber_detail_screen.dart';
@@ -31,7 +33,11 @@ class BarberDetailModalSheet extends StatelessWidget {
           children: [
             CircleAvatar(
               radius: 50,
-              backgroundImage: AssetImage(barber.image),
+              //backgroundImage: AssetImage(barber.image),
+              child: Image.memory(
+                Uint8List.fromList(barber.image),
+                fit: BoxFit.fill,
+              ),
             ),
             SizedBox(height: 20),
             Text(

@@ -27,12 +27,17 @@ class MarkerWidget extends StatelessWidget {
               width: height > 700 ? 60 : 40,
               height: height > 700 ? 60 : 40,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(height > 700 ? 15 : 10),
-                  color: Colors.white,
-                  image: DecorationImage(
-                    image: AssetImage(barber.image),
-                    fit: BoxFit.cover,
-                  )),
+                borderRadius: BorderRadius.circular(height > 700 ? 15 : 10),
+                color: Colors.white,
+                // image: DecorationImage(
+                //   image: AssetImage(barber.image),
+                //   fit: BoxFit.cover,
+                // )
+              ),
+              child: Image.memory(
+                barber.image,
+                fit: BoxFit.fill,
+              ),
             ),
             SizedBox(width: height > 700 ? 20 : 15),
             Column(

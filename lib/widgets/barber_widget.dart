@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:cuts/dummy_data/barber_shops_data.dart';
 import 'package:cuts/dummy_data/barber_shops_data.dart';
 import 'package:cuts/dummy_data/user_dummy_data.dart';
@@ -41,17 +43,18 @@ class BarberWidget extends ConsumerWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   color: Colors.grey.withOpacity(0.2),
-                  image: DecorationImage(
+                  // image: DecorationImage(
+                  //   fit: BoxFit.fill,
+                  //   image: AssetImage(barber.image),
+                  // ),
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: Image.memory(
+                    Uint8List.fromList(barber.image),
                     fit: BoxFit.fill,
-                    image: AssetImage(barber.image),
                   ),
                 ),
-                // child: ClipRRect(
-                //   borderRadius: BorderRadius.circular(20),
-                //   child: Image(
-                //     image: AssetImage('assets/barbers/barberX.png'),
-                //   ),
-                // ),
               ),
               SizedBox(width: 25),
               Column(

@@ -10,22 +10,23 @@ List<Barber> actionBarbAlgo(String action) {
   }
 
   List<Barber> finalBarb = [];
-  List<Barber> finalBarb2 = [];
   List tempBarb = currentUser.nearbyBarber + currentUser.favBarbers;
+  print(currentUser.favBarbers[0].name);
   List<Barber> distTempBarb = tempBarb.toSet().toList();
-  for (var i = 0; i < distTempBarb.length; i++) {
-    var tagList = distTempBarb[i].tags;
-    for (var j = 0; j < tagList.length; j++) {
-      if (action == tagList[j]) {
-        if (!barberCheck(finalBarb, distTempBarb[i])) {
-          finalBarb.add(distTempBarb[i]);
+  print("sdsd" + distTempBarb.toString());
+  if (distTempBarb.isNotEmpty) {
+    for (var i = 0; i < distTempBarb.length; i++) {
+      print(distTempBarb[i].name);
+      var tagList = distTempBarb[i].tags;
+      for (var j = 0; j < tagList.length; j++) {
+        if (action == tagList[j]) {
+          if (!barberCheck(finalBarb, distTempBarb[i])) {
+            finalBarb.add(distTempBarb[i]);
+          }
         }
       }
     }
   }
-  // for (var i = 0; i < finalBarb.length; ) {
-
-  // }
 
   print(finalBarb.length);
   return finalBarb;

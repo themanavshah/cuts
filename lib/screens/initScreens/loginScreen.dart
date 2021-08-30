@@ -1,12 +1,17 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:cuts/common_scaffold.dart';
+import 'package:cuts/dummy_data/barber_shops_data.dart';
 import 'package:cuts/dummy_data/user_dummy_data.dart';
+import 'package:cuts/providers/stream_controller.dart';
 import 'package:cuts/screens/initScreens/forgotpass_screen.dart';
 import 'package:cuts/screens/initScreens/register_screen.dart';
+import 'package:cuts/screens/loading_screen.dart';
 import 'package:cuts/services/auth.dart';
 import 'package:cuts/services/barber_api_calls.dart';
+import 'package:cuts/widgets/mapWidgets/get_user_location.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -230,45 +235,151 @@ class _LoginScreenState extends State<LoginScreen> {
                                 _emailController.text, _passwordController.text)
                             .then((val) {
                           if (val.data['success']) {
-                            //token = val.data['token'];
                             print("continue");
-                            //print("val: " + val.toString());
-                            //print(val.data['user']);
                             Auth()
                                 .getDecodedToken(val.data['token'])
                                 .then((user) {
+                              List<Barber> tempfavBarbLis = [];
                               print("barb list: " +
                                   user.data["user"]["favBarber"].toString());
+                              int favbarbcounter = 1;
+                              for (var i = 0;
+                                  i < user.data["user"]["favBarber"].length;
+                                  i++) {
+                                BarberApi()
+                                    .getBarber(
+                                        user.data["user"]["favBarber"][i])
+                                    .then((barb) {
+                                  print("barb" + barb.toString());
+                                  List<Slot> slotLis = [];
+                                  for (var slt = 0;
+                                      slt < barb.data["data"]["slots"].length;
+                                      slt++) {
+                                    print(barb.data["data"]["slots"][slt]);
+                                    slotLis.add(Slot(
+                                      hour: barb.data["data"]["slots"][slt]
+                                          ["hour"],
+                                      isOccupied: barb.data["data"]["slots"]
+                                          [slt]["isOcuupied"],
+                                      min: barb.data["data"]["slots"][slt]
+                                          ["min"],
+                                    ));
+                                  }
+                                  print("__________barbname____________" +
+                                      barb.data["data"]["name"].toString());
+                                  tempfavBarbLis.add(Barber(
+                                    name: barb.data["data"]["name"],
+                                    description: barb.data["data"]
+                                        ["description"],
+                                    image: barb.data["data"]["image"]["data"]
+                                        .cast<int>(),
+                                    openingTime: barb.data["data"]
+                                        ["openingTime"],
+                                    slots: slotLis,
+                                    tags: barb.data["data"]["tags"],
+                                    distance: "2.3",
+                                  ));
+                                  if (favbarbcounter ==
+                                      user.data["user"]["favBarber"].length) {
+                                    currentUser.favBarbers = tempfavBarbLis;
+                                    print("cufb" +
+                                        currentUser.favBarbers.toString());
+                                    favBarberStreamController.sink
+                                        .add(tempfavBarbLis);
+                                    print(" tfb: " +
+                                        tempfavBarbLis[0].name.toString());
+                                  }
+                                  favbarbcounter++;
+                                });
+                              }
+
+                              // List<ChatBarber> tempchatBarbLis = [];
+                              // for (var i = 0;
+                              //     i < user.data["user"]["chatBarber"].length;
+                              //     i++) {
+                              //   BarberApi()
+                              //       .getBarber(
+                              //           user.data["user"]["chatBarber"][i])
+                              //       .then((barb) {
+                              //     tempfavBarbLis.add(Barber(
+                              //       name: barb.data["name"],
+                              //       description: barb.data["description"],
+                              //       image: barb.data["data"]["image"]["data"].cast<int>()
+                              //       openingTime: barb.data["openingTime"],
+                              //       slots: barb.data["slots"],
+                              //       tags: barb.data["tags"],
+                              //     ));
+                              //   });
+                              // }
+                              //currentUser.chatbarber = tempchatBarbLis;
+                              // chatBarberStreamController.sink
+                              //     .add(tempchatBarbLis);
+
+                              List<Barber> tempnearbyBarbLis = [];
+                              int nearbybarbCounter = 1;
+                              for (var i = 0;
+                                  i < user.data["user"]["nearbyBarber"].length;
+                                  i++) {
+                                BarberApi()
+                                    .getBarber(
+                                        user.data["user"]["nearbyBarber"][i])
+                                    .then((barb) {
+                                  tempfavBarbLis.add(Barber(
+                                    name: barb.data["name"],
+                                    description: barb.data["description"],
+                                    image: barb.data["data"]["image"]["data"]
+                                        .cast<int>(),
+                                    openingTime: barb.data["openingTime"],
+                                    slots: barb.data["slots"],
+                                    tags: barb.data["tags"],
+                                    distance: "2.3",
+                                  ));
+                                });
+                                if (nearbybarbCounter ==
+                                    user.data["user"]["nearbyBarber"].length) {
+                                  currentUser.nearbyBarber = tempnearbyBarbLis;
+                                  nearbyBarberStreamController.sink
+                                      .add(tempnearbyBarbLis);
+                                }
+                              }
                               BarberApi()
                                   .getBarber(user.data["user"]["favBarber"][0])
                                   .then((barb) {
                                 print(barb);
-                                var image = barb.data["data"]["image"];
-                                print("_______________-" +
-                                    image["data"].runtimeType.toString());
-                                List<int> imgdata = image["data"].cast<int>();
-                                //List<int> imgbytes = image.readAsBytesSync();
-                                //print("+++++++++++++++=" + imgbytes.toString());
-                                Image xyz =
-                                    Image.memory(Uint8List.fromList(imgdata));
-                                currentUser.image = Uint8List.fromList(imgdata);
-                                print(xyz);
+                                void addData() async {
+                                  var image = barb.data["data"]["image"];
+                                  List<int> imgdata = image["data"].cast<int>();
+                                  Uint8List imageuint8lis =
+                                      Uint8List.fromList(imgdata);
+                                  imageStreamController.sink.add(imageuint8lis);
+                                }
+
+                                addData();
                               });
-                              // context.read(useremailProvider).state =
-                              //     user.data["user"]["email"];
-                              // context.read(emailFavBarber).state =
-                              //     user.data["user"]["favbarber"];
-                              // context.read(emailchatBarber).state =
-                              //     user.data["user"]["chatBarber"];
-                              // context.read(emailnearbyBarber).state =
-                              //     user.data["user"]["nearbyBarber"];
                             });
                             context.read(tokenProvider).state =
                                 val.data['token'];
+
+                            determinePosition();
+                            // userLocation = dpn;
+                            // userLocationStreamController.sink.add(dpn);
                             Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => CommonScaffold()));
+                                    builder: (context) => StreamBuilder<Object>(
+                                        stream:
+                                            favBarberStreamController.stream,
+                                        builder: (context, snapshot) {
+                                          if (snapshot.hasError)
+                                            return snapshot.error;
+                                          else if (snapshot.connectionState ==
+                                              ConnectionState.waiting) {
+                                            print("waiting for data!");
+                                            return LoadingScreen();
+                                          }
+                                          print(snapshot.data);
+                                          return CommonScaffold();
+                                        })));
                           } else {
                             print(val.data['msg']);
                             Fluttertoast.showToast(

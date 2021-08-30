@@ -1,4 +1,5 @@
 import 'package:cuts/providers/state_provider.dart';
+import 'package:cuts/providers/stream_controller.dart';
 //import 'package:cuts/screens/actions_screen.dart';
 import 'package:cuts/screens/mainScreens/chat_screen.dart';
 import 'package:cuts/screens/mainScreens/favorite_screen.dart';
@@ -19,6 +20,24 @@ class CommonScaffold extends ConsumerWidget {
       backgroundColor: Colors.white,
       body: Stack(
         children: [
+          // StreamBuilder(
+          //   stream: favBarberStreamController.stream,
+          //   builder: (context, snapshot) {
+          //   if (snapshot.hasError)
+          //           return snapshot.error;
+          //         else if (snapshot.connectionState ==
+          //             ConnectionState.waiting) {
+          //           print("waiting for data!");
+          //           return CircularProgressIndicator();
+          //         }
+          //         if (currentUser.nearbyBarber.length == 0) {
+          //           return Container(
+          //             height: 100,
+          //             width: 100,
+          //             color: Colors.grey,
+          //           );
+          //         }
+          // }),
           if (index.state == page.menu) MenuScreen(),
           if (index.state == page.notification) NotificationScreen(),
           if (index.state == page.show_all) ShowAllScreen(),

@@ -2,10 +2,12 @@ import 'package:cuts/dummy_data/actions_option_data.dart';
 import 'package:cuts/dummy_data/barber_shops_data.dart';
 import 'package:cuts/dummy_data/user_dummy_data.dart';
 import 'package:cuts/providers/state_provider.dart';
+import 'package:cuts/providers/stream_controller.dart';
 import 'package:cuts/screens/actions_screen.dart';
 import 'package:cuts/screens/barber_detail_screen.dart';
 import 'package:cuts/widgets/barber_widget.dart';
 import 'package:cuts/widgets/home_option_widget.dart';
+import 'package:cuts/widgets/no_barber_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -52,8 +54,8 @@ class HomeScreen extends ConsumerWidget {
                     children: [
                       CircleAvatar(
                         radius: height > 700 ? 25 : 18,
-                        //backgroundImage: AssetImage(currentUser.image),
-                        child: Image.memory(currentUser.image),
+                        backgroundImage: AssetImage("assets/dummies/emote.png"),
+                        //child: Image.memory(snapshot.data),
                       ),
                       SizedBox(width: 20),
                       Column(
@@ -266,6 +268,7 @@ class HomeScreen extends ConsumerWidget {
                   onTap: () {
                     context.read(pageindex).state = page.show_all;
                     //Navigator.of(context).pop();
+                    print(userLocation);
                   },
                   child: Text(
                     'show all',
@@ -277,32 +280,42 @@ class HomeScreen extends ConsumerWidget {
                 ),
               ],
             ),
-            SizedBox(height: height > 1050 ? 40 : 10),
-            Container(
-              height: ((107 * currentUser.nearbyBarber.length) +
-                      (15 * currentUser.nearbyBarber.length))
-                  .toDouble(),
-              child: ListView.builder(
-                physics: const NeverScrollableScrollPhysics(),
-                //shrinkWrap: true,
-                //scrollDirection: Axis.horizontal,
-                itemCount: !(currentUser.nearbyBarber.length > 3)
-                    ? currentUser.nearbyBarber.length
-                    : 3,
-                itemBuilder: (BuildContext context, int index) => Padding(
-                    padding: const EdgeInsets.only(bottom: 15),
-                    child: GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => BarberDetailScreen(
-                                        barber: currentUser.nearbyBarber[index],
-                                      )));
-                        },
-                        child: BarberWidget(currentUser.nearbyBarber[index]))),
-              ),
-            ),
+            SizedBox(
+                height: height > 1050
+                    ? 40
+                    : currentUser.nearbyBarber.length == 0
+                        ? 30
+                        : 10),
+            currentUser.nearbyBarber.length == 0
+                ? NoBarberWidget()
+                : Container(
+                    height: ((107 * currentUser.nearbyBarber.length) +
+                            (15 * currentUser.nearbyBarber.length))
+                        .toDouble(),
+                    child: ListView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
+                      //shrinkWrap: true,
+                      //scrollDirection: Axis.horizontal,
+                      itemCount: !(currentUser.nearbyBarber.length > 3)
+                          ? currentUser.nearbyBarber.length
+                          : 3,
+                      itemBuilder: (BuildContext context, int index) => Padding(
+                          padding: const EdgeInsets.only(bottom: 15),
+                          child: GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            BarberDetailScreen(
+                                              barber: currentUser
+                                                  .nearbyBarber[index],
+                                            )));
+                              },
+                              child: BarberWidget(
+                                  currentUser.nearbyBarber[index]))),
+                    ),
+                  ),
           ],
         ),
       ),
