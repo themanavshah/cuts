@@ -96,9 +96,12 @@ class _RatingScreenState extends State<RatingScreen> {
             CircleAvatar(
               radius: height > 850 ? 65 : 40,
               //backgroundImage: AssetImage(widget.barber.image),
-              child: Image.memory(
-                Uint8List.fromList(widget.barber.image),
-                fit: BoxFit.fill,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(100),
+                child: Image.memory(
+                  Uint8List.fromList(widget.barber.image),
+                  fit: BoxFit.fill,
+                ),
               ),
             ),
             SizedBox(height: height > 850 ? 30 : 20),

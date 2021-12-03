@@ -342,25 +342,29 @@ class _LoginScreenState extends State<LoginScreen> {
                                       .add(tempnearbyBarbLis);
                                 }
                               }
-                              BarberApi()
-                                  .getBarber(user.data["user"]["favBarber"][0])
-                                  .then((barb) {
-                                print(barb);
-                                void addData() async {
-                                  var image = barb.data["data"]["image"];
-                                  List<int> imgdata = image["data"].cast<int>();
-                                  Uint8List imageuint8lis =
-                                      Uint8List.fromList(imgdata);
-                                  imageStreamController.sink.add(imageuint8lis);
-                                }
+                              user.data["user"]["favBarber"] ??
+                                  BarberApi()
+                                      .getBarber(
+                                          user.data["user"]["favBarber"][0])
+                                      .then((barb) {
+                                    print(barb);
+                                    void addData() async {
+                                      var image = barb.data["data"]["image"];
+                                      List<int> imgdata =
+                                          image["data"].cast<int>();
+                                      Uint8List imageuint8lis =
+                                          Uint8List.fromList(imgdata);
+                                      imageStreamController.sink
+                                          .add(imageuint8lis);
+                                    }
 
-                                addData();
-                              });
+                                    addData();
+                                  });
                             });
                             context.read(tokenProvider).state =
                                 val.data['token'];
 
-                            determinePosition();
+                            //determinePosition();
                             // userLocation = dpn;
                             // userLocationStreamController.sink.add(dpn);
                             Navigator.pushReplacement(

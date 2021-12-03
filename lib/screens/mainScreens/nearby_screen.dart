@@ -7,7 +7,7 @@ class NearbyScreen extends ConsumerWidget {
   Widget build(BuildContext context, ScopedReader watch) {
     return Container(
       //integrating it with google maps api and adding barber's location on it.
-      child: Center(child: GoogleMapsWidget()),
+      child: Center(child: Text("Maps")),
     );
   }
 }

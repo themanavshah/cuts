@@ -3,7 +3,7 @@ import 'dart:typed_data';
 import 'package:cuts/dummy_data/barber_shops_data.dart';
 import 'package:cuts/providers/state_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+//import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class ChatBarber {
   Barber barber;
@@ -91,7 +91,7 @@ var currentUser = User(
         holderName: "John J. Snow"),
     image: null,
     favBarbers: [],
-    nearbyBarber: [],
+    //nearbyBarber: [],
     // favBarbers: [
     //   Barber(
     //     id: 3,

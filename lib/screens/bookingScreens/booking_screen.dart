@@ -167,7 +167,7 @@ class BookingScreen extends ConsumerWidget {
                           ? height > 1050
                               ? 500
                               : 400
-                          : 270,
+                          : 300,
                       width: width > 600
                           ? height > 1050
                               ? 650
@@ -192,10 +192,16 @@ class BookingScreen extends ConsumerWidget {
                             onTap: () {
                               print(
                                   "prev SD: " + selectedDate.state.toString());
+                              print(index);
                               if (index < currentDay) {
                                 print("day not available");
                               } else if (index % 7 == 0) {
                                 print("it's sunday bitch");
+                              } else if ((barber.slots[barber.slots.length - 1]
+                                          .hour <=
+                                      currentHour) &&
+                                  (index == currentDay)) {
+                                print("slots are full this day");
                               } else {
                                 context.read(selectedDateProvider).state =
                                     days[index - 1];
@@ -218,7 +224,14 @@ class BookingScreen extends ConsumerWidget {
                                   style: TextStyle(
                                       color: (index % 7 == 0 ||
                                               index < currentDay ||
-                                              index == selectedDate.state)
+                                              index == selectedDate.state ||
+                                              (barber
+                                                          .slots[barber.slots
+                                                                  .length -
+                                                              1]
+                                                          .hour <=
+                                                      currentHour) &&
+                                                  (index == currentDay))
                                           ? Colors.grey
                                           : Colors.black),
                                 ),
@@ -242,7 +255,7 @@ class BookingScreen extends ConsumerWidget {
                     ),
                     SizedBox(height: width > 600 ? 50 : 0),
                     Container(
-                      height: height > 850 ? 250 : 240,
+                      height: height > 850 ? 220 : 240,
                       width: width > 600
                           ? height > 1050
                               ? 650
@@ -304,8 +317,7 @@ class BookingScreen extends ConsumerWidget {
                                     child: Text(
                                   barber.slots[index].hour.toString() +
                                       ":" +
-                                      barber.slots[index].min.toString() +
-                                      "0",
+                                      barber.slots[index].min.toString(),
                                   style: TextStyle(
                                     color: barber.slots[index].hour >
                                                 currentHour ||
@@ -328,7 +340,8 @@ class BookingScreen extends ConsumerWidget {
                     GestureDetector(
                       onTap: () {
                         print("stripe integration && furthure paymnet screen");
-                        if (!(selectedHour.state == null)) {
+                        if (!(selectedHour.state == null &&
+                            selectedDate.state == null)) {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -341,7 +354,8 @@ class BookingScreen extends ConsumerWidget {
                         width: MediaQuery.of(context).size.width,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
-                          color: selectedHour.state == null
+                          color: selectedHour.state == null ||
+                                  selectedDate.state == null
                               ? Colors.grey.withOpacity(0.2)
                               : Colors.orange,
                         ),
@@ -349,7 +363,8 @@ class BookingScreen extends ConsumerWidget {
                           child: Text(
                             'Confirm booking',
                             style: TextStyle(
-                              color: selectedHour.state == null
+                              color: selectedHour.state == null ||
+                                      selectedDate.state == null
                                   ? Colors.black.withOpacity(0.5)
                                   : Colors.white,
                               fontWeight: FontWeight.w500,

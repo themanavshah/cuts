@@ -31,7 +31,7 @@ final pageindex = StateProvider<page>((ref) {
 });
 
 final selectedDateProvider = StateProvider<int>((ref) {
-  return dateParse.day;
+  return null;
 });
 
 final selectedHourProvider = StateProvider<int>((ref) {
